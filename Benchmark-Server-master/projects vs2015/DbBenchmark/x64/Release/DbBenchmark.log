@@ -1,0 +1,8 @@
+﻿  main.c
+  Generating code
+  82 of 386 functions (21.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    42 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  DbBenchmark.vcxproj -> C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.exe
+  DbBenchmark.vcxproj -> C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.pdb (Full PDB)

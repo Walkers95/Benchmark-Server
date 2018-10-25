@@ -1,0 +1,27 @@
+﻿  main.c
+main.obj : error LNK2019: unresolved external symbol __imp_glClearColor referenced in function SDL_main
+main.obj : error LNK2019: unresolved external symbol __imp_glClear referenced in function SDL_main
+main.obj : error LNK2019: unresolved external symbol __imp_glBlendFunc referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glScissor referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glEnable referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glDisable referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glEnableClientState referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glDisableClientState referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glPushAttrib referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glPopAttrib referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glMatrixMode referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glOrtho referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glViewport referenced in function SDL_main
+main.obj : error LNK2019: unresolved external symbol __imp_glPushMatrix referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glPopMatrix referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glLoadIdentity referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glVertexPointer referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glColorPointer referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glTexCoordPointer referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glDrawElements referenced in function nk_sdl_render
+main.obj : error LNK2019: unresolved external symbol __imp_glTexParameteri referenced in function nk_sdl_device_upload_atlas
+main.obj : error LNK2019: unresolved external symbol __imp_glTexImage2D referenced in function nk_sdl_device_upload_atlas
+main.obj : error LNK2019: unresolved external symbol __imp_glGenTextures referenced in function nk_sdl_device_upload_atlas
+main.obj : error LNK2019: unresolved external symbol __imp_glDeleteTextures referenced in function nk_sdl_shutdown
+main.obj : error LNK2019: unresolved external symbol __imp_glBindTexture referenced in function nk_sdl_device_upload_atlas
+C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Debug\DbBenchmark.exe : fatal error LNK1120: 25 unresolved externals

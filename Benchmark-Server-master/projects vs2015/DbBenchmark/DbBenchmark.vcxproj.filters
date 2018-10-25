@@ -13,10 +13,19 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Library">
+      <UniqueIdentifier>{beea9a5a-0281-45c8-b861-92c6d6143c2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\nuklear.h">
+      <Filter>Resource Files\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\nuklear_sdl_gl2.h">
+      <Filter>Resource Files\Library</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
