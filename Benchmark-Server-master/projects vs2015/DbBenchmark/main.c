@@ -1,6 +1,7 @@
 #include "main.h"
 
 
+
 int main(int argc, char* argv[])
 {
 	
@@ -24,9 +25,10 @@ int main(int argc, char* argv[])
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 	win = SDL_CreateWindow("Demo",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI);
+		WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_OPENGL |SDL_WINDOW_RESIZABLE | SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI);
 	glContext = SDL_GL_CreateContext(win);
 	SDL_GetWindowSize(win, &win_width, &win_height);
+	SDL_ShowCursor(0);
 
 	/* GUI */
 	ctx = nk_sdl_init(win);
@@ -35,21 +37,15 @@ int main(int argc, char* argv[])
 	{struct nk_font_atlas *atlas;
 	nk_sdl_font_stash_begin(&atlas);
 	/*struct nk_font *droid = nk_font_atlas_add_from_file(atlas, "../../../extra_font/DroidSans.ttf", 14, 0);*/
-	/*struct nk_font *roboto = nk_font_atlas_add_from_file(atlas, "../../../extra_font/Roboto-Regular.ttf", 16, 0);*/
+	struct nk_font *roboto = nk_font_atlas_add_from_file(atlas, "Roboto-Regular.ttf", 16, 0);
 	/*struct nk_font *future = nk_font_atlas_add_from_file(atlas, "../../../extra_font/kenvector_future_thin.ttf", 13, 0);*/
 	/*struct nk_font *clean = nk_font_atlas_add_from_file(atlas, "../../../extra_font/ProggyClean.ttf", 12, 0);*/
 	/*struct nk_font *tiny = nk_font_atlas_add_from_file(atlas, "../../../extra_font/ProggyTiny.ttf", 10, 0);*/
 	/*struct nk_font *cousine = nk_font_atlas_add_from_file(atlas, "../../../extra_font/Cousine-Regular.ttf", 13, 0);*/
 	nk_sdl_font_stash_end();
-	/*nk_style_load_all_cursors(ctx, atlas->cursors);*/
-	/*nk_style_set_font(ctx, &roboto->handle)*/; }
+	nk_style_load_all_cursors(ctx, atlas->cursors);
+	nk_style_set_font(ctx, &roboto->handle); }
 
-#ifdef INCLUDE_STYLE
-	/*set_style(ctx, THEME_WHITE);*/
-	/*set_style(ctx, THEME_RED);*/
-	/*set_style(ctx, THEME_BLUE);*/
-	/*set_style(ctx, THEME_DARK);*/
-#endif
 
 	bg.r = 0.10f, bg.g = 0.18f, bg.b = 0.24f, bg.a = 1.0f;
 	while (running)
@@ -62,52 +58,99 @@ int main(int argc, char* argv[])
 			nk_sdl_handle_event(&evt);
 		}
 		nk_input_end(ctx);
-
+		SetStyle(ctx);
 		/* GUI */
-		if (nk_begin(ctx, "Demo", nk_rect(50, 50, 230, 250),
-			NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_SCALABLE |
-			NK_WINDOW_MINIMIZABLE | NK_WINDOW_TITLE))
+		if (nk_begin(ctx, "Demo", nk_rect(0, 0, win_width, win_height), NK_WINDOW_TITLE))
 		{
+
 			enum { EASY, HARD };
 			static int op = EASY;
 			static int property = 20;
+			static int selected_item = 0;
 
-			nk_layout_row_static(ctx, 30, 80, 1);
-			if (nk_button_label(ctx, "button"))
-				fprintf(stdout, "button pressed\n");
-			nk_layout_row_dynamic(ctx, 30, 2);
-			if (nk_option_label(ctx, "easy", op == EASY)) op = EASY;
-			if (nk_option_label(ctx, "hard", op == HARD)) op = HARD;
-			nk_layout_row_dynamic(ctx, 25, 1);
-			nk_property_int(ctx, "Compression:", 0, &property, 100, 10, 1);
 
-			nk_layout_row_dynamic(ctx, 20, 1);
-			nk_label(ctx, "background:", NK_TEXT_LEFT);
-			nk_layout_row_dynamic(ctx, 25, 1);
-			if (nk_combo_begin_color(ctx, nk_rgb_cf(bg), nk_vec2(nk_widget_width(ctx), 400))) {
-				nk_layout_row_dynamic(ctx, 120, 1);
-				bg = nk_color_picker(ctx, bg, NK_RGBA);
+			
+			nk_layout_row_dynamic(ctx, 8, 1);
+			nk_spacing(ctx, 2);
+
+			nk_layout_row_dynamic(ctx, 30, 1);
+			nk_label(ctx, "Database Type :", NK_TEXT_ALIGN_CENTERED);
+			if (nk_combo_begin_label(ctx, style_name[selected_item], nk_vec2(nk_widget_width(ctx), 200))) {
+				int i;
 				nk_layout_row_dynamic(ctx, 25, 1);
-				bg.r = nk_propertyf(ctx, "#R:", 0, bg.r, 1.0f, 0.01f, 0.005f);
-				bg.g = nk_propertyf(ctx, "#G:", 0, bg.g, 1.0f, 0.01f, 0.005f);
-				bg.b = nk_propertyf(ctx, "#B:", 0, bg.b, 1.0f, 0.01f, 0.005f);
-				bg.a = nk_propertyf(ctx, "#A:", 0, bg.a, 1.0f, 0.01f, 0.005f);
+				for (i = 0; i < sizeof(style_id) / sizeof(style_id[0]); ++i)
+					if (nk_combo_item_label(ctx, style_name[i], NK_TEXT_LEFT)) {
+						selected_item = i;
+						printf("Settings style_id : %d \n", style_id[i]);
+					}
 				nk_combo_end(ctx);
 			}
+
+
+			// Pour les champs de selections de text : 
+			static char text[9][64];
+			static int text_len[9];
+			static char box_buffer_read[512];
+			static int box_len_read;
+			static char box_buffer_write[512];
+			static int box_len_write;
+			static int checkbox_custom_script = 0;
+
+
+			nk_layout_row_dynamic(ctx, 8, 1);
+			nk_spacing(ctx, 2);
+
+			nk_layout_row_dynamic(ctx, 30, 10);
+			nk_label(ctx, "Hostname:", NK_TEXT_RIGHT);
+			nk_edit_string(ctx, NK_EDIT_SIMPLE, text[0], &text_len[0], 64, nk_filter_default);
+
+			nk_label(ctx, "Port:", NK_TEXT_RIGHT);
+			nk_edit_string(ctx, NK_EDIT_SIMPLE, text[1], &text_len[1], 64, nk_filter_decimal);
+
+			nk_label(ctx, "DB Name:", NK_TEXT_RIGHT);
+			nk_edit_string(ctx, NK_EDIT_SIMPLE, text[2], &text_len[2], 64, nk_filter_default);
+
+			nk_label(ctx, "User:", NK_TEXT_RIGHT);
+			nk_edit_string(ctx, NK_EDIT_SIMPLE, text[3], &text_len[3], 64, nk_filter_default);
+
+			nk_label(ctx, "Password:", NK_TEXT_RIGHT);
+			{
+				int i = 0;
+				int old_len = text_len[4];
+				char buffer[64];
+				for (i = 0; i < text_len[4]; ++i) buffer[i] = '*';
+				nk_edit_string(ctx, NK_EDIT_FIELD, buffer, &text_len[4], 64, nk_filter_default);
+				if (old_len < text_len[4])
+					memcpy(&text[4][old_len], &buffer[old_len], (nk_size)(text_len[4] - old_len));
+			}
+
+
+
+			nk_checkbox_label(ctx, "Custom script", &checkbox_custom_script);
+			if (checkbox_custom_script)
+			{
+				nk_layout_row_static(ctx, 25, 330, 2);
+				nk_label(ctx, "Read SQL:", NK_TEXT_CENTERED);
+				nk_label(ctx, "Write SQL:", NK_TEXT_CENTERED);
+				nk_layout_row_static(ctx, 180, 175, 4);
+				nk_spacing(ctx, 1);
+				nk_edit_string(ctx, NK_EDIT_BOX, box_buffer_read, &box_len_read, 512, nk_filter_default);
+				nk_spacing(ctx, 1);
+				nk_edit_string(ctx, NK_EDIT_BOX, box_buffer_write, &box_len_write, 512, nk_filter_default);
+			}
+
+		
+
+			nk_layout_row_static(ctx, 50, 300, 2);
+			nk_spacing(ctx, 1);
+			if (nk_button_label(ctx, "Benchmark !"))
+				fprintf(stdout, "benchmark pressed\n");
+
 		}
+
 		nk_end(ctx);
 
-		/* -------------- EXAMPLES ---------------- */
-#ifdef INCLUDE_CALCULATOR
-		calculator(ctx);
-#endif
-#ifdef INCLUDE_OVERVIEW
-		overview(ctx);
-#endif
-#ifdef INCLUDE_NODE_EDITOR
-		node_editor(ctx);
-#endif
-		/* ----------------------------------------- */
+
 
 		/* Draw */
 		SDL_GetWindowSize(win, &win_width, &win_height);
