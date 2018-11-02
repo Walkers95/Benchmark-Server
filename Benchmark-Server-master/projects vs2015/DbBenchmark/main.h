@@ -29,20 +29,14 @@
 #include "Library\nuklear.h"
 #include "Library\nuklear_sdl_gl2.h"
 
-// MySQL Include
-#include <winsock.h>
-#include "Library\MySql\include\mysql.h"
 
-// Oracle include
-#include "Library\Oracle\include\ocilib.h"
-
-int style_id[] = {
+int database_id[] = {
 	0,
 	1,
 	2
 };
 
-const char* style_name[] = {
+const char* database_name[] = {
 	"Oracle",
 	"Mysql",
 	"MongoDB",

@@ -33,72 +33,6 @@
     <ClInclude Include="Library\nuklear_sdl_gl2.h">
       <Filter>Resource Files\Library</Filter>
     </ClInclude>
-    <ClInclude Include="Library\MySql\include\config-netware.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\config-os2.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\config-win.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\errmsg.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\m_ctype.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\m_string.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\my_alloc.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\my_dbug.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\my_getopt.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\my_global.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\my_list.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\my_pthread.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\my_sys.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\mysql.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\mysql_com.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\mysql_embed.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\mysql_time.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\mysql_version.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\mysqld_ername.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\mysqld_error.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\raid.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\MySql\include\typelib.h">
-      <Filter>Resource Files\Library\MySql</Filter>
-    </ClInclude>
     <ClInclude Include="Library\Oracle\include\ocilib.h">
       <Filter>Resource Files\Library\Oracle</Filter>
     </ClInclude>
@@ -111,9 +45,21 @@
     <ClInclude Include="Library\Oracle\include\ocilib_impl.hpp">
       <Filter>Resource Files\Library\Oracle</Filter>
     </ClInclude>
+    <ClInclude Include="mysql_interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oracle_interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mysql_interface.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="oracle_interface.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

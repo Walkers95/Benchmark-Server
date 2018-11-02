@@ -1,6 +1,7 @@
 #include "main.h"
 
-
+#include "mysql_interface.h"
+#include "oracle_interface.h"
 
 int main(int argc, char* argv[])
 {
@@ -16,7 +17,7 @@ int main(int argc, char* argv[])
 	/* GUI */
 	struct nk_context *ctx;
 	struct nk_colorf bg;
-
+	
 	/* SDL setup */
 	SDL_SetHint(SDL_HINT_VIDEO_HIGHDPI_DISABLED, "0");
 	SDL_Init(SDL_INIT_VIDEO);
@@ -72,20 +73,20 @@ int main(int argc, char* argv[])
 
 			nk_layout_row_dynamic(ctx, 30, 1);
 			nk_label(ctx, "Database Type :", NK_TEXT_ALIGN_CENTERED);
-			if (nk_combo_begin_label(ctx, style_name[selected_item], nk_vec2(nk_widget_width(ctx), 200))) {
+			if (nk_combo_begin_label(ctx, database_name[selected_item], nk_vec2(nk_widget_width(ctx), 200))) {
 				int i;
 				nk_layout_row_dynamic(ctx, 25, 1);
-				for (i = 0; i < sizeof(style_id) / sizeof(style_id[0]); ++i)
-					if (nk_combo_item_label(ctx, style_name[i], NK_TEXT_LEFT)) {
+				for (i = 0; i < sizeof(database_id) / sizeof(database_id[0]); ++i)
+					if (nk_combo_item_label(ctx, database_name[i], NK_TEXT_LEFT)) {
 						selected_item = i;
-						printf("Settings style_id : %d \n", style_id[i]);
+						printf("Settings style_id : %d \n", database_id[i]);
 					}
 				nk_combo_end(ctx);
 			}
 
 
 			// Pour les champs de selections de text : 
-			static char text[9][64];
+			static char input[9][64];
 			static int text_len[9];
 			static char box_buffer_read[512];
 			static int box_len_read;
@@ -99,16 +100,16 @@ int main(int argc, char* argv[])
 
 			nk_layout_row_dynamic(ctx, 30, 10);
 			nk_label(ctx, "Hostname:", NK_TEXT_RIGHT);
-			nk_edit_string(ctx, NK_EDIT_SIMPLE, text[0], &text_len[0], 64, nk_filter_default);
+			nk_edit_string(ctx, NK_EDIT_SIMPLE, input[0], &text_len[0], 64, nk_filter_default);
 
 			nk_label(ctx, "Port:", NK_TEXT_RIGHT);
-			nk_edit_string(ctx, NK_EDIT_SIMPLE, text[1], &text_len[1], 64, nk_filter_decimal);
+			nk_edit_string(ctx, NK_EDIT_SIMPLE, input[1], &text_len[1], 64, nk_filter_decimal);
 
 			nk_label(ctx, "DB Name:", NK_TEXT_RIGHT);
-			nk_edit_string(ctx, NK_EDIT_SIMPLE, text[2], &text_len[2], 64, nk_filter_default);
+			nk_edit_string(ctx, NK_EDIT_SIMPLE, input[2], &text_len[2], 64, nk_filter_default);
 
 			nk_label(ctx, "User:", NK_TEXT_RIGHT);
-			nk_edit_string(ctx, NK_EDIT_SIMPLE, text[3], &text_len[3], 64, nk_filter_default);
+			nk_edit_string(ctx, NK_EDIT_SIMPLE, input[3], &text_len[3], 64, nk_filter_default);
 
 			nk_label(ctx, "Password:", NK_TEXT_RIGHT);
 			{
@@ -118,7 +119,7 @@ int main(int argc, char* argv[])
 				for (i = 0; i < text_len[4]; ++i) buffer[i] = '*';
 				nk_edit_string(ctx, NK_EDIT_FIELD, buffer, &text_len[4], 64, nk_filter_default);
 				if (old_len < text_len[4])
-					memcpy(&text[4][old_len], &buffer[old_len], (nk_size)(text_len[4] - old_len));
+					memcpy(&input[4][old_len], &buffer[old_len], (nk_size)(text_len[4] - old_len));
 			}
 
 
@@ -141,7 +142,33 @@ int main(int argc, char* argv[])
 			nk_layout_row_static(ctx, 50, 300, 2);
 			nk_spacing(ctx, 1);
 			if (nk_button_label(ctx, "Benchmark !"))
-				fprintf(stdout, "benchmark pressed\n");
+			{
+				fprintf(stdout, "> benchmark pressed\n");
+				fprintf(stdout, "Benchmark type : %s \n", database_name[selected_item]);
+				fprintf(stdout, "Hostname : %s \n", input[0]);
+				fprintf(stdout, "Port : %s \n", input[1]);
+				fprintf(stdout, "DBName: %s \n", input[2]);
+				fprintf(stdout, "User: %s \n", input[3]);
+				fprintf(stdout, "Password: %s \n", input[4]);
+
+
+				// Initialise
+				if (database_name[selected_item] == "Oracle")
+				{
+					printf("> Init database for : Oracle \n");
+					InitOracle(input[0], atoi(input[1]), input[2], input[3], input[4]);
+					DoBenchmarkOracle();	
+				}
+				else if (database_name[selected_item] == "Mysql")
+				{
+					printf("> Init database for : MySql \n");
+					InitMySql(input[0], atoi(input[1]) , input[2], input[3], input[4]);
+					DoBenchmarkMySql();
+				}
+			
+
+			}
+		
 
 		}
 
