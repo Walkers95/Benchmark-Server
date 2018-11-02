@@ -1,9 +1,9 @@
 ﻿  main.c
-main.c(63): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+main.c(78): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
   Generating code
-  65 of 370 functions (17.6%) were compiled, the rest were copied from previous compilation.
+  73 of 370 functions (19.7%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    42 functions had inline decision re-evaluated but remain unchanged
+    41 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   DbBenchmark.vcxproj -> C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.exe
   DbBenchmark.vcxproj -> C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.pdb (Full PDB)

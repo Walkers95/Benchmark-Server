@@ -97,13 +97,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\include;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\MySql\include;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\Oracle\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;msvcrt.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\lib\x86;%(AdditionalLibraryDirectories);C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\MySql\lib;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\Oracle\lib32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;msvcrt.lib;opengl32.lib;libmysql.lib;ocilibw.lib;ociliba.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -114,13 +114,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\include;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\MySql\include;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\Oracle\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;msvcrt.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\lib\x64;%(AdditionalLibraryDirectories);C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\MySql\lib;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\Oracle\lib64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;msvcrt.lib;opengl32.lib;libmysql.lib;ocilibw.lib;ociliba.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -133,15 +133,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\include;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\MySql\include;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\Oracle\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;msvcrt.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\lib\x86;%(AdditionalLibraryDirectories);C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\MySql\lib;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\Oracle\lib32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;msvcrt.lib;opengl32.lib;libmysql.lib;ocilibw.lib;ociliba.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -154,20 +154,46 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\include;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\MySql\include;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\Oracle\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;msvcrt.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\SDL2-2.0.8\lib\x64;%(AdditionalLibraryDirectories);C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\MySql\lib;C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\DbBenchmark\Library\Oracle\lib64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;msvcrt.lib;opengl32.lib;libmysql.lib;ocilibw.lib;ociliba.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Library\MySql\include\config-netware.h" />
+    <ClInclude Include="Library\MySql\include\config-os2.h" />
+    <ClInclude Include="Library\MySql\include\config-win.h" />
+    <ClInclude Include="Library\MySql\include\errmsg.h" />
+    <ClInclude Include="Library\MySql\include\mysql.h" />
+    <ClInclude Include="Library\MySql\include\mysqld_ername.h" />
+    <ClInclude Include="Library\MySql\include\mysqld_error.h" />
+    <ClInclude Include="Library\MySql\include\mysql_com.h" />
+    <ClInclude Include="Library\MySql\include\mysql_embed.h" />
+    <ClInclude Include="Library\MySql\include\mysql_time.h" />
+    <ClInclude Include="Library\MySql\include\mysql_version.h" />
+    <ClInclude Include="Library\MySql\include\my_alloc.h" />
+    <ClInclude Include="Library\MySql\include\my_dbug.h" />
+    <ClInclude Include="Library\MySql\include\my_getopt.h" />
+    <ClInclude Include="Library\MySql\include\my_global.h" />
+    <ClInclude Include="Library\MySql\include\my_list.h" />
+    <ClInclude Include="Library\MySql\include\my_pthread.h" />
+    <ClInclude Include="Library\MySql\include\my_sys.h" />
+    <ClInclude Include="Library\MySql\include\m_ctype.h" />
+    <ClInclude Include="Library\MySql\include\m_string.h" />
+    <ClInclude Include="Library\MySql\include\raid.h" />
+    <ClInclude Include="Library\MySql\include\typelib.h" />
     <ClInclude Include="Library\nuklear.h" />
     <ClInclude Include="Library\nuklear_sdl_gl2.h" />
+    <ClInclude Include="Library\Oracle\include\ocilib.h" />
+    <ClInclude Include="Library\Oracle\include\ocilib.hpp" />
+    <ClInclude Include="Library\Oracle\include\ocilib_core.hpp" />
+    <ClInclude Include="Library\Oracle\include\ocilib_impl.hpp" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

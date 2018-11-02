@@ -12,9 +12,11 @@
 #define WINDOW_WIDTH 1024
 #define WINDOW_HEIGHT 476
 
+// SDL Include
 #include <SDL.h>
 #include <SDL_opengl.h>
 
+// Include for Nuklear
 #define NK_INCLUDE_FIXED_TYPES
 #define NK_INCLUDE_STANDARD_IO
 #define NK_INCLUDE_STANDARD_VARARGS
@@ -25,10 +27,14 @@
 #define NK_IMPLEMENTATION
 #define NK_SDL_GL2_IMPLEMENTATION
 #include "Library\nuklear.h"
-
 #include "Library\nuklear_sdl_gl2.h"
 
+// MySQL Include
+#include <winsock.h>
+#include "Library\MySql\include\mysql.h"
 
+// Oracle include
+#include "Library\Oracle\include\ocilib.h"
 
 int style_id[] = {
 	0,
@@ -75,3 +81,5 @@ void SetStyle(struct nk_context *ctx)
 	table[NK_COLOR_TAB_HEADER] = nk_rgba(156, 193, 220, 255);
 	nk_style_from_table(ctx, table);
 }
+
+
