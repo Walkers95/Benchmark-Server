@@ -32,13 +32,113 @@ void InitMySql(char * hostname, int port, char * dbName, char * user, char * pas
 
 }
 
+
+
+
+void FinishWithError()
+{
+	fprintf(stderr, "%s\n", mysql_error(connection_mysql));
+	mysql_close(connection_mysql);
+	fgets(NULL, 0, stdin);
+}
+
+int CallQuery(const char * query)
+{
+	if (mysql_query(connection_mysql, query)) {
+		FinishWithError();
+	}
+}
+
+char * GetResult()
+{
+	MYSQL_RES *result = mysql_store_result(connection_mysql);
+
+	if (result == NULL)
+	{
+		FinishWithError();
+	}
+
+	int num_fields = mysql_num_fields(result);
+
+	MYSQL_ROW row;
+
+	while ((row = mysql_fetch_row(result)))
+	{
+		for (int i = 0; i < num_fields; i++)
+		{
+			printf("%s ", row[i] ? row[i] : "NULL");
+		}
+		printf("\n");
+	}
+
+	mysql_free_result(result);
+}
+
 void DoBenchmarkMySql()
 {
-	printf(" Starting DoBenchmark \n");
-	if (mysql_query(connection_mysql, "CREATE DATABASE testdb"))
+	// On DROP la database testdb au cas ou elle existe déja
+	printf("> Making sure testdb does not exist !");
+	CallQuery("DROP DATABASE testdb");
+	printf("> Success !");
+	
+	// on crée notre database de test
+	printf("> Creating test database \n");
+	CallQuery("CREATE DATABASE testdb");
+	printf("> Success ! \n");
+
+	// On selectionne la db crée
+	printf("> Selection de la base \n");
+	CallQuery("USE testdb");
+	printf("> Success ! \n");
+
+	// Create table 
+	printf("> Creating test table \n");
+	CallQuery("CREATE TABLE testtable(id INTEGER AUTO_INCREMENT PRIMARY KEY,int_test INTEGER,text_test TEXT)");
+	printf("> Success ! \n");
+
+
+	
+
+	// WRITE BENCHMARK
+	printf("> Starting Write Benchmark \n");
+	
+	for (int i = 0; i < REQUEST_COUNT; i++)
 	{
-		fprintf(stderr, "%s\n", mysql_error(connection_mysql));
-		mysql_close(connection_mysql);
-		exit(1);
+		QueryPerformanceFrequency(&frequency);
+		// GET TIME BEFORE
+		QueryPerformanceCounter(&t1);
+		CallQuery("INSERT INTO testtable(int_test, text_test) VALUES(1,'bonjour')");
+		// GET TIME AFTER
+		QueryPerformanceCounter(&t2);
+		elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
+		printf("TimeTaken : %lf ms \n", elapsedTime);
 	}
+	printf("> Success ! \n");
+	
+	
+
+
+
+	// READ BENCHMARCK
+	printf("> Starting Read Benchmark \n");
+	for (int i = 0; i < REQUEST_COUNT; i++)
+	{
+		QueryPerformanceFrequency(&frequency);
+		// GET TIME BEFORE
+		QueryPerformanceCounter(&t1);
+		CallQuery("SELECT * FROM testtable where id=1");
+		// GET TIME AFTER
+		QueryPerformanceCounter(&t2);
+
+		elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
+		printf("TimeTaken : %lf ms \n", elapsedTime);
+
+		// Clearing results
+		MYSQL_RES *results;
+		results = mysql_store_result(connection_mysql);
+		mysql_free_result(results);
+		
+	}
+	printf("> Success ! \n");
+
 }
