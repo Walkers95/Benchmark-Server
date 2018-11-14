@@ -13,8 +13,8 @@
 #define WINDOW_HEIGHT 476
 
 // SDL Include
-#include <SDL.h>
-#include <SDL_opengl.h>
+#include "Library\SDL2-2.0.8\include\SDL.h"
+#include "Library\SDL2-2.0.8\include\SDL_opengl.h"
 
 // Include for Nuklear
 #define NK_INCLUDE_FIXED_TYPES
