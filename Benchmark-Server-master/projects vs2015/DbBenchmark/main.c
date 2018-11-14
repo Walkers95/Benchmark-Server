@@ -143,6 +143,9 @@ int main(int argc, char* argv[])
 			nk_spacing(ctx, 1);
 			if (nk_button_label(ctx, "Benchmark !"))
 			{
+				strcpy(input[0], "localhost");
+				strcpy(input[3], "root");
+
 				fprintf(stdout, "> benchmark pressed\n");
 				fprintf(stdout, "Benchmark type : %s \n", database_name[selected_item]);
 				fprintf(stdout, "Hostname : %s \n", input[0]);
@@ -150,7 +153,6 @@ int main(int argc, char* argv[])
 				fprintf(stdout, "DBName: %s \n", input[2]);
 				fprintf(stdout, "User: %s \n", input[3]);
 				fprintf(stdout, "Password: %s \n", input[4]);
-
 
 				// Initialise
 				if (database_name[selected_item] == "Oracle")
@@ -164,6 +166,7 @@ int main(int argc, char* argv[])
 					printf("> Init database for : MySql \n");
 					InitMySql(input[0], atoi(input[1]) , input[2], input[3], input[4]);
 					DoBenchmarkMySql();
+					GetResult();
 				}
 			
 

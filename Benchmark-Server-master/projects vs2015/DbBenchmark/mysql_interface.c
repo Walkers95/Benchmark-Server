@@ -1,5 +1,7 @@
 #include "mysql_interface.h"
 
+double **benchmark_result;
+
 void InitMySql(char * hostname, int port, char * dbName, char * user, char * password)
 {
 	connection_mysql = mysql_init(NULL);
@@ -30,6 +32,21 @@ void InitMySql(char * hostname, int port, char * dbName, char * user, char * pas
 	}
 	
 
+	benchmark_result = malloc(sizeof(double*) * 2);
+	for (int i = 0; i < 2; i++)
+	{
+		benchmark_result[i] = malloc(sizeof(double) * REQUEST_COUNT);
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		for(int j=0;j<50;j++)
+		{
+			benchmark_result[i][j] = 0.00f;
+		}
+
+	}
+
 }
 
 
@@ -49,30 +66,11 @@ int CallQuery(const char * query)
 	}
 }
 
-char * GetResult()
+double ** GetResult()
 {
-	MYSQL_RES *result = mysql_store_result(connection_mysql);
-
-	if (result == NULL)
-	{
-		FinishWithError();
-	}
-
-	int num_fields = mysql_num_fields(result);
-
-	MYSQL_ROW row;
-
-	while ((row = mysql_fetch_row(result)))
-	{
-		for (int i = 0; i < num_fields; i++)
-		{
-			printf("%s ", row[i] ? row[i] : "NULL");
-		}
-		printf("\n");
-	}
-
-	mysql_free_result(result);
+	return benchmark_result;
 }
+
 
 void DoBenchmarkMySql()
 {
@@ -112,6 +110,9 @@ void DoBenchmarkMySql()
 		QueryPerformanceCounter(&t2);
 		elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
 		printf("TimeTaken : %lf ms \n", elapsedTime);
+
+		// Save time 
+		benchmark_result[0][i] = elapsedTime;
 	}
 	printf("> Success ! \n");
 	
@@ -137,7 +138,9 @@ void DoBenchmarkMySql()
 		MYSQL_RES *results;
 		results = mysql_store_result(connection_mysql);
 		mysql_free_result(results);
-		
+
+		// Save time 
+		benchmark_result[1][i] = elapsedTime;
 	}
 	printf("> Success ! \n");
 
