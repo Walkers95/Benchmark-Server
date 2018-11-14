@@ -3,5 +3,6 @@ IN DEV
 
 Benchmark capabilities : 
 - TCP communication with DB
+- Number of threads
 - Read & Write
 - Latence compensation
