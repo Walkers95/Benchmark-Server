@@ -1,16 +1,13 @@
 ﻿  main.c
-c:\users\paul\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan': macro redefinition
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\math.h(264): note: see previous definition of 'isnan'
-c:\users\paul\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(313): warning C4005: 'HAVE_STDDEF_H': macro redefinition
-  c:\users\paul\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\sdl2-2.0.8\include\SDL_config.h(178): note: see previous definition of 'HAVE_STDDEF_H'
-main.c(61): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
-  mysql_interface.c
-c:\users\paul\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan': macro redefinition
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\math.h(264): note: see previous definition of 'isnan'
-  Generating code
-  68 of 377 functions (18.0%) were compiled, the rest were copied from previous compilation.
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan' : redéfinition de macro
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\math.h(264): note: voir la définition précédente de 'isnan'
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(313): warning C4005: 'HAVE_STDDEF_H' : redéfinition de macro
+  c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\sdl2-2.0.8\include\SDL_config.h(178): note: voir la définition précédente de 'HAVE_STDDEF_H'
+main.c(65): warning C4244: 'fonction' : conversion de 'int' en 'float', perte possible de données
+  Génération de code en cours
+  71 of 379 functions (18.7%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    42 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  DbBenchmark.vcxproj -> C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.exe
-  DbBenchmark.vcxproj -> C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.pdb (Full PDB)
+    44 functions had inline decision re-evaluated but remain unchanged
+  Fin de la génération du code
+  DbBenchmark.vcxproj -> C:\Users\paul\Documents\GitHub\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.exe
+  DbBenchmark.vcxproj -> C:\Users\paul\Documents\GitHub\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.pdb (Full PDB)

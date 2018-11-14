@@ -32,25 +32,7 @@ void InitMySql(char * hostname, int port, char * dbName, char * user, char * pas
 	}
 	
 
-	benchmark_result = malloc(sizeof(double*) * 2);
-	for (int i = 0; i < 2; i++)
-	{
-		benchmark_result[i] = malloc(sizeof(double) * REQUEST_COUNT);
-	}
-
-	for (int i = 0; i < 2; i++)
-	{
-		for(int j=0;j<50;j++)
-		{
-			benchmark_result[i][j] = 0.00f;
-		}
-
-	}
-
 }
-
-
-
 
 void FinishWithError()
 {
@@ -115,8 +97,7 @@ void DoBenchmarkMySql()
 		benchmark_result[0][i] = elapsedTime;
 	}
 	printf("> Success ! \n");
-	
-	
+
 
 
 
