@@ -2,5 +2,6 @@ Benchmark server is a tool made to benchmark database according to their respons
 IN DEV
 
 Benchmark capabilities : 
+- TCP communication with DB
 - Read & Write
 - Latence compensation
