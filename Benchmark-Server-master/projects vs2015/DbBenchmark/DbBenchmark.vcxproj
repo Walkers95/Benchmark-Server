@@ -166,20 +166,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Interfaces\Interfaces.h" />
+    <ClInclude Include="Interfaces\mysql_interface.h" />
+    <ClInclude Include="Interfaces\oracle_interface.h" />
     <ClInclude Include="Library\nuklear.h" />
     <ClInclude Include="Library\nuklear_sdl_gl2.h" />
     <ClInclude Include="Library\Oracle\include\ocilib.h" />
     <ClInclude Include="Library\Oracle\include\ocilib.hpp" />
     <ClInclude Include="Library\Oracle\include\ocilib_core.hpp" />
     <ClInclude Include="Library\Oracle\include\ocilib_impl.hpp" />
-    <ClInclude Include="main.h" />
-    <ClInclude Include="mysql_interface.h" />
-    <ClInclude Include="oracle_interface.h" />
+    <ClInclude Include="Main\Includes.h" />
+    <ClInclude Include="Main\main.h" />
+    <ClInclude Include="Render\Render.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c" />
-    <ClCompile Include="mysql_interface.c" />
-    <ClCompile Include="oracle_interface.c" />
+    <ClCompile Include="Interfaces\mysql_interface.c" />
+    <ClCompile Include="Interfaces\oracle_interface.c" />
+    <ClCompile Include="Main\main.c" />
+    <ClCompile Include="Render\Render.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

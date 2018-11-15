@@ -1,3 +1,4 @@
+
 /*
 * Nuklear - 1.32.0 - public domain
 * no warrenty implied; use at your own risk.
@@ -13,7 +14,7 @@
 #ifndef NK_SDL_GL2_H_
 #define NK_SDL_GL2_H_
 
-#include "Library\SDL2-2.0.8\include\SDL.h"
+#include "../Library\SDL2-2.0.8\include\SDL.h"
 NK_API struct nk_context*   nk_sdl_init(SDL_Window *win);
 NK_API void                 nk_sdl_font_stash_begin(struct nk_font_atlas **atlas);
 NK_API void                 nk_sdl_font_stash_end(void);

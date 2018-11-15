@@ -22,11 +22,26 @@
     <Filter Include="Resource Files\Library\Oracle">
       <UniqueIdentifier>{e36109cf-a6ba-4668-a1af-c4e9553adeaf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Render">
+      <UniqueIdentifier>{504e0a23-4cea-4a6f-bcac-15260ef41b3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render">
+      <UniqueIdentifier>{a720cefe-4a05-4495-9eed-4ca2425d44a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces">
+      <UniqueIdentifier>{3fac76e6-06da-47fd-9107-2495cf707a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interfaces">
+      <UniqueIdentifier>{9dc95a47-f49d-48ec-a5e8-1263bb1c8874}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Main">
+      <UniqueIdentifier>{b10a3c43-db68-4863-b379-df7924f2f8f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Main">
+      <UniqueIdentifier>{1291fcf8-f530-48a0-b528-6871b4412f19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Library\nuklear.h">
       <Filter>Resource Files\Library</Filter>
     </ClInclude>
@@ -45,22 +60,37 @@
     <ClInclude Include="Library\Oracle\include\ocilib_impl.hpp">
       <Filter>Resource Files\Library\Oracle</Filter>
     </ClInclude>
-    <ClInclude Include="mysql_interface.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Render\Render.h">
+      <Filter>Header Files\Render</Filter>
     </ClInclude>
-    <ClInclude Include="oracle_interface.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Interfaces\mysql_interface.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\oracle_interface.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Includes.h">
+      <Filter>Header Files\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\main.h">
+      <Filter>Header Files\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\Interfaces.h">
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Render\Render.c">
+      <Filter>Source Files\Render</Filter>
     </ClCompile>
-    <ClCompile Include="mysql_interface.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Interfaces\mysql_interface.c">
+      <Filter>Source Files\Interfaces</Filter>
     </ClCompile>
-    <ClCompile Include="oracle_interface.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Interfaces\oracle_interface.c">
+      <Filter>Source Files\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\main.c">
+      <Filter>Source Files\Main</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
