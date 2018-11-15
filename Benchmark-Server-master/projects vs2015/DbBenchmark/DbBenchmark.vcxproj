@@ -166,6 +166,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Console\Console.h" />
     <ClInclude Include="Interfaces\Interfaces.h" />
     <ClInclude Include="Interfaces\mysql_interface.h" />
     <ClInclude Include="Interfaces\oracle_interface.h" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Render\Render.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Console\Console.c" />
     <ClCompile Include="Interfaces\mysql_interface.c" />
     <ClCompile Include="Interfaces\oracle_interface.c" />
     <ClCompile Include="Main\main.c" />

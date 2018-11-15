@@ -40,6 +40,12 @@
     <Filter Include="Source Files\Main">
       <UniqueIdentifier>{1291fcf8-f530-48a0-b528-6871b4412f19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Console">
+      <UniqueIdentifier>{85349595-a286-4df5-ab92-8aea0704d8e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Console">
+      <UniqueIdentifier>{ddc7dee9-f533-4d51-a972-70e30a05f889}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\nuklear.h">
@@ -78,6 +84,9 @@
     <ClInclude Include="Interfaces\Interfaces.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="Console\Console.h">
+      <Filter>Header Files\Console</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Render\Render.c">
@@ -91,6 +100,9 @@
     </ClCompile>
     <ClCompile Include="Main\main.c">
       <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Console\Console.c">
+      <Filter>Source Files\Console</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

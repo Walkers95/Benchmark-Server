@@ -30,7 +30,6 @@ void InitMySql(struct database_params *db_param)
 			exit(1);
 		}
 	}
-
 }
 
 void FinishWithError()

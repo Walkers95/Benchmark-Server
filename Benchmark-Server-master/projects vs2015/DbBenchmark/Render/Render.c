@@ -136,6 +136,13 @@ void Render()
 			}
 
 
+
+			if (GetAsyncKeyState(VK_NUMPAD0) & 1)
+			{
+				ConsoleOutput("test");
+				ConsoleOutput("hello suicide");
+			}
+
 		}
 		nk_end(ctx);
 
@@ -312,16 +319,18 @@ void DrawConsoleTab()
 {
 	nk_label(ctx, "Console In dev !", NK_TEXT_CENTERED);
 
-	static char box_buffer_read[512];
-	static int box_len_read;
+	char *box_buffer_read;
+	int box_len_read;
+
+	// Get data from console
+	struct console_data *consData = GetConsoleData();
+
+	box_buffer_read = consData->text;
+	box_len_read = consData->length;
 
 	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.6, 1);
 	nk_edit_string(ctx, NK_EDIT_BOX, box_buffer_read, &box_len_read, 512, nk_filter_everything);
 }
-
-
-
-
 
 void SetStyle()
 {
