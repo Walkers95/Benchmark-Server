@@ -29,7 +29,6 @@
 #include "Library\nuklear.h"
 #include "Library\nuklear_sdl_gl2.h"
 
-
 int database_id[] = {
 	0,
 	1,
@@ -41,6 +40,17 @@ const char* database_name[] = {
 	"Mysql",
 	"MongoDB",
 };
+
+
+struct database_params
+{
+	char* hostname;
+	int port;
+	char* dbName;
+	char* user;
+	char* password;
+};
+
 
 void SetStyle(struct nk_context *ctx)
 {

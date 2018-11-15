@@ -228,6 +228,15 @@ void DrawConfigurationTab(struct nk_context *ctx)
 		fprintf(stdout, "User: %s \n", input[3]);
 		fprintf(stdout, "Password: %s \n", input[4]);
 
+		// Initialisation de la structure avec les parametres
+		struct database_params db_param = {
+			.hostname = input[0],
+			.port = atoi(input[1]),
+			.dbName = input[2],
+			.user = input[3],
+			.password = input[4]
+		};
+
 		// Initialise
 		if (database_name[selected_database] == "Oracle")
 		{

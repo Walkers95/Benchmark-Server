@@ -20,7 +20,7 @@ void InitMySql(char * hostname, int port, char * dbName, char * user, char * pas
 			mysql_close(connection_mysql);
 			exit(1);
 		}
-	}
+	} 
 	else
 	{
 		if (mysql_real_connect(connection_mysql, hostname, user, password, dbName, port, NULL, 0) == NULL)
@@ -75,7 +75,6 @@ void DoBenchmarkMySql()
 	printf("> Creating test table \n");
 	CallQuery("CREATE TABLE testtable(id INTEGER AUTO_INCREMENT PRIMARY KEY,int_test INTEGER,text_test TEXT)");
 	printf("> Success ! \n");
-
 
 	
 
