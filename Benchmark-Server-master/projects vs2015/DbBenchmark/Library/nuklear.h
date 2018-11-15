@@ -22524,6 +22524,11 @@ nk_textedit_free(struct nk_text_edit *state)
  *
  * ===============================================================*/
 NK_API int
+nk_filter_everything(const struct nk_text_edit *box, nk_rune unicode)
+{
+	return nk_false;
+}
+NK_API int
 nk_filter_default(const struct nk_text_edit *box, nk_rune unicode)
 {
     NK_UNUSED(unicode);

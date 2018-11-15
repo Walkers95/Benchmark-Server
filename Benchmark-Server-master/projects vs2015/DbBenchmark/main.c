@@ -75,11 +75,11 @@ int main(int argc, char* argv[])
 			{
 				selected_tab = 0;
 			}
-			if (nk_button_label(ctx, "Results Chart"))
+			if (nk_button_label(ctx, "Console"))
 			{
 				selected_tab = 1;
 			}
-			if (nk_button_label(ctx, "Console"))
+			if (nk_button_label(ctx, "Results Chart"))
 			{
 				selected_tab = 2;
 			}
@@ -97,13 +97,13 @@ int main(int argc, char* argv[])
 			// Chart Draw
 			if (selected_tab == 1)
 			{
-				DrawChartTab(ctx);
+				DrawConsoleTab(ctx);
 			}
 
 			// Other Draw
 			if (selected_tab == 2)
 			{
-
+				DrawChartTab(ctx);
 			}
 		
 
@@ -249,10 +249,36 @@ void DrawConfigurationTab(struct nk_context *ctx)
 void DrawChartTab(struct nk_context * ctx)
 {
 	nk_label(ctx,"No benchmark has been launched yet !",NK_TEXT_CENTERED);
+
+	float id = 0;
+	int i;
+	struct nk_rect bounds;
+	float step = (2 * 3.141592654f) / 32;
+
+	/* mixed colored chart */
+	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.6, 1);
+	bounds = nk_widget_bounds(ctx);
+	if (nk_chart_begin_colored(ctx, NK_CHART_LINES, nk_rgb(255, 0, 0), nk_rgb(150, 0, 0), 32, 0.0f, 1.0f)) {
+		nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 0, 255), nk_rgb(0, 0, 150), 32, -1.0f, 1.0f);
+		nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 255, 0), nk_rgb(0, 150, 0), 32, -1.0f, 1.0f);
+		for (id = 0, i = 0; i < 32; ++i) {
+			nk_chart_push_slot(ctx, (float)fabs(sin(id)), 0);
+			nk_chart_push_slot(ctx, (float)cos(id), 1);
+			nk_chart_push_slot(ctx, (float)sin(id), 2);
+			id += step;
+		}
+	}
+	nk_chart_end(ctx);
 }
 
 
 void DrawConsoleTab(struct nk_context *ctx)
 {
 	nk_label(ctx, "Console In dev !", NK_TEXT_CENTERED);
+
+	static char box_buffer_read[512];
+	static int box_len_read;
+
+	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.6, 1);
+	nk_edit_string(ctx, NK_EDIT_BOX, box_buffer_read, &box_len_read, 512, nk_filter_everything);
 }

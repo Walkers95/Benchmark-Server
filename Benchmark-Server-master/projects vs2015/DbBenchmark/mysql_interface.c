@@ -91,10 +91,10 @@ void DoBenchmarkMySql()
 		// GET TIME AFTER
 		QueryPerformanceCounter(&t2);
 		elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
-		printf("TimeTaken : %lf ms \n", elapsedTime);
+		printf("(Write) : %lf ms \n", elapsedTime);
 
 		// Save time 
-		benchmark_result[0][i] = elapsedTime;
+		//benchmark_result[0][i] = elapsedTime;
 	}
 	printf("> Success ! \n");
 
@@ -113,7 +113,7 @@ void DoBenchmarkMySql()
 		QueryPerformanceCounter(&t2);
 
 		elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
-		printf("TimeTaken : %lf ms \n", elapsedTime);
+		printf("(Read) : %lf ms \n", elapsedTime);
 
 		// Clearing results
 		MYSQL_RES *results;
@@ -121,7 +121,7 @@ void DoBenchmarkMySql()
 		mysql_free_result(results);
 
 		// Save time 
-		benchmark_result[1][i] = elapsedTime;
+		//benchmark_result[1][i] = elapsedTime;
 	}
 	printf("> Success ! \n");
 

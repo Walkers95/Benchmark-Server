@@ -15,7 +15,6 @@ LARGE_INTEGER t1, t2;
 double elapsedTime;
 
 
-
 void InitMySql(char* hostname, int port, char* dbName, char* user, char* password);
 
 void FinishWithError();
