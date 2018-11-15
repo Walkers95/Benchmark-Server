@@ -7,7 +7,6 @@ struct database_params
 {
 	char* hostname;
 	int port;
-	char* dbName;
 	char* user;
 	char* password;
 };

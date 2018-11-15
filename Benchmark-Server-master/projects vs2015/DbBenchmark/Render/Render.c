@@ -165,12 +165,14 @@ cleanup:
 void DrawConfigurationTab()
 {
 	// Pour les champs de selections de text : 
-	static char input[9][64];
-	static int text_len[9];
+	static char input[4][64];
+	static int text_len[4];
 	static char box_buffer_read[512];
 	static int box_len_read;
 	static char box_buffer_write[512];
 	static int box_len_write;
+	static int checkbox_threads = 0;
+	static int checkbox_ping = 0;
 	static int checkbox_custom_script = 0;
 	static int selected_database = 0;
 
@@ -179,22 +181,26 @@ void DrawConfigurationTab()
 	nk_spacing(ctx, 1);
 	nk_checkbox_label(ctx, "Custom script", &checkbox_custom_script);
 	nk_spacing(ctx, 1);
-	nk_checkbox_label(ctx, "Multi-Threads", &checkbox_custom_script);
+	nk_checkbox_label(ctx, "Multi-Threads", &checkbox_threads);
 	nk_spacing(ctx, 1);
-	nk_checkbox_label(ctx, "Ping Compensation", &checkbox_custom_script);
+	nk_checkbox_label(ctx, "Ping Compensation", &checkbox_ping);
 	nk_spacing(ctx, 1);
 
 	if (checkbox_custom_script)
 	{
-		nk_layout_row_static(ctx, 25, 330, 2);
-		nk_label(ctx, "Read SQL:", NK_TEXT_CENTERED);
-		nk_label(ctx, "Write SQL:", NK_TEXT_CENTERED);
-		nk_layout_row_static(ctx, 180, 175, 4);
-		nk_spacing(ctx, 1);
-		nk_edit_string(ctx, NK_EDIT_BOX, box_buffer_read, &box_len_read, 512, nk_filter_default);
-		nk_spacing(ctx, 1);
-		nk_edit_string(ctx, NK_EDIT_BOX, box_buffer_write, &box_len_write, 512, nk_filter_default);
+		nk_layout_row_static(ctx, 25, WINDOW_WIDTH/3, 2);
+		nk_label(ctx, "Read SQL file : ", NK_TEXT_LEFT);
+		nk_label(ctx, "Write SQL file : ", NK_TEXT_LEFT);
+
+		nk_layout_row_static(ctx, 25, WINDOW_WIDTH / 3, 2);
+		nk_edit_string(ctx, NK_EDIT_SIMPLE, box_buffer_read, &box_len_read, 512, nk_filter_default);
+		nk_edit_string(ctx, NK_EDIT_SIMPLE, box_buffer_write, &box_len_write, 512, nk_filter_default);
 	}
+
+
+	nk_layout_row_dynamic(ctx, 4, 1);
+	nk_spacing(ctx, 2);
+
 
 	nk_layout_row_dynamic(ctx, 30, 1);
 	nk_label(ctx, "Database Type :", NK_TEXT_ALIGN_LEFT);
@@ -213,28 +219,25 @@ void DrawConfigurationTab()
 	nk_layout_row_dynamic(ctx, 8, 1);
 	nk_spacing(ctx, 2);
 
-	nk_layout_row_dynamic(ctx, 30, 10);
-	nk_label(ctx, "Hostname:", NK_TEXT_RIGHT);
+	nk_layout_row_dynamic(ctx, 30, 8);
+	nk_label(ctx, "Hostname :", NK_TEXT_CENTERED);
 	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[0], &text_len[0], 64, nk_filter_default);
 
-	nk_label(ctx, "Port:", NK_TEXT_RIGHT);
+	nk_label(ctx, "Port :", NK_TEXT_CENTERED);
 	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[1], &text_len[1], 64, nk_filter_decimal);
 
-	nk_label(ctx, "DB Name:", NK_TEXT_RIGHT);
+	nk_label(ctx, "User :", NK_TEXT_CENTERED);
 	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[2], &text_len[2], 64, nk_filter_default);
 
-	nk_label(ctx, "User:", NK_TEXT_RIGHT);
-	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[3], &text_len[3], 64, nk_filter_default);
-
-	nk_label(ctx, "Password:", NK_TEXT_RIGHT);
+	nk_label(ctx, "Password :", NK_TEXT_CENTERED);
 	{
 		int i = 0;
-		int old_len = text_len[4];
+		int old_len = text_len[3];
 		char buffer[64];
-		for (i = 0; i < text_len[4]; ++i) buffer[i] = '*';
-		nk_edit_string(ctx, NK_EDIT_FIELD, buffer, &text_len[4], 64, nk_filter_default);
-		if (old_len < text_len[4])
-			memcpy(&input[4][old_len], &buffer[old_len], (nk_size)(text_len[4] - old_len));
+		for (i = 0; i < text_len[3]; ++i) buffer[i] = '*';
+		nk_edit_string(ctx, NK_EDIT_FIELD, buffer, &text_len[3], 64, nk_filter_default);
+		if (old_len < text_len[3])
+			memcpy(&input[3][old_len], &buffer[old_len], (nk_size)(text_len[3] - old_len));
 	}
 
 	nk_layout_row_dynamic(ctx, 15, 1);
@@ -245,23 +248,21 @@ void DrawConfigurationTab()
 	if (nk_button_label(ctx, "Benchmark !"))
 	{
 		strcpy(input[0], "localhost");
-		strcpy(input[3], "root");
+		strcpy(input[2], "root");
 
 		fprintf(stdout, "> benchmark pressed\n");
 		fprintf(stdout, "Benchmark type : %s \n", database_name[selected_database]);
 		fprintf(stdout, "Hostname : %s \n", input[0]);
 		fprintf(stdout, "Port : %s \n", input[1]);
-		fprintf(stdout, "DBName: %s \n", input[2]);
-		fprintf(stdout, "User: %s \n", input[3]);
-		fprintf(stdout, "Password: %s \n", input[4]);
+		fprintf(stdout, "User: %s \n", input[2]);
+		fprintf(stdout, "Password: %s \n", input[3]);
 
 		// Initialisation de la structure avec les parametres
 		struct database_params db_param = {
 			.hostname = input[0],
 			.port = atoi(input[1]),
-			.dbName = input[2],
-			.user = input[3],
-			.password = input[4]
+			.user = input[2],
+			.password = input[3]
 		};
 
 		// Initialise
@@ -276,7 +277,6 @@ void DrawConfigurationTab()
 			printf("> Init database for : MySql \n");
 			InitMySql(&db_param);
 			DoBenchmarkMySql();
-			GetResult();
 		}
 	}
 	nk_spacing(ctx, 1);

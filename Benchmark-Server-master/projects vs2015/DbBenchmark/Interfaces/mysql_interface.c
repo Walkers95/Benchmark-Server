@@ -23,16 +23,13 @@ void InitMySql(struct database_params *db_param)
 	} 
 	else
 	{
-		if (mysql_real_connect(connection_mysql, db_param->hostname, db_param->user, db_param->password, db_param->dbName, db_param->port, NULL, 0) == NULL)
+		if (mysql_real_connect(connection_mysql, db_param->hostname, db_param->user, db_param->password, NULL, db_param->port, NULL, 0) == NULL)
 		{
 			fprintf(stderr, "%s\n", mysql_error(connection_mysql));
 			mysql_close(connection_mysql);
 			exit(1);
 		}
 	}
-	
-
-	printf("%s \n",mysql_info(connection_mysql));
 
 }
 
