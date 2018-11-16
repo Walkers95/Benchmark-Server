@@ -1,10 +1,15 @@
-﻿  mysql_interface.c
+﻿  Render.c
 c:\users\paul\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan': macro redefinition
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\math.h(264): note: see previous definition of 'isnan'
+c:\users\paul\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\sdl2-2.0.8\include\SDL_config.h(178): warning C4005: 'HAVE_STDDEF_H': macro redefinition
+  c:\users\paul\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(313): note: see previous definition of 'HAVE_STDDEF_H'
+Render\Render.c(95): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+Render\Render.c(175): warning C4098: 'Render': 'void' function returning a value
+Render\Render.c(308): warning C4305: 'function': truncation from 'double' to 'float'
   Generating code
-  77 of 396 functions (19.4%) were compiled, the rest were copied from previous compilation.
+  78 of 396 functions (19.7%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    45 functions had inline decision re-evaluated but remain unchanged
+    44 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   DbBenchmark.vcxproj -> C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.exe
   DbBenchmark.vcxproj -> C:\Users\Paul\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.pdb (Full PDB)

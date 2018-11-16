@@ -136,10 +136,17 @@ void Render()
 				DrawChartTab(ctx);
 			}
 
-			if (GetAsyncKeyState(VK_NUMPAD0) & 1)
+			if (GetAsyncKeyState(VK_NUMPAD1) & 1)
 			{
-				ConsoleOutput("1", C_SUCCESS);
-				ConsoleOutput("2", C_SUCCESS);
+				ConsoleOutput("bien joué", C_SUCCESS);
+			}
+			if (GetAsyncKeyState(VK_NUMPAD2) & 1)
+			{
+				ConsoleOutput("la valeur est de 18", C_DEBUG);
+			}
+			if (GetAsyncKeyState(VK_NUMPAD3) & 1)
+			{
+				ConsoleOutput("grosse erreur sa mere", C_ERROR);
 			}
 
 		}
@@ -341,7 +348,8 @@ void DrawConsoleTab()
 	box_buffer_read = consData.text;
 	box_len_read = consData.length;
 
-	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.6, 1);
+	// Add height according to text size 
+	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 2, 1);
 	nk_text_multiline_colored(ctx, box_buffer_read, box_len_read,color);
 }
 
