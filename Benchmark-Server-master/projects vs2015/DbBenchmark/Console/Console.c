@@ -4,47 +4,69 @@
 int InitConsole()
 {
 	printf("> Console initialisation \n");
-	consData = malloc(sizeof *consData);
-	if (!consData)
+
+	consData.text = malloc(11);
+
+	if (!consData.text)
 		return 0;
 
-	consData->text = malloc(12);
+	strcpy(consData.text, "Hello world");
+	consData.length = 11;
 
-	if (!consData->text)
-		return 0;
 
-	strcpy(consData->text, "Hello world");
-	consData->length = 12;
+	consData.type = 1;
 
 	return 1;
 }
 
-void ConsoleOutput(const char * text)
+void ConsoleOutput(const char * text, enum output_type type)
 {
-	printf("> Adding text to console : %s \n", text);
-	int textSize = strlen(text);
-	printf("textSize : %d \n", textSize);
-	size_t newSize = consData->length + textSize + 500; // Ajout 1 pour \n
-	printf("newSize : %d \n", newSize);
+	char *line_intro = NULL;
 
-	realloc(consData->text, newSize);
-	strcat(consData->text, text);
-	printf("consData->text : %s \n", consData->text);
-	strcat(consData->text, "\n");
-	printf("consData->text : %s \n", consData->text);
+	switch (type)
+	{
+	case C_ERROR:
+		line_intro = malloc(11);
+		strcpy(line_intro,"[ERROR] > ");
+		break;
+	case C_DEBUG:
+		line_intro = malloc(11);
+		strcpy(line_intro, "[DEBUG] > ");
+		break;
+	case C_SUCCESS:
+		line_intro = malloc(13);
+		strcpy(line_intro, "[SUCCESS] > ");
+		break;
+	}
+	
+	size_t textSize = strlen(text);
+	size_t line_intro_size = strlen(line_intro);
 
-	consData->length = newSize;
-	printf("consData->length : %d \n", consData->length);
+	size_t newSize = consData.length + textSize + line_intro_size + 1; // Ajout 1 pour \n
+
+	const char* oldText = malloc(consData.length); 
+	strcpy(oldText,consData.text);
+
+	free(consData.text);
+	consData.text = malloc(newSize);
+	strcpy(consData.text, line_intro);
+	strcat(consData.text, text);
+	strcat(consData.text, "\n");
+	strcat(consData.text, oldText);
+
+	consData.length = newSize;;
+
+	consData.type = type;
 }
 
-struct console_data *GetConsoleData()
+struct console_data GetConsoleData()
 {
 	return consData;
 }
 
 void ClearConsole()
 {
-	realloc(consData->text, 1);
-	consData->length = 1;
-	strcpy(consData->text, "");
+	realloc(consData.text, 2);
+	consData.length = 2;
+	strcpy(consData.text, "");
 }

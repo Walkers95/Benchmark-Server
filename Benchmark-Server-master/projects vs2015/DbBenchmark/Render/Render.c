@@ -1,3 +1,4 @@
+
 #include "Render.h"
 
 #define WINDOW_WIDTH 1024
@@ -135,12 +136,10 @@ void Render()
 				DrawChartTab(ctx);
 			}
 
-
-
 			if (GetAsyncKeyState(VK_NUMPAD0) & 1)
 			{
-				ConsoleOutput("test");
-				ConsoleOutput("hello suicide");
+				ConsoleOutput("1", C_SUCCESS);
+				ConsoleOutput("2", C_SUCCESS);
 			}
 
 		}
@@ -323,13 +322,27 @@ void DrawConsoleTab()
 	int box_len_read;
 
 	// Get data from console
-	struct console_data *consData = GetConsoleData();
+	struct console_data consData = GetConsoleData();
 
-	box_buffer_read = consData->text;
-	box_len_read = consData->length;
+	static struct nk_color color;
+	switch (consData.type)
+	{
+	case C_ERROR:
+		color = (struct nk_color){ 255,0,0,255 };
+		break;
+	case C_DEBUG:
+		color = (struct nk_color) { 255, 255, 0, 255 };
+		break;
+	case C_SUCCESS:
+		color = (struct nk_color) { 0, 255, 0, 255 };
+		break;
+	}
+
+	box_buffer_read = consData.text;
+	box_len_read = consData.length;
 
 	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.6, 1);
-	nk_edit_string(ctx, NK_EDIT_BOX, box_buffer_read, &box_len_read, 512, nk_filter_everything);
+	nk_text_multiline_colored(ctx, box_buffer_read, box_len_read,color);
 }
 
 void SetStyle()
