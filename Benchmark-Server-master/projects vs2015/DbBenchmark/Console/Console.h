@@ -19,9 +19,9 @@ struct console_data consData;
 
 int InitConsole();
 
-// Add args to string
-// https://stackoverflow.com/questions/7031116/how-to-create-function-like-printf-variable-argument
-void ConsoleOutput(const char* text, enum output_type type);
+void ConsoleOutputValue(const char* text, double value);
+void ConsoleOutput(const char* text,enum output_type type);
+
 struct console_data GetConsoleData();
 
 void ClearConsole();

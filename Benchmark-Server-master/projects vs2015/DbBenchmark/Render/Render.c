@@ -7,6 +7,7 @@
 // SDL Include
 #include "../Library\SDL2-2.0.8\include\SDL.h"
 #include "../Library\SDL2-2.0.8\include\SDL_opengl.h"
+#include "../Library/SDL2-2.0.8/include/SDL_thread.h"
 
 // Include for Nuklear
 #define NK_INCLUDE_FIXED_TYPES
@@ -77,6 +78,9 @@ void InitialiseRender()
 	bg.r = 0.10f, bg.g = 0.18f, bg.b = 0.24f, bg.a = 1.0f;
 }
 
+
+static int selected_tab = 0;
+
 void Render()
 {
 
@@ -94,8 +98,6 @@ void Render()
 		/* GUI */
 		if (nk_begin(ctx, "Demo", nk_rect(0, 0, win_width, win_height), NK_WINDOW_TITLE))
 		{
-
-			static int selected_tab = 0;
 
 			nk_layout_row_dynamic(ctx, 10, 1);
 			nk_spacing(ctx, 1);
@@ -124,29 +126,16 @@ void Render()
 				DrawConfigurationTab(ctx);
 			}
 
-			// Chart Draw
+			// Console Draw
 			if (selected_tab == 1)
 			{
 				DrawConsoleTab(ctx);
 			}
 
-			// Other Draw
+			// Chart Draw
 			if (selected_tab == 2)
 			{
 				DrawChartTab(ctx);
-			}
-
-			if (GetAsyncKeyState(VK_NUMPAD1) & 1)
-			{
-				ConsoleOutput("bien joué", C_SUCCESS);
-			}
-			if (GetAsyncKeyState(VK_NUMPAD2) & 1)
-			{
-				ConsoleOutput("la valeur est de 18", C_DEBUG);
-			}
-			if (GetAsyncKeyState(VK_NUMPAD3) & 1)
-			{
-				ConsoleOutput("grosse erreur sa mere", C_ERROR);
 			}
 
 		}
@@ -223,7 +212,6 @@ void DrawConfigurationTab()
 		for (i = 0; i < sizeof(database_id) / sizeof(database_id[0]); ++i)
 			if (nk_combo_item_label(ctx, database_name[i], NK_TEXT_LEFT)) {
 				selected_database = i;
-				printf("Settings style_id : %d \n", database_id[i]);
 			}
 		nk_combo_end(ctx);
 	}
@@ -260,6 +248,9 @@ void DrawConfigurationTab()
 	nk_spacing(ctx, 1);
 	if (nk_button_label(ctx, "Benchmark !"))
 	{
+
+		selected_tab = 1;
+
 		strcpy(input[0], "localhost");
 		strcpy(input[2], "root");
 
@@ -278,19 +269,9 @@ void DrawConfigurationTab()
 			.password = input[3]
 		};
 
-		// Initialise
-		if (database_name[selected_database] == "Oracle")
-		{
-			printf("> Init database for : Oracle \n");
-			InitOracle(&db_param);
-			DoBenchmarkOracle();
-		}
-		else if (database_name[selected_database] == "Mysql")
-		{
-			printf("> Init database for : MySql \n");
-			InitMySql(&db_param);
-			DoBenchmarkMySql();
-		}
+
+		StartBenchmarkThread(&db_param, database_name[selected_database]);
+
 	}
 	nk_spacing(ctx, 1);
 }

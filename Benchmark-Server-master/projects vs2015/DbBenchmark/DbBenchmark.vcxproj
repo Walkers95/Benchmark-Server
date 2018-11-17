@@ -179,6 +179,7 @@
     <ClInclude Include="Main\Includes.h" />
     <ClInclude Include="Main\main.h" />
     <ClInclude Include="Render\Render.h" />
+    <ClInclude Include="ThreadManager\ThreadManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Console\Console.c" />
@@ -186,6 +187,7 @@
     <ClCompile Include="Interfaces\oracle_interface.c" />
     <ClCompile Include="Main\main.c" />
     <ClCompile Include="Render\Render.c" />
+    <ClCompile Include="ThreadManager\ThreadManager.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

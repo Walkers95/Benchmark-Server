@@ -2,39 +2,41 @@
 
 double **benchmark_result;
 
-void InitMySql(struct database_params *db_param)
+int InitMySql(struct database_params *db_param)
 {
 	connection_mysql = mysql_init(NULL);
 
 	if (connection_mysql == NULL)
 	{
-		fprintf(stderr, "%s\n", mysql_error(connection_mysql));
-		exit(1);
+		ConsoleOutput(mysql_error(connection_mysql), C_ERROR);
+		return 0;
 	}
 
 	if (db_param->hostname == "localhost")
 	{
 		if (mysql_real_connect(connection_mysql, db_param->hostname, db_param->user, db_param->password, NULL, 0, NULL, 0) == NULL)
 		{
-			fprintf(stderr, "%s\n", mysql_error(connection_mysql));
+			ConsoleOutput(mysql_error(connection_mysql), C_ERROR);
 			mysql_close(connection_mysql);
-			exit(1);
+			return 0;
 		}
 	} 
 	else
 	{
 		if (mysql_real_connect(connection_mysql, db_param->hostname, db_param->user, db_param->password, NULL, db_param->port, NULL, 0) == NULL)
 		{
-			fprintf(stderr, "%s\n", mysql_error(connection_mysql));
+			ConsoleOutput(mysql_error(connection_mysql), C_ERROR);
 			mysql_close(connection_mysql);
-			exit(1);
+			return 0;
 		}
 	}
+
+	return 1;
 }
 
 void FinishWithError()
 {
-	fprintf(stderr, "%s\n", mysql_error(connection_mysql));
+	ConsoleOutput(mysql_error(connection_mysql), C_ERROR);
 	mysql_close(connection_mysql);
 	fgets(NULL, 0, stdin);
 }
@@ -55,30 +57,29 @@ double ** GetResult()
 void DoBenchmarkMySql()
 {
 	// On DROP la database testdb au cas ou elle existe déja
-	printf("> Making sure testdb does not exist ! \n");
+	ConsoleOutput("Making sure testdb does not exist !", C_DEBUG);
 	CallQuery("DROP DATABASE testdb");
-	printf("> Success ! \n");
+	ConsoleOutput("Success !", C_SUCCESS);
 	
 	// on crée notre database de test
-	printf("> Creating test database \n");
+	ConsoleOutput("Creating test database", C_DEBUG);
 	CallQuery("CREATE DATABASE testdb");
-	printf("> Success ! \n");
+	ConsoleOutput("Success !", C_SUCCESS);
 
 	// On selectionne la db crée
-	printf("> Selection de la base \n");
+	ConsoleOutput("Selection de la base", C_DEBUG);
 	CallQuery("USE testdb");
-	printf("> Success ! \n");
+	ConsoleOutput("Success !", C_SUCCESS);
 
 	// Create table 
-	printf("> Creating test table \n");
+	ConsoleOutput("Creating test table", C_DEBUG);
 	CallQuery("CREATE TABLE testtable(id INTEGER AUTO_INCREMENT PRIMARY KEY,int_test INTEGER,text_test TEXT)");
-	printf("> Success ! \n");
+	ConsoleOutput("Success !", C_SUCCESS);
 
 	
 
 	// WRITE BENCHMARK
-	printf("> Starting Write Benchmark \n");
-	
+	ConsoleOutput("Starting Write Benchmark", C_DEBUG);
 	for (int i = 0; i < REQUEST_COUNT; i++)
 	{
 		QueryPerformanceFrequency(&frequency);
@@ -88,18 +89,18 @@ void DoBenchmarkMySql()
 		// GET TIME AFTER
 		QueryPerformanceCounter(&t2);
 		elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
-		printf("(Write) : %lf ms \n", elapsedTime);
+		ConsoleOutputValue("Write", elapsedTime);
 
 		// Save time 
 		//benchmark_result[0][i] = elapsedTime;
 	}
-	printf("> Success ! \n");
+	ConsoleOutput("Success !", C_SUCCESS);
 
 
 
 
 	// READ BENCHMARCK
-	printf("> Starting Read Benchmark \n");
+	ConsoleOutput("Starting Read Benchmark", C_DEBUG);
 	for (int i = 0; i < REQUEST_COUNT; i++)
 	{
 		QueryPerformanceFrequency(&frequency);
@@ -110,7 +111,7 @@ void DoBenchmarkMySql()
 		QueryPerformanceCounter(&t2);
 
 		elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
-		printf("(Read) : %lf ms \n", elapsedTime);
+		ConsoleOutputValue("Read", elapsedTime);
 
 		// Clearing results
 		MYSQL_RES *results;
@@ -120,6 +121,6 @@ void DoBenchmarkMySql()
 		// Save time 
 		//benchmark_result[1][i] = elapsedTime;
 	}
-	printf("> Success ! \n");
+	ConsoleOutput("Success !", C_SUCCESS);
 
 }

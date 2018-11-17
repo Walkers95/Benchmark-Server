@@ -16,7 +16,7 @@ LARGE_INTEGER t1, t2;
 double elapsedTime;
 
 
-void InitMySql(struct database_params *db_param);
+int InitMySql(struct database_params *db_param);
 
 void FinishWithError();
 int CallQuery(const char* query);

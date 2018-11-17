@@ -19,6 +19,14 @@ int InitConsole()
 	return 1;
 }
 
+
+void ConsoleOutputValue(const char * text, double value)
+{
+	char* buffer = text;
+	sprintf(buffer, " : %lf ms", value);
+	ConsoleOutput(buffer, C_DEBUG);
+}
+
 void ConsoleOutput(const char * text, enum output_type type)
 {
 	char *line_intro = NULL;
