@@ -6,7 +6,7 @@ SDL_Thread *oracle_thread = NULL;
 int MySqlThread(void * data)
 {
 	ConsoleOutput("Init database for : MySql", C_DEBUG);
-	if (InitMySql(data))
+	if (InitMySql((struct database_params*)data))
 	{
 		DoBenchmarkMySql();
 	}
@@ -27,11 +27,11 @@ void StartBenchmarkThread(struct database_params *db_param, char * dbType)
 	// Initialise
 	if (dbType == "Oracle")
 	{
-		oracle_thread = SDL_CreateThread(OracleThread, "OracleThread", (void*)db_param);
+		oracle_thread = SDL_CreateThread(OracleThread, "OracleThread", db_param);
 	}
 	else if (dbType == "Mysql")
 	{
-		mysql_thread = SDL_CreateThread(MySqlThread, "MySqlThread", (void*)db_param);
+		mysql_thread = SDL_CreateThread(MySqlThread, "MySqlThread", db_param);
 	}
 }
 

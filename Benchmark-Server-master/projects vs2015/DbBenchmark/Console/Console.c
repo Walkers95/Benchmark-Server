@@ -19,7 +19,6 @@ int InitConsole()
 	return 1;
 }
 
-
 void ConsoleOutputValue(const char * text, double value)
 {
 	char* buffer = text;

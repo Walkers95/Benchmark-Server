@@ -164,6 +164,9 @@ cleanup:
 	return 0;
 }
 
+struct database_params db_param_buffer;
+struct database_params *db_Param;
+
 void DrawConfigurationTab()
 {
 	// Pour les champs de selections de text : 
@@ -262,15 +265,15 @@ void DrawConfigurationTab()
 		fprintf(stdout, "Password: %s \n", input[3]);
 
 		// Initialisation de la structure avec les parametres
-		struct database_params db_param = {
-			.hostname = input[0],
-			.port = atoi(input[1]),
-			.user = input[2],
-			.password = input[3]
-		};
+		db_param_buffer.hostname = input[0];
+		db_param_buffer.port = atoi(input[1]);
+		db_param_buffer.user = input[2];
+		db_param_buffer.password = input[3];
+		
+		db_Param = malloc(sizeof(db_Param));
+		db_Param = &db_param_buffer;
 
-
-		StartBenchmarkThread(&db_param, database_name[selected_database]);
+		StartBenchmarkThread(db_Param, database_name[selected_database]);
 
 	}
 	nk_spacing(ctx, 1);

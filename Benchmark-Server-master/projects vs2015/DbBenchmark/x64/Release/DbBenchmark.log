@@ -1,11 +1,16 @@
-﻿  Console.c
-Console\Console.c(25): warning C4090: 'initialisation' : qualificateurs 'const' différents
-Console\Console.c(56): warning C4090: 'fonction' : qualificateurs 'const' différents
-Console\Console.c(65): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
+﻿  Render.c
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan' : redéfinition de macro
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\math.h(264): note: voir la définition précédente de 'isnan'
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\sdl2-2.0.8\include\SDL_config.h(178): warning C4005: 'HAVE_STDDEF_H' : redéfinition de macro
+  c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(313): note: voir la définition précédente de 'HAVE_STDDEF_H'
+Render\Render.c(99): warning C4244: 'fonction' : conversion de 'int' en 'float', perte possible de données
+Render\Render.c(164): warning C4098: 'Render' : fonction 'void' retournant une valeur
+Render\Render.c(276): warning C4090: 'fonction' : qualificateurs 'const' différents
+Render\Render.c(292): warning C4305: 'fonction' : troncation de 'double' à 'float'
   Génération de code en cours
-  77 of 403 functions (19.1%) were compiled, the rest were copied from previous compilation.
+  79 of 403 functions (19.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    47 functions had inline decision re-evaluated but remain unchanged
+    43 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code
   DbBenchmark.vcxproj -> C:\Users\paul\Documents\GitHub\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.exe
   DbBenchmark.vcxproj -> C:\Users\paul\Documents\GitHub\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.pdb (Full PDB)
