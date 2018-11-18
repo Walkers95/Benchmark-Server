@@ -1,20 +1,18 @@
-﻿  Console.c
-Console\Console.c(64): warning C4090: 'fonction' : qualificateurs 'const' différents
-Console\Console.c(74): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
-Console\Console.c(77): warning C4090: 'fonction' : qualificateurs 'const' différents
-  Render.c
+﻿  Render.c
 c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan' : redéfinition de macro
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\math.h(264): note: voir la définition précédente de 'isnan'
 c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\sdl2-2.0.8\include\SDL_config.h(178): warning C4005: 'HAVE_STDDEF_H' : redéfinition de macro
   c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(313): note: voir la définition précédente de 'HAVE_STDDEF_H'
-Render\Render.c(99): warning C4244: 'fonction' : conversion de 'int' en 'float', perte possible de données
-Render\Render.c(164): warning C4098: 'Render' : fonction 'void' retournant une valeur
-Render\Render.c(276): warning C4090: 'fonction' : qualificateurs 'const' différents
-Render\Render.c(292): warning C4305: 'fonction' : troncation de 'double' à 'float'
+Render\Render.c(101): warning C4244: 'fonction' : conversion de 'int' en 'float', perte possible de données
+Render\Render.c(166): warning C4098: 'Render' : fonction 'void' retournant une valeur
+Render\Render.c(278): warning C4090: 'fonction' : qualificateurs 'const' différents
+Render\Render.c(305): warning C4305: 'fonction' : troncation de 'double' à 'float'
+Render\Render.c(312): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
+Render\Render.c(313): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
   Génération de code en cours
-  55 of 403 functions (13.6%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    34 functions had inline decision re-evaluated but remain unchanged
+  138 of 413 functions (33.4%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    41 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code
   DbBenchmark.vcxproj -> C:\Users\paul\Documents\GitHub\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.exe
   DbBenchmark.vcxproj -> C:\Users\paul\Documents\GitHub\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.pdb (Full PDB)

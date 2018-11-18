@@ -31,6 +31,13 @@ int InitMySql(struct database_params *db_param)
 		}
 	}
 
+	// Init benchmark result
+	benchmark_result = malloc(sizeof(double*) * 2);
+	for (int i = 0; i < 2; i++)
+	{
+		benchmark_result[i] = malloc(sizeof(double) * REQUEST_COUNT);
+	}
+
 	return 1;
 }
 
@@ -51,7 +58,7 @@ int CallQuery(const char * query)
 	return 1;
 }
 
-double ** GetResult()
+double ** GetResults()
 {
 	return benchmark_result;
 }
@@ -99,7 +106,7 @@ int DoBenchmarkMySql()
 		ConsoleOutputValue("Write", elapsedTime);
 	
 		// Save time 
-		//benchmark_result[0][i] = elapsedTime;
+		benchmark_result[0][i] = elapsedTime;
 	}
 	ConsoleOutput("Success !", C_SUCCESS);
 
@@ -127,7 +134,7 @@ int DoBenchmarkMySql()
 		mysql_free_result(results);
 
 		// Save time 
-		//benchmark_result[1][i] = elapsedTime;
+		benchmark_result[1][i] = elapsedTime;
 	}
 	ConsoleOutput("Success !", C_SUCCESS);
 

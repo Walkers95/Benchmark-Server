@@ -75,6 +75,8 @@ void InitialiseRender()
 	nk_style_load_all_cursors(ctx, atlas->cursors);
 	nk_style_set_font(ctx, &roboto->handle); }
 
+	SetStyle(ctx);
+
 	bg.r = 0.10f, bg.g = 0.18f, bg.b = 0.24f, bg.a = 1.0f;
 }
 
@@ -94,7 +96,7 @@ void Render()
 			nk_sdl_handle_event(&evt);
 		}
 		nk_input_end(ctx);
-		SetStyle(ctx);
+		
 		/* GUI */
 		if (nk_begin(ctx, "Demo", nk_rect(0, 0, win_width, win_height), NK_WINDOW_TITLE))
 		{
@@ -281,27 +283,70 @@ void DrawConfigurationTab()
 
 void DrawChartTab()
 {
-	nk_label(ctx, "No benchmark has been launched yet !", NK_TEXT_CENTERED);
-
+	
 	float id = 0;
 	int i;
 	struct nk_rect bounds;
-	float step = (2 * 3.141592654f) / 32;
+	float step = (2 * 3.141592654f) / REQUEST_COUNT;
 
-	/* mixed colored chart */
-	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.6, 1);
-	bounds = nk_widget_bounds(ctx);
-	if (nk_chart_begin_colored(ctx, NK_CHART_LINES, nk_rgb(255, 0, 0), nk_rgb(150, 0, 0), 32, 0.0f, 1.0f)) {
-		nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 0, 255), nk_rgb(0, 0, 150), 32, -1.0f, 1.0f);
-		nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 255, 0), nk_rgb(0, 150, 0), 32, -1.0f, 1.0f);
-		for (id = 0, i = 0; i < 32; ++i) {
-			nk_chart_push_slot(ctx, (float)fabs(sin(id)), 0);
-			nk_chart_push_slot(ctx, (float)cos(id), 1);
-			nk_chart_push_slot(ctx, (float)sin(id), 2);
-			id += step;
+	double** results = GetResults();
+
+	if (results != NULL)
+	{
+		nk_layout_row_dynamic(ctx, 25, 2);
+		nk_label_colored(ctx, "Read", NK_TEXT_CENTERED, nk_rgb(0, 131, 255));
+		nk_label_colored(ctx, "Write", NK_TEXT_CENTERED, nk_rgb(255, 0, 0));
+
+
+		double write_selection = 0.00f;
+		double read_selection = 0.00f;
+
+		/* mixed colored chart */
+		nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.6, 1);
+		bounds = nk_widget_bounds(ctx);
+		if (nk_chart_begin_colored(ctx, NK_CHART_LINES, nk_rgb(255, 0, 0), nk_rgb(150, 0, 0), 32, 0.0f, 1.0f)) {
+			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 131, 255), nk_rgb(0, 0, 140), 32, -1.0f, 1.0f);
+			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 255, 0), nk_rgb(0, 150, 0), 32, -1.0f, 1.0f);
+			for (id = 0, i = 0; i < REQUEST_COUNT; ++i) {
+
+				nk_flags resWrite = nk_chart_push_slot(ctx, results[0][i], 0);
+				nk_flags resRead = nk_chart_push_slot(ctx, results[1][i], 1);
+
+				if (resWrite && NK_CHART_CLICKED)
+				{
+					write_selection = results[0][i];
+
+				}
+
+				if (resRead && NK_CHART_CLICKED)
+				{
+					read_selection = results[1][i];
+
+				}
+			
+				/*nk_chart_push_slot(ctx, (float)cos(id), 1);
+				nk_chart_push_slot(ctx, (float)sin(id), 2);*/
+				id += step;
+			}
 		}
+		nk_chart_end(ctx);
+
+		if (read_selection != 0.00f)
+		{
+			nk_tooltipf(ctx, "Value: %lf", read_selection);
+		}
+
+		if (write_selection != 0.00f)
+		{
+			nk_tooltipf(ctx, "Value: %lf", write_selection);
+		}
+
 	}
-	nk_chart_end(ctx);
+	else
+	{
+		nk_label(ctx, "No benchmark has been launched yet !", NK_TEXT_CENTERED);
+	}
+	
 }
 
 

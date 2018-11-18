@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
 
 	if (!InitConsole())
 		return 1;
-
+	
 	Render();
 
 	return 0;

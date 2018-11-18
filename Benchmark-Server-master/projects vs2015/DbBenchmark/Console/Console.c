@@ -5,29 +5,25 @@ int InitConsole()
 {
 	printf("> Console initialisation \n");
 
-	consData.text = malloc(11);
+	consData.text = malloc(1);
 
 	if (!consData.text)
 		return 0;
 
-	strcpy(consData.text, "Hello world");
-	consData.length = 11;
-
+	strcpy(consData.text, "");
+	consData.length = 1;
 
 	consData.type = 1;
 
 	return 1;
 }
 
-int count = 0;
-char* buffer = NULL;
-
 void ConsoleOutputValue(const char * text, double value)
 {
 	char *double_buffer = malloc(255);
 	sprintf(double_buffer, " : %lf ms", value);
 
-	buffer = malloc(strlen(text) + strlen(double_buffer));;
+	char* buffer = malloc(strlen(text) + strlen(double_buffer));;
 	strcpy(buffer, text);
 	strcat(buffer, double_buffer);
 	free(double_buffer);
@@ -58,7 +54,7 @@ void ConsoleOutput(const char * text, enum output_type type)
 	size_t textSize = strlen(text);
 	size_t line_intro_size = strlen(line_intro);
 
-	size_t newSize = consData.length + textSize + line_intro_size + 2; // Ajout 1 pour \n
+	size_t newSize = consData.length + textSize + line_intro_size + 1; // Ajout 1 pour \n
 
 	const char* oldText = malloc(consData.length); 
 	strcpy(oldText,consData.text);
