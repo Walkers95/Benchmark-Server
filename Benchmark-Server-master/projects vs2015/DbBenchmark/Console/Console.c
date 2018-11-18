@@ -19,10 +19,19 @@ int InitConsole()
 	return 1;
 }
 
+int count = 0;
+char* buffer = NULL;
+
 void ConsoleOutputValue(const char * text, double value)
 {
-	char* buffer = text;
-	sprintf(buffer, " : %lf ms", value);
+	char *double_buffer = malloc(255);
+	sprintf(double_buffer, " : %lf ms", value);
+
+	buffer = malloc(strlen(text) + strlen(double_buffer));;
+	strcpy(buffer, text);
+	strcat(buffer, double_buffer);
+	free(double_buffer);
+
 	ConsoleOutput(buffer, C_DEBUG);
 }
 
@@ -49,21 +58,24 @@ void ConsoleOutput(const char * text, enum output_type type)
 	size_t textSize = strlen(text);
 	size_t line_intro_size = strlen(line_intro);
 
-	size_t newSize = consData.length + textSize + line_intro_size + 1; // Ajout 1 pour \n
+	size_t newSize = consData.length + textSize + line_intro_size + 2; // Ajout 1 pour \n
 
 	const char* oldText = malloc(consData.length); 
 	strcpy(oldText,consData.text);
 
 	free(consData.text);
+
 	consData.text = malloc(newSize);
 	strcpy(consData.text, line_intro);
 	strcat(consData.text, text);
 	strcat(consData.text, "\n");
 	strcat(consData.text, oldText);
 
-	consData.length = newSize;;
-
+	consData.length = newSize;
 	consData.type = type;
+
+	free(oldText);
+	free(line_intro);
 }
 
 struct console_data GetConsoleData()

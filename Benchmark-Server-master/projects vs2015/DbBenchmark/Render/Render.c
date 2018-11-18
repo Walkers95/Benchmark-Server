@@ -272,7 +272,7 @@ void DrawConfigurationTab()
 		
 		db_Param = malloc(sizeof(db_Param));
 		db_Param = &db_param_buffer;
-
+		
 		StartBenchmarkThread(db_Param, database_name[selected_database]);
 
 	}
@@ -333,7 +333,7 @@ void DrawConsoleTab()
 	box_len_read = consData.length;
 
 	// Add height according to text size 
-	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 2, 1);
+	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 15, 1);
 	nk_text_multiline_colored(ctx, box_buffer_read, box_len_read,color);
 }
 

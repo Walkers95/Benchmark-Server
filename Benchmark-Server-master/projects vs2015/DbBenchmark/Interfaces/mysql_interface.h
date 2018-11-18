@@ -23,4 +23,4 @@ int CallQuery(const char* query);
 
 double** GetResult();
 
-void DoBenchmarkMySql();
+int DoBenchmarkMySql();

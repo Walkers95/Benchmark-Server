@@ -8,7 +8,15 @@ int MySqlThread(void * data)
 	ConsoleOutput("Init database for : MySql", C_DEBUG);
 	if (InitMySql((struct database_params*)data))
 	{
-		DoBenchmarkMySql();
+		if (!DoBenchmarkMySql())
+		{
+			ConsoleOutput("Failed to run benchmark !", C_ERROR);
+		}
+		else
+		{
+			ConsoleOutput("Benchmark successfull !", C_SUCCESS);
+		}
+			
 	}
 	return 0;
 }

@@ -37,7 +37,8 @@ int InitMySql(struct database_params *db_param)
 void FinishWithError()
 {
 	ConsoleOutput(mysql_error(connection_mysql), C_ERROR);
-	mysql_close(connection_mysql);
+	printf("%s \n", mysql_error(connection_mysql));
+	//mysql_close(connection_mysql);
 	fgets(NULL, 0, stdin);
 }
 
@@ -45,7 +46,9 @@ int CallQuery(const char * query)
 {
 	if (mysql_query(connection_mysql, query)) {
 		FinishWithError();
+		return 0;
 	}
+	return 1;
 }
 
 double ** GetResult()
@@ -54,26 +57,30 @@ double ** GetResult()
 }
 
 
-void DoBenchmarkMySql()
+int DoBenchmarkMySql()
 {
 	// On DROP la database testdb au cas ou elle existe déja
 	ConsoleOutput("Making sure testdb does not exist !", C_DEBUG);
-	CallQuery("DROP DATABASE testdb");
+	if (!CallQuery("DROP DATABASE testdb"))
+		return 0;
 	ConsoleOutput("Success !", C_SUCCESS);
 	
 	// on crée notre database de test
 	ConsoleOutput("Creating test database", C_DEBUG);
-	CallQuery("CREATE DATABASE testdb");
+	if (!CallQuery("CREATE DATABASE testdb"))
+		return 0;
 	ConsoleOutput("Success !", C_SUCCESS);
 
 	// On selectionne la db crée
 	ConsoleOutput("Selection de la base", C_DEBUG);
-	CallQuery("USE testdb");
+	if(!CallQuery("USE testdb"))
+		return 0;
 	ConsoleOutput("Success !", C_SUCCESS);
 
 	// Create table 
 	ConsoleOutput("Creating test table", C_DEBUG);
-	CallQuery("CREATE TABLE testtable(id INTEGER AUTO_INCREMENT PRIMARY KEY,int_test INTEGER,text_test TEXT)");
+	if(!CallQuery("CREATE TABLE testtable(id INTEGER AUTO_INCREMENT PRIMARY KEY,int_test INTEGER,text_test TEXT)"))
+		return 0;
 	ConsoleOutput("Success !", C_SUCCESS);
 
 	
@@ -90,7 +97,7 @@ void DoBenchmarkMySql()
 		QueryPerformanceCounter(&t2);
 		elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
 		ConsoleOutputValue("Write", elapsedTime);
-
+	
 		// Save time 
 		//benchmark_result[0][i] = elapsedTime;
 	}
@@ -112,6 +119,7 @@ void DoBenchmarkMySql()
 
 		elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
 		ConsoleOutputValue("Read", elapsedTime);
+		
 
 		// Clearing results
 		MYSQL_RES *results;
@@ -123,4 +131,7 @@ void DoBenchmarkMySql()
 	}
 	ConsoleOutput("Success !", C_SUCCESS);
 
+
+
+	return 1;
 }
