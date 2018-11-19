@@ -58,6 +58,40 @@ int CallQuery(const char * query)
 	return 1;
 }
 
+double GetMinValueOfResults(double** results) {
+	double min = 0.0f;
+
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < REQUEST_COUNT; j++)
+		{
+			if (!i && !j || results[i][j] < min)
+			{
+				min = results[i][j];
+			}
+		}
+	}
+
+	return min;
+}
+
+double GetMaxValueOfResults(double** results) {
+	double max = 0.0f;
+
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < REQUEST_COUNT; j++)
+		{
+			if (results[i][j] > max)
+			{
+				max = results[i][j];
+			}
+		}
+	}
+
+	return max;
+}
+
 double ** GetResults()
 {
 	return benchmark_result;
@@ -68,8 +102,7 @@ int DoBenchmarkMySql()
 {
 	// On DROP la database testdb au cas ou elle existe déja
 	ConsoleOutput("Making sure testdb does not exist !", C_DEBUG);
-	if (!CallQuery("DROP DATABASE testdb"))
-		return 0;
+	CallQuery("DROP DATABASE testdb");
 	ConsoleOutput("Success !", C_SUCCESS);
 	
 	// on crée notre database de test

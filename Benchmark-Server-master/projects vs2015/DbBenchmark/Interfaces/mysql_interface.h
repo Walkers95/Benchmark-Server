@@ -21,6 +21,8 @@ int InitMySql(struct database_params *db_param);
 void FinishWithError();
 int CallQuery(const char* query);
 
+double GetMinValueOfResults(double** results);
+double GetMaxValueOfResults(double** results);
 double** GetResults();
 
 int DoBenchmarkMySql();

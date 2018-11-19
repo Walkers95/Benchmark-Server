@@ -301,12 +301,15 @@ void DrawChartTab()
 		double write_selection = 0.00f;
 		double read_selection = 0.00f;
 
+		double chartMaxValue = GetMaxValueOfResults(results);
+		double chartMinValue = GetMinValueOfResults(results);
+
 		/* mixed colored chart */
 		nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.6, 1);
 		bounds = nk_widget_bounds(ctx);
-		if (nk_chart_begin_colored(ctx, NK_CHART_LINES, nk_rgb(255, 0, 0), nk_rgb(150, 0, 0), 32, 0.0f, 1.0f)) {
-			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 131, 255), nk_rgb(0, 0, 140), 32, -1.0f, 1.0f);
-			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 255, 0), nk_rgb(0, 150, 0), 32, -1.0f, 1.0f);
+		if (nk_chart_begin_colored(ctx, NK_CHART_LINES, nk_rgb(255, 0, 0), nk_rgb(150, 0, 0), REQUEST_COUNT, chartMinValue, chartMaxValue)) { // Change  0.0f, 10.0f to 0.00f, GetMaxValue
+			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 131, 255), nk_rgb(0, 0, 140), REQUEST_COUNT, chartMinValue, chartMaxValue);
+			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 255, 0), nk_rgb(0, 150, 0), REQUEST_COUNT, chartMinValue, chartMaxValue);
 			for (id = 0, i = 0; i < REQUEST_COUNT; ++i) {
 
 				nk_flags resWrite = nk_chart_push_slot(ctx, results[0][i], 0);
@@ -324,8 +327,6 @@ void DrawChartTab()
 
 				}
 			
-				/*nk_chart_push_slot(ctx, (float)cos(id), 1);
-				nk_chart_push_slot(ctx, (float)sin(id), 2);*/
 				id += step;
 			}
 		}
@@ -333,12 +334,12 @@ void DrawChartTab()
 
 		if (read_selection != 0.00f)
 		{
-			nk_tooltipf(ctx, "Value: %lf", read_selection);
+			nk_tooltipf(ctx, "Value: %lf ms", read_selection);
 		}
 
 		if (write_selection != 0.00f)
 		{
-			nk_tooltipf(ctx, "Value: %lf", write_selection);
+			nk_tooltipf(ctx, "Value: %lf ms", write_selection);
 		}
 
 	}
