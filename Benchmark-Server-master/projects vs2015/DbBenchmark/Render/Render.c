@@ -182,6 +182,7 @@ void DrawConfigurationTab()
 	static int checkbox_ping = 0;
 	static int checkbox_custom_script = 0;
 	static int selected_database = 0;
+	static int request_number = 0;
 
 
 	nk_layout_row_dynamic(ctx, 15, 7);
@@ -195,11 +196,11 @@ void DrawConfigurationTab()
 
 	if (checkbox_custom_script)
 	{
-		nk_layout_row_static(ctx, 25, WINDOW_WIDTH/3, 2);
-		nk_label(ctx, "Read SQL file : ", NK_TEXT_LEFT);
-		nk_label(ctx, "Write SQL file : ", NK_TEXT_LEFT);
+		nk_layout_row_static(ctx, 25, WINDOW_WIDTH/2, 2);
+		nk_label(ctx, "Read SQL file : ", NK_TEXT_CENTERED);
+		nk_label(ctx, "Write SQL file : ", NK_TEXT_CENTERED);
 
-		nk_layout_row_static(ctx, 25, WINDOW_WIDTH / 3, 2);
+		nk_layout_row_static(ctx, 25, WINDOW_WIDTH / 2, 2);
 		nk_edit_string(ctx, NK_EDIT_SIMPLE, box_buffer_read, &box_len_read, 512, nk_filter_default);
 		nk_edit_string(ctx, NK_EDIT_SIMPLE, box_buffer_write, &box_len_write, 512, nk_filter_default);
 	}
@@ -249,6 +250,13 @@ void DrawConfigurationTab()
 	nk_layout_row_dynamic(ctx, 15, 1);
 	nk_spacing(ctx, 1);
 
+
+	nk_labelf(ctx, NK_TEXT_CENTERED, "Number of request : %d ", request_number);
+	nk_progress(ctx, &request_number, 1000, 1);
+
+	nk_layout_row_dynamic(ctx, 15, 1);
+	nk_spacing(ctx, 1);
+
 	nk_layout_row_dynamic(ctx, 30, 3);
 	nk_spacing(ctx, 1);
 	if (nk_button_label(ctx, "Benchmark !"))
@@ -256,21 +264,38 @@ void DrawConfigurationTab()
 
 		selected_tab = 1;
 
+		// Debug
 		strcpy(input[0], "localhost");
 		strcpy(input[2], "root");
 
+		system("cls");
 		fprintf(stdout, "> benchmark pressed\n");
 		fprintf(stdout, "Benchmark type : %s \n", database_name[selected_database]);
 		fprintf(stdout, "Hostname : %s \n", input[0]);
 		fprintf(stdout, "Port : %s \n", input[1]);
 		fprintf(stdout, "User: %s \n", input[2]);
 		fprintf(stdout, "Password: %s \n", input[3]);
+		fprintf(stdout, "ping comp: %d \n", checkbox_ping);
+		fprintf(stdout, "request number : %d \n", request_number);
+		fprintf(stdout, "custom script : %d \n", checkbox_custom_script);
+		fprintf(stdout, "multi threads : %d \n", checkbox_threads);
+
 
 		// Initialisation de la structure avec les parametres
 		db_param_buffer.hostname = input[0];
 		db_param_buffer.port = atoi(input[1]);
 		db_param_buffer.user = input[2];
 		db_param_buffer.password = input[3];
+		db_param_buffer.pingCompensation = checkbox_ping;
+		db_param_buffer.request_number = request_number;
+		db_param_buffer.custom_script = checkbox_custom_script;
+		db_param_buffer.multi_threads = checkbox_threads;
+
+		if (checkbox_custom_script)
+		{
+			db_param_buffer.script_read = "SELECT 1";// LoadTextFromFile(box_buffer_read);
+			db_param_buffer.scrit_write = "INSERT INTO testtable(int_test, text_test) VALUES(2,'nn')";// LoadTextFromFile(box_buffer_write);
+		}
 		
 		db_Param = malloc(sizeof(db_Param));
 		db_Param = &db_param_buffer;
@@ -287,7 +312,6 @@ void DrawChartTab()
 	float id = 0;
 	int i;
 	struct nk_rect bounds;
-	float step = (2 * 3.141592654f) / REQUEST_COUNT;
 
 	double** results = GetResults();
 
@@ -304,13 +328,17 @@ void DrawChartTab()
 		double chartMaxValue = GetMaxValueOfResults(results);
 		double chartMinValue = GetMinValueOfResults(results);
 
+		if(GetAsyncKeyState(VK_NUMPAD0)&1)
+			printf("chartMinValue : %lf \n", chartMinValue);
+
+		
 		/* mixed colored chart */
 		nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.6, 1);
 		bounds = nk_widget_bounds(ctx);
-		if (nk_chart_begin_colored(ctx, NK_CHART_LINES, nk_rgb(255, 0, 0), nk_rgb(150, 0, 0), REQUEST_COUNT, chartMinValue, chartMaxValue)) { // Change  0.0f, 10.0f to 0.00f, GetMaxValue
-			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 131, 255), nk_rgb(0, 0, 140), REQUEST_COUNT, chartMinValue, chartMaxValue);
-			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 255, 0), nk_rgb(0, 150, 0), REQUEST_COUNT, chartMinValue, chartMaxValue);
-			for (id = 0, i = 0; i < REQUEST_COUNT; ++i) {
+		if (nk_chart_begin_colored(ctx, NK_CHART_LINES, nk_rgb(255, 0, 0), nk_rgb(150, 0, 0), db_param_buffer.request_number, chartMinValue, chartMaxValue)) { // Change  0.0f, 10.0f to 0.00f, GetMaxValue
+			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 131, 255), nk_rgb(0, 0, 140), db_param_buffer.request_number, chartMinValue, chartMaxValue);
+			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 255, 0), nk_rgb(0, 150, 0), db_param_buffer.request_number, chartMinValue, chartMaxValue);
+			for (i = 0; i < db_param_buffer.request_number; ++i) {
 
 				nk_flags resWrite = nk_chart_push_slot(ctx, results[0][i], 0);
 				nk_flags resRead = nk_chart_push_slot(ctx, results[1][i], 1);
@@ -318,28 +346,20 @@ void DrawChartTab()
 				if (resWrite && NK_CHART_CLICKED)
 				{
 					write_selection = results[0][i];
-
 				}
 
 				if (resRead && NK_CHART_CLICKED)
 				{
 					read_selection = results[1][i];
-
 				}
-			
-				id += step;
 			}
 		}
+
 		nk_chart_end(ctx);
 
-		if (read_selection != 0.00f)
+		if (read_selection != 0.00f || write_selection != 0.00f)
 		{
-			nk_tooltipf(ctx, "Value: %lf ms", read_selection);
-		}
-
-		if (write_selection != 0.00f)
-		{
-			nk_tooltipf(ctx, "Value: %lf ms", write_selection);
+			nk_tooltipf(ctx, "Value: %lf ms", read_selection == 0.00f ? write_selection : read_selection);
 		}
 
 	}
@@ -353,7 +373,6 @@ void DrawChartTab()
 
 void DrawConsoleTab()
 {
-	nk_label(ctx, "Console In dev !", NK_TEXT_CENTERED);
 
 	char *box_buffer_read;
 	int box_len_read;

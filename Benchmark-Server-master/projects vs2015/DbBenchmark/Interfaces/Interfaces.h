@@ -10,4 +10,10 @@ struct database_params
 	int port;
 	char* user;
 	char* password;
+	int pingCompensation;
+	int request_number;
+	int custom_script;
+	char* script_read;
+	char* scrit_write;
+	int multi_threads;
 };

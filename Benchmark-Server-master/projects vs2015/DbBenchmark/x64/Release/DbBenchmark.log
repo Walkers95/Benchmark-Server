@@ -1,21 +1,76 @@
-﻿  Render.c
+﻿  Console.c
+Console\Console.c(60): warning C4090: 'function': different 'const' qualifiers
+Console\Console.c(70): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+Console\Console.c(73): warning C4090: 'function': different 'const' qualifiers
+  mysql_interface.c
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\math.h(264): note: see previous definition of 'isnan'
+  oracle_interface.c
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\math.h(264): note: see previous definition of 'isnan'
+  main.c
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\math.h(264): note: see previous definition of 'isnan'
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\sdl2-2.0.8\include\SDL_config.h(178): warning C4005: 'HAVE_STDDEF_H': macro redefinition
+  c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(313): note: see previous definition of 'HAVE_STDDEF_H'
+  Render.c
 c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan': macro redefinition
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\math.h(264): note: see previous definition of 'isnan'
 c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\sdl2-2.0.8\include\SDL_config.h(178): warning C4005: 'HAVE_STDDEF_H': macro redefinition
   c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(313): note: see previous definition of 'HAVE_STDDEF_H'
 Render\Render.c(101): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
 Render\Render.c(166): warning C4098: 'Render': 'void' function returning a value
-Render\Render.c(278): warning C4090: 'function': different 'const' qualifiers
-Render\Render.c(308): warning C4305: 'function': truncation from 'double' to 'float'
-Render\Render.c(310): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
-Render\Render.c(311): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
-Render\Render.c(312): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
-Render\Render.c(315): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
-Render\Render.c(316): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+Render\Render.c(255): warning C4133: 'function': incompatible types - from 'int *' to 'nk_size *'
+Render\Render.c(303): warning C4090: 'function': different 'const' qualifiers
+Render\Render.c(336): warning C4305: 'function': truncation from 'double' to 'float'
+Render\Render.c(338): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+Render\Render.c(339): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+Render\Render.c(340): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+Render\Render.c(343): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+Render\Render.c(344): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+  ThreadManager.c
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\math.h(264): note: see previous definition of 'isnan'
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\sdl2-2.0.8\include\SDL_config.h(178): warning C4005: 'HAVE_STDDEF_H': macro redefinition
+  c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(313): note: see previous definition of 'HAVE_STDDEF_H'
+  Utils.c
+  Running Code Analysis for C/C++...
   Generating code
-  81 of 415 functions (19.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    47 functions had inline decision re-evaluated but remain unchanged
+  All 423 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   DbBenchmark.vcxproj -> C:\Users\pn.benabou\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.exe
   DbBenchmark.vcxproj -> C:\Users\pn.benabou\Source\Repos\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Release\DbBenchmark.pdb (Full PDB)
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(130): warning C28252: Inconsistent annotation for 'strcpy': _Param_(1) has 'SAL_writableTo(elementCount(_String_length_(__formal(1,parameter1))+1))' on the prior instance. See <no file>(0). 
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(130): warning C28253: Inconsistent annotation for 'strcpy': _Param_(1) has 'SAL_writableTo(elementCount(_String_length_(_Source)+1))' on this instance. See <no file>(0). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(24): warning C6387: 'double_buffer' could be '0':  this does not adhere to the specification for the function 'sprintf'. 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(26): warning C6387: 'double_buffer' could be '0':  this does not adhere to the specification for the function 'strlen'. See line 24 for an earlier location where this can occur
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(28): warning C6387: 'buffer' could be '0':  this does not adhere to the specification for the function 'strcat'. See line 27 for an earlier location where this can occur
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(27): warning C6387: 'buffer' could be '0':  this does not adhere to the specification for the function 'strcpy'. 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(42): warning C6387: 'line_intro' could be '0':  this does not adhere to the specification for the function 'strcpy'. 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(55): warning C6387: 'line_intro' could be '0':  this does not adhere to the specification for the function 'strlen'. See line 42 for an earlier location where this can occur
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(60): warning C6387: 'oldText' could be '0':  this does not adhere to the specification for the function 'strcpy'. 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(65): warning C6387: 'consData.text' could be '0':  this does not adhere to the specification for the function 'strcpy'. 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(66): warning C6387: 'consData.text' could be '0':  this does not adhere to the specification for the function 'strcat'. See line 65 for an earlier location where this can occur
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(68): warning C6387: 'oldText' could be '0':  this does not adhere to the specification for the function 'strcat'. See line 60 for an earlier location where this can occur
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(84): warning C6031: Return value ignored: 'realloc'.
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\mysql_interface.c(36): warning C6011: Dereferencing NULL pointer 'benchmark_result'. 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(13898): warning C6011: Dereferencing NULL pointer 'atlas'. 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(15300): warning C6011: Dereferencing NULL pointer 'cmd'. 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(15548): warning C6386: Buffer overrun while writing to 'win->tables->keys':  the writable size is '236' bytes, but 'win->tables->size' bytes might be written.
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(15547): warning C6011: Dereferencing NULL pointer 'win->tables'. 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(15549): warning C6386: Buffer overrun while writing to 'win->tables->values':  the writable size is '236' bytes, but 'win->tables->size' bytes might be written.
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(17069): warning C28182: Dereferencing NULL pointer. 'win->layout' contains the same NULL value as 'root' did. 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19242): warning C28251: Inconsistent annotation for 'nk_labelf_colored': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3021). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19251): warning C28251: Inconsistent annotation for 'nk_labelf_colored_wrap': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3023). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19260): warning C28251: Inconsistent annotation for 'nk_labelf_colored_multiline': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3025). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19269): warning C28251: Inconsistent annotation for 'nk_labelf': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3020). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19277): warning C28251: Inconsistent annotation for 'nk_labelf_wrap': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3022). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19285): warning C28251: Inconsistent annotation for 'nk_labelf_multiline': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3024). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19293): warning C28251: Inconsistent annotation for 'nk_labelfv_colored': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3027). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19301): warning C28251: Inconsistent annotation for 'nk_labelfv_colored_wrap': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3029). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19309): warning C28251: Inconsistent annotation for 'nk_labelfv_colored_multiline': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3031). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19317): warning C28251: Inconsistent annotation for 'nk_labelfv': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3026). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19324): warning C28251: Inconsistent annotation for 'nk_labelfv_wrap': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3028). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(19331): warning C28251: Inconsistent annotation for 'nk_labelfv_multiline': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3030). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(25283): warning C28251: Inconsistent annotation for 'nk_tooltipf': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3448). 
+c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(25291): warning C28251: Inconsistent annotation for 'nk_tooltipfv': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3449). 

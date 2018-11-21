@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\</FILEPATH>
+      <FILENAME>string.h</FILENAME>
+      <LINE>130</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28252</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'strcpy': _Param_(1) has 'SAL_writableTo(elementCount(_String_length_(__formal(1,parameter1))+1))' on the prior instance. See &lt;no file&gt;(0). </DESCRIPTION>
+    <FUNCTION>strcpy</FUNCTION>
+    <DECORATED>strcpy</DECORATED>
+    <FUNCLINE>130</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\</FILEPATH>
+      <FILENAME>string.h</FILENAME>
+      <LINE>130</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28253</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'strcpy': _Param_(1) has 'SAL_writableTo(elementCount(_String_length_(_Source)+1))' on this instance. See &lt;no file&gt;(0). </DESCRIPTION>
+    <FUNCTION>strcpy</FUNCTION>
+    <DECORATED>strcpy</DECORATED>
+    <FUNCLINE>130</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>24</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'double_buffer' could be '0':  this does not adhere to the specification for the function 'sprintf'. </DESCRIPTION>
+    <FUNCTION>ConsoleOutputValue</FUNCTION>
+    <DECORATED>ConsoleOutputValue</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'double_buffer' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'double_buffer' is an Input to 'sprintf' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h:1769)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'double_buffer' should not be NULL, because this is not consistent with the SAL annotation on 'sprintf'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>26</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'double_buffer' could be '0':  this does not adhere to the specification for the function 'strlen'. See line 24 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ConsoleOutputValue</FUNCTION>
+    <DECORATED>ConsoleOutputValue</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'double_buffer' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'double_buffer' is an Input to 'sprintf' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h:1769)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>26</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'double_buffer' is an Input to 'strlen' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>26</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'double_buffer' should not be NULL, because this is not consistent with the SAL annotation on 'strlen'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>28</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'buffer' could be '0':  this does not adhere to the specification for the function 'strcat'. See line 27 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ConsoleOutputValue</FUNCTION>
+    <DECORATED>ConsoleOutputValue</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>26</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'buffer' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>27</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'buffer' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>28</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'buffer' is an In/Out argument to 'strcat' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>28</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'buffer' should not be NULL, because this is not consistent with the SAL annotation on 'strcat'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>28</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'double_buffer' could be '0':  this does not adhere to the specification for the function 'strcat'. See line 24 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ConsoleOutputValue</FUNCTION>
+    <DECORATED>ConsoleOutputValue</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'double_buffer' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'double_buffer' is an Input to 'sprintf' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h:1769)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>26</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'double_buffer' is an Input to 'strlen' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>27</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>28</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'double_buffer' is an Input to 'strlen' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>28</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'double_buffer' should not be NULL, because this is not consistent with the SAL annotation on 'strlen'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>27</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'buffer' could be '0':  this does not adhere to the specification for the function 'strcpy'. </DESCRIPTION>
+    <FUNCTION>ConsoleOutputValue</FUNCTION>
+    <DECORATED>ConsoleOutputValue</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>26</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'buffer' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>27</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'buffer' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>27</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'buffer' should not be NULL, because this is not consistent with the SAL annotation on 'strcpy'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>42</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'line_intro' could be '0':  this does not adhere to the specification for the function 'strcpy'. </DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'line_intro' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'line_intro' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'line_intro' should not be NULL, because this is not consistent with the SAL annotation on 'strcpy'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>55</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'line_intro' could be '0':  this does not adhere to the specification for the function 'strlen'. See line 42 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'line_intro' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'line_intro' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'line_intro' is an Input to 'strlen' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'line_intro' should not be NULL, because this is not consistent with the SAL annotation on 'strlen'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>60</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'oldText' could be '0':  this does not adhere to the specification for the function 'strcpy'. </DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'oldText' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>60</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'oldText' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>60</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'oldText' should not be NULL, because this is not consistent with the SAL annotation on 'strcpy'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>65</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'consData.text' could be '0':  this does not adhere to the specification for the function 'strcpy'. </DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'malloc' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:97)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Assume switch ( 'type' ) resolves to case C_ERROR: </MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'malloc' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:97)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>60</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>5</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'free' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:85)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>64</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>65</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>6</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>65</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>7</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'consData.text' should not be NULL, because this is not consistent with the SAL annotation on 'strcpy'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>66</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'consData.text' could be '0':  this does not adhere to the specification for the function 'strcat'. See line 65 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'malloc' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:97)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'malloc' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:97)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>60</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>5</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'free' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:85)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>64</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>65</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>66</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>6</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an In/Out argument to 'strcat' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>66</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>7</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'consData.text' should not be NULL, because this is not consistent with the SAL annotation on 'strcat'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>68</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'oldText' could be '0':  this does not adhere to the specification for the function 'strcat'. See line 60 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'oldText' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>60</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'oldText' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>64</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>65</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>66</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>67</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>68</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'oldText' is an Input to 'strcat' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>68</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'oldText' should not be NULL, because this is not consistent with the SAL annotation on 'strcat'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>84</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>6031</DEFECTCODE>
+    <DESCRIPTION>Return value ignored: 'realloc'.</DESCRIPTION>
+    <FUNCTION>ClearConsole</FUNCTION>
+    <DECORATED>ClearConsole</DECORATED>
+    <FUNCLINE>82</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

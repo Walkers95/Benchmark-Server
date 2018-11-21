@@ -1,0 +1,2298 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\</FILEPATH>
+      <FILENAME>string.h</FILENAME>
+      <LINE>130</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28252</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'strcpy': _Param_(1) has 'SAL_writableTo(elementCount(_String_length_(__formal(1,parameter1))+1))' on the prior instance. See &lt;no file&gt;(0). </DESCRIPTION>
+    <FUNCTION>strcpy</FUNCTION>
+    <DECORATED>strcpy</DECORATED>
+    <FUNCLINE>130</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\</FILEPATH>
+      <FILENAME>string.h</FILENAME>
+      <LINE>130</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28253</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'strcpy': _Param_(1) has 'SAL_writableTo(elementCount(_String_length_(_Source)+1))' on this instance. See &lt;no file&gt;(0). </DESCRIPTION>
+    <FUNCTION>strcpy</FUNCTION>
+    <DECORATED>strcpy</DECORATED>
+    <FUNCLINE>130</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>24</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'double_buffer' could be '0':  this does not adhere to the specification for the function 'sprintf'. </DESCRIPTION>
+    <FUNCTION>ConsoleOutputValue</FUNCTION>
+    <DECORATED>ConsoleOutputValue</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'double_buffer' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'double_buffer' is an Input to 'sprintf' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h:1769)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'double_buffer' should not be NULL, because this is not consistent with the SAL annotation on 'sprintf'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>26</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'double_buffer' could be '0':  this does not adhere to the specification for the function 'strlen'. See line 24 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ConsoleOutputValue</FUNCTION>
+    <DECORATED>ConsoleOutputValue</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'double_buffer' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'double_buffer' is an Input to 'sprintf' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h:1769)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>26</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'double_buffer' is an Input to 'strlen' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>26</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'double_buffer' should not be NULL, because this is not consistent with the SAL annotation on 'strlen'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>28</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'buffer' could be '0':  this does not adhere to the specification for the function 'strcat'. See line 27 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ConsoleOutputValue</FUNCTION>
+    <DECORATED>ConsoleOutputValue</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>26</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'buffer' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>27</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'buffer' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>28</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'buffer' is an In/Out argument to 'strcat' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>28</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'buffer' should not be NULL, because this is not consistent with the SAL annotation on 'strcat'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>27</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'buffer' could be '0':  this does not adhere to the specification for the function 'strcpy'. </DESCRIPTION>
+    <FUNCTION>ConsoleOutputValue</FUNCTION>
+    <DECORATED>ConsoleOutputValue</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>26</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'buffer' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>27</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'buffer' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>27</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'buffer' should not be NULL, because this is not consistent with the SAL annotation on 'strcpy'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>42</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'line_intro' could be '0':  this does not adhere to the specification for the function 'strcpy'. </DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'line_intro' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'line_intro' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'line_intro' should not be NULL, because this is not consistent with the SAL annotation on 'strcpy'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>55</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'line_intro' could be '0':  this does not adhere to the specification for the function 'strlen'. See line 42 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'line_intro' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'line_intro' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'line_intro' is an Input to 'strlen' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'line_intro' should not be NULL, because this is not consistent with the SAL annotation on 'strlen'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>60</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'oldText' could be '0':  this does not adhere to the specification for the function 'strcpy'. </DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'oldText' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>60</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'oldText' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>60</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'oldText' should not be NULL, because this is not consistent with the SAL annotation on 'strcpy'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>65</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'consData.text' could be '0':  this does not adhere to the specification for the function 'strcpy'. </DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'malloc' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:97)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Assume switch ( 'type' ) resolves to case C_ERROR: </MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'malloc' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:97)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>60</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>5</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'free' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:85)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>64</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>65</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>6</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>65</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>7</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'consData.text' should not be NULL, because this is not consistent with the SAL annotation on 'strcpy'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>66</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'consData.text' could be '0':  this does not adhere to the specification for the function 'strcat'. See line 65 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'malloc' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:97)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'malloc' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:97)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>60</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>5</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an Input to 'free' (declared at c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\corecrt_malloc.h:85)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>64</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>65</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>66</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>6</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'consData' is an In/Out argument to 'strcat' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>66</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>7</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'consData.text' should not be NULL, because this is not consistent with the SAL annotation on 'strcat'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>68</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'oldText' could be '0':  this does not adhere to the specification for the function 'strcat'. See line 60 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>ConsoleOutput</FUNCTION>
+    <DECORATED>ConsoleOutput</DECORATED>
+    <FUNCLINE>34</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>38</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>40</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>42</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>54</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>55</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>57</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>59</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'oldText' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>60</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'oldText' is an In/Out argument to 'strcpy' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>64</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>65</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>66</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>67</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>68</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'oldText' is an Input to 'strcat' (declared at &lt;no file&gt;:0)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.c</FILENAME>
+        <LINE>68</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'oldText' should not be NULL, because this is not consistent with the SAL annotation on 'strcat'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+      <FILENAME>console.c</FILENAME>
+      <LINE>84</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>6031</DEFECTCODE>
+    <DESCRIPTION>Return value ignored: 'realloc'.</DESCRIPTION>
+    <FUNCTION>ClearConsole</FUNCTION>
+    <DECORATED>ClearConsole</DECORATED>
+    <FUNCLINE>82</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+      <FILENAME>mysql_interface.c</FILENAME>
+      <LINE>36</LINE>
+      <COLUMN>22</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'benchmark_result'. </DESCRIPTION>
+    <FUNCTION>InitMySql</FUNCTION>
+    <DECORATED>InitMySql</DECORATED>
+    <FUNCLINE>3</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>5</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>7</LINE>
+        <COLUMN>22</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>13</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>130</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>33</LINE>
+        <COLUMN>18</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'benchmark_result' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>34</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>34</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'i&lt;2')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>22</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'benchmark_result' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>6201</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'result' hides previous declaration at line '9' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\oracle_interface.h'.</DESCRIPTION>
+    <FUNCTION>nk_triangle_from_direction</FUNCTION>
+    <DECORATED>nk_triangle_from_direction</DECORATED>
+    <FUNCLINE>6201</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>oracle_interface.h</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>7156</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'result' hides previous declaration at line '9' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\oracle_interface.h'.</DESCRIPTION>
+    <FUNCTION>nk_strfmt</FUNCTION>
+    <DECORATED>nk_strfmt</DECORATED>
+    <FUNCLINE>7154</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>oracle_interface.h</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>9594</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'result' hides previous declaration at line '9' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\oracle_interface.h'.</DESCRIPTION>
+    <FUNCTION>nk_draw_vertex</FUNCTION>
+    <DECORATED>nk_draw_vertex</DECORATED>
+    <FUNCLINE>9591</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>oracle_interface.h</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>11895</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'result' hides previous declaration at line '9' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\oracle_interface.h'.</DESCRIPTION>
+    <FUNCTION>nk_tt__rasterize_sorted_edges</FUNCTION>
+    <DECORATED>nk_tt__rasterize_sorted_edges</DECORATED>
+    <FUNCLINE>11895</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>oracle_interface.h</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>12080</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'result' hides previous declaration at line '9' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\oracle_interface.h'.</DESCRIPTION>
+    <FUNCTION>nk_tt__rasterize</FUNCTION>
+    <DECORATED>nk_tt__rasterize</DECORATED>
+    <FUNCLINE>12080</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>oracle_interface.h</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>12249</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'result' hides previous declaration at line '9' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\oracle_interface.h'.</DESCRIPTION>
+    <FUNCTION>nk_tt_Rasterize</FUNCTION>
+    <DECORATED>nk_tt_Rasterize</DECORATED>
+    <FUNCLINE>12249</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>oracle_interface.h</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>13898</LINE>
+      <COLUMN>13</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'atlas'. </DESCRIPTION>
+    <FUNCTION>nk_font_atlas_end</FUNCTION>
+    <DECORATED>nk_font_atlas_end</DECORATED>
+    <FUNCLINE>13885</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>13888</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>13889</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>13891</LINE>
+        <COLUMN>5</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'atlas' may be NULL (Enter this branch)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>13892</LINE>
+        <COLUMN>6</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!null' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>13893</LINE>
+        <COLUMN>16</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>13894</LINE>
+        <COLUMN>11</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>13896</LINE>
+        <COLUMN>5</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this branch, (assume 'null')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>13897</LINE>
+        <COLUMN>16</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>13898</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'atlas' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>15300</LINE>
+      <COLUMN>12</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'cmd'. </DESCRIPTION>
+    <FUNCTION>nk_build</FUNCTION>
+    <DECORATED>nk_build</DECORATED>
+    <FUNCLINE>15251</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15253</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15254</LINE>
+        <COLUMN>20</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'cmd' is NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15255</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15258</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15260</LINE>
+        <COLUMN>59</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15275</LINE>
+        <COLUMN>4</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15276</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15277</LINE>
+        <COLUMN>11</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'it!=0')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15278</LINE>
+        <COLUMN>20</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15279</LINE>
+        <COLUMN>76</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this branch, (assume '&lt;branch condition&gt;')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15281</LINE>
+        <COLUMN>3</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Go to cont</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15289</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15289</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15277</LINE>
+        <COLUMN>11</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Exit this loop, ('it!=0' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15292</LINE>
+        <COLUMN>4</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15293</LINE>
+        <COLUMN>11</COLUMN>
+        <KEYEVENT>
+          <ID>6</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'it!=0')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15294</LINE>
+        <COLUMN>20</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15295</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15296</LINE>
+        <COLUMN>6</COLUMN>
+        <KEYEVENT>
+          <ID>7</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!it-&gt;popup.buf.active' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15299</LINE>
+        <COLUMN>6</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15300</LINE>
+        <COLUMN>12</COLUMN>
+        <KEYEVENT>
+          <ID>8</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'cmd' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>15548</LINE>
+      <COLUMN>38</COLUMN>
+    </SFA>
+    <DEFECTCODE>6386</DEFECTCODE>
+    <DESCRIPTION>Buffer overrun while writing to 'win-&gt;tables-&gt;keys':  the writable size is '236' bytes, but 'win-&gt;tables-&gt;size' bytes might be written.</DESCRIPTION>
+    <FUNCTION>nk_add_value</FUNCTION>
+    <DECORATED>nk_add_value</DECORATED>
+    <FUNCLINE>15535</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15540</LINE>
+        <COLUMN>10</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!win||!ctx' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15541</LINE>
+        <COLUMN>18</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this branch, (assume '&lt;branch condition&gt;')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15542</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15544</LINE>
+        <COLUMN>6</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!tbl' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15545</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15547</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15548</LINE>
+        <COLUMN>38</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>Invalid write to 'win-&gt;tables-&gt;keys[59]', (writable range is 0 to 58)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>15547</LINE>
+      <COLUMN>18</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'win-&gt;tables'. </DESCRIPTION>
+    <FUNCTION>nk_add_value</FUNCTION>
+    <DECORATED>nk_add_value</DECORATED>
+    <FUNCLINE>15535</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15540</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15541</LINE>
+        <COLUMN>18</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'win-&gt;tables' may be NULL (Enter this branch)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15542</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15544</LINE>
+        <COLUMN>6</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!tbl' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15545</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15547</LINE>
+        <COLUMN>18</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'win-&gt;tables' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>15549</LINE>
+      <COLUMN>40</COLUMN>
+    </SFA>
+    <DEFECTCODE>6386</DEFECTCODE>
+    <DESCRIPTION>Buffer overrun while writing to 'win-&gt;tables-&gt;values':  the writable size is '236' bytes, but 'win-&gt;tables-&gt;size' bytes might be written.</DESCRIPTION>
+    <FUNCTION>nk_add_value</FUNCTION>
+    <DECORATED>nk_add_value</DECORATED>
+    <FUNCLINE>15535</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15540</LINE>
+        <COLUMN>10</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!win||!ctx' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15541</LINE>
+        <COLUMN>18</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this branch, (assume '&lt;branch condition&gt;')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15542</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15544</LINE>
+        <COLUMN>6</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume '!tbl' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15545</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15547</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15548</LINE>
+        <COLUMN>38</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>15549</LINE>
+        <COLUMN>40</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>Invalid write to 'win-&gt;tables-&gt;values[59]', (writable range is 0 to 58)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>17069</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>28182</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer. 'win-&gt;layout' contains the same NULL value as 'root' did. </DESCRIPTION>
+    <FUNCTION>nk_popup_end</FUNCTION>
+    <DECORATED>nk_popup_end</DECORATED>
+    <FUNCLINE>17040</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17042</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17043</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17048</LINE>
+        <COLUMN>27</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17051</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17052</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17053</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17054</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17055</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17056</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17057</LINE>
+        <COLUMN>9</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'win-&gt;layout' may be NULL (Skip this loop)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17061</LINE>
+        <COLUMN>20</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17063</LINE>
+        <COLUMN>16</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17064</LINE>
+        <COLUMN>7</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17066</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17067</LINE>
+        <COLUMN>16</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17068</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+        <FILENAME>nuklear.h</FILENAME>
+        <LINE>17069</LINE>
+        <COLUMN>16</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'win-&gt;layout' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>18737</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'result' hides previous declaration at line '9' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\oracle_interface.h'.</DESCRIPTION>
+    <FUNCTION>nk_list_view_begin</FUNCTION>
+    <DECORATED>nk_list_view_begin</DECORATED>
+    <FUNCLINE>18729</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>oracle_interface.h</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19242</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelf_colored': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3021). </DESCRIPTION>
+    <FUNCTION>nk_labelf_colored</FUNCTION>
+    <DECORATED>nk_labelf_colored</DECORATED>
+    <FUNCLINE>19242</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19251</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelf_colored_wrap': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3023). </DESCRIPTION>
+    <FUNCTION>nk_labelf_colored_wrap</FUNCTION>
+    <DECORATED>nk_labelf_colored_wrap</DECORATED>
+    <FUNCLINE>19251</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19260</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelf_colored_multiline': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3025). </DESCRIPTION>
+    <FUNCTION>nk_labelf_colored_multiline</FUNCTION>
+    <DECORATED>nk_labelf_colored_multiline</DECORATED>
+    <FUNCLINE>19260</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19269</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelf': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3020). </DESCRIPTION>
+    <FUNCTION>nk_labelf</FUNCTION>
+    <DECORATED>nk_labelf</DECORATED>
+    <FUNCLINE>19269</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19277</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelf_wrap': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3022). </DESCRIPTION>
+    <FUNCTION>nk_labelf_wrap</FUNCTION>
+    <DECORATED>nk_labelf_wrap</DECORATED>
+    <FUNCLINE>19277</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19285</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelf_multiline': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3024). </DESCRIPTION>
+    <FUNCTION>nk_labelf_multiline</FUNCTION>
+    <DECORATED>nk_labelf_multiline</DECORATED>
+    <FUNCLINE>19285</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19293</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelfv_colored': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3027). </DESCRIPTION>
+    <FUNCTION>nk_labelfv_colored</FUNCTION>
+    <DECORATED>nk_labelfv_colored</DECORATED>
+    <FUNCLINE>19293</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19301</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelfv_colored_wrap': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3029). </DESCRIPTION>
+    <FUNCTION>nk_labelfv_colored_wrap</FUNCTION>
+    <DECORATED>nk_labelfv_colored_wrap</DECORATED>
+    <FUNCLINE>19301</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19309</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelfv_colored_multiline': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3031). </DESCRIPTION>
+    <FUNCTION>nk_labelfv_colored_multiline</FUNCTION>
+    <DECORATED>nk_labelfv_colored_multiline</DECORATED>
+    <FUNCLINE>19309</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19317</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelfv': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3026). </DESCRIPTION>
+    <FUNCTION>nk_labelfv</FUNCTION>
+    <DECORATED>nk_labelfv</DECORATED>
+    <FUNCLINE>19317</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19324</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelfv_wrap': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3028). </DESCRIPTION>
+    <FUNCTION>nk_labelfv_wrap</FUNCTION>
+    <DECORATED>nk_labelfv_wrap</DECORATED>
+    <FUNCLINE>19324</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19331</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_labelfv_multiline': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3030). </DESCRIPTION>
+    <FUNCTION>nk_labelfv_multiline</FUNCTION>
+    <DECORATED>nk_labelfv_multiline</DECORATED>
+    <FUNCLINE>19331</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>19361</LINE>
+      <COLUMN>10</COLUMN>
+    </SFA>
+    <DEFECTCODE>6340</DEFECTCODE>
+    <DESCRIPTION>Mismatch on sign: 'unsigned char' passed as _Param_(5) when some signed type is required in call to 'nk_labelf'.</DESCRIPTION>
+    <FUNCTION>nk_value_color_byte</FUNCTION>
+    <DECORATED>nk_value_color_byte</DECORATED>
+    <FUNCLINE>19359</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>23377</LINE>
+      <COLUMN>10</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'result' hides previous declaration at line '9' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\oracle_interface.h'.</DESCRIPTION>
+    <FUNCTION>nk_edit_string_zero_terminated</FUNCTION>
+    <DECORATED>nk_edit_string_zero_terminated</DECORATED>
+    <FUNCLINE>23374</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>oracle_interface.h</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>23669</LINE>
+      <COLUMN>28</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'result' hides previous declaration at line '9' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\oracle_interface.h'.</DESCRIPTION>
+    <FUNCTION>nk_property_variant_int</FUNCTION>
+    <DECORATED>nk_property_variant_int</DECORATED>
+    <FUNCLINE>23667</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>oracle_interface.h</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>23680</LINE>
+      <COLUMN>28</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'result' hides previous declaration at line '9' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\oracle_interface.h'.</DESCRIPTION>
+    <FUNCTION>nk_property_variant_float</FUNCTION>
+    <DECORATED>nk_property_variant_float</DECORATED>
+    <FUNCLINE>23678</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>oracle_interface.h</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>23692</LINE>
+      <COLUMN>28</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'result' hides previous declaration at line '9' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\oracle_interface.h'.</DESCRIPTION>
+    <FUNCTION>nk_property_variant_double</FUNCTION>
+    <DECORATED>nk_property_variant_double</DECORATED>
+    <FUNCLINE>23689</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>oracle_interface.h</FILENAME>
+        <LINE>9</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>25283</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_tooltipf': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3448). </DESCRIPTION>
+    <FUNCTION>nk_tooltipf</FUNCTION>
+    <DECORATED>nk_tooltipf</DECORATED>
+    <FUNCLINE>25283</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\</FILEPATH>
+      <FILENAME>nuklear.h</FILENAME>
+      <LINE>25291</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'nk_tooltipfv': this instance has no annotations. See c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\nuklear.h(3449). </DESCRIPTION>
+    <FUNCTION>nk_tooltipfv</FUNCTION>
+    <DECORATED>nk_tooltipfv</DECORATED>
+    <FUNCLINE>25291</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\</FILEPATH>
+      <FILENAME>render.c</FILENAME>
+      <LINE>78</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>28278</DEFECTCODE>
+    <DESCRIPTION>Function SetStyle appears with no prototype in scope.  Only limited analysis can be performed. Include the appropriate header or add a prototype. This warning also occurs if parameter or return types are omitted in a function definition.</DESCRIPTION>
+    <FUNCTION>InitialiseRender</FUNCTION>
+    <DECORATED>InitialiseRender</DECORATED>
+    <FUNCLINE>48</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\</FILEPATH>
+      <FILENAME>render.c</FILENAME>
+      <LINE>128</LINE>
+      <COLUMN>24</COLUMN>
+    </SFA>
+    <DEFECTCODE>28278</DEFECTCODE>
+    <DESCRIPTION>Function DrawConfigurationTab appears with no prototype in scope.  Only limited analysis can be performed. Include the appropriate header or add a prototype. This warning also occurs if parameter or return types are omitted in a function definition.</DESCRIPTION>
+    <FUNCTION>Render</FUNCTION>
+    <DECORATED>Render</DECORATED>
+    <FUNCLINE>86</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\</FILEPATH>
+      <FILENAME>render.c</FILENAME>
+      <LINE>134</LINE>
+      <COLUMN>18</COLUMN>
+    </SFA>
+    <DEFECTCODE>28278</DEFECTCODE>
+    <DESCRIPTION>Function DrawConsoleTab appears with no prototype in scope.  Only limited analysis can be performed. Include the appropriate header or add a prototype. This warning also occurs if parameter or return types are omitted in a function definition.</DESCRIPTION>
+    <FUNCTION>Render</FUNCTION>
+    <DECORATED>Render</DECORATED>
+    <FUNCLINE>86</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\</FILEPATH>
+      <FILENAME>render.c</FILENAME>
+      <LINE>140</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>28278</DEFECTCODE>
+    <DESCRIPTION>Function DrawChartTab appears with no prototype in scope.  Only limited analysis can be performed. Include the appropriate header or add a prototype. This warning also occurs if parameter or return types are omitted in a function definition.</DESCRIPTION>
+    <FUNCTION>Render</FUNCTION>
+    <DECORATED>Render</DECORATED>
+    <FUNCLINE>86</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\</FILEPATH>
+      <FILENAME>render.c</FILENAME>
+      <LINE>346</LINE>
+      <COLUMN>17</COLUMN>
+    </SFA>
+    <DEFECTCODE>6240</DEFECTCODE>
+    <DESCRIPTION>(&lt;expression&gt; &amp;&amp; &lt;non-zero constant&gt;) always evaluates to the result of &lt;expression&gt;.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>DrawChartTab</FUNCTION>
+    <DECORATED>DrawChartTab</DECORATED>
+    <FUNCLINE>309</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\</FILEPATH>
+      <FILENAME>render.c</FILENAME>
+      <LINE>351</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>6240</DEFECTCODE>
+    <DESCRIPTION>(&lt;expression&gt; &amp;&amp; &lt;non-zero constant&gt;) always evaluates to the result of &lt;expression&gt;.  Did you intend to use the bitwise-and operator?</DESCRIPTION>
+    <FUNCTION>DrawChartTab</FUNCTION>
+    <DECORATED>DrawChartTab</DECORATED>
+    <FUNCLINE>309</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\</FILEPATH>
+      <FILENAME>render.c</FILENAME>
+      <LINE>381</LINE>
+      <COLUMN>21</COLUMN>
+    </SFA>
+    <DEFECTCODE>6244</DEFECTCODE>
+    <DESCRIPTION>Local declaration of 'consData' hides previous declaration at line '18' of 'c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.h'.</DESCRIPTION>
+    <FUNCTION>DrawConsoleTab</FUNCTION>
+    <DECORATED>DrawConsoleTab</DECORATED>
+    <FUNCLINE>374</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\</FILEPATH>
+        <FILENAME>console.h</FILENAME>
+        <LINE>18</LINE>
+        <COLUMN>20</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT></DEFECTS>

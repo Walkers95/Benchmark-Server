@@ -1,7 +1,5 @@
 #include "mysql_interface.h"
 
-double **benchmark_result;
-
 int InitMySql(struct database_params *db_param)
 {
 	connection_mysql = mysql_init(NULL);
@@ -35,7 +33,17 @@ int InitMySql(struct database_params *db_param)
 	benchmark_result = malloc(sizeof(double*) * 2);
 	for (int i = 0; i < 2; i++)
 	{
-		benchmark_result[i] = malloc(sizeof(double) * REQUEST_COUNT);
+		benchmark_result[i] = malloc(sizeof(double) * db_param->request_number);
+	}
+
+	param_request_number = db_param->request_number;
+	param_ping = db_param->pingCompensation;
+	param_custom_script = db_param->custom_script;
+
+	if (param_custom_script)
+	{
+		param_script_read = db_param->script_read;
+		param_script_write = db_param->scrit_write;
 	}
 
 	return 1;
@@ -49,6 +57,14 @@ void FinishWithError()
 	fgets(NULL, 0, stdin);
 }
 
+void ClearResults()
+{
+	// Clearing results
+	MYSQL_RES *results;
+	results = mysql_store_result(connection_mysql);
+	mysql_free_result(results);
+}
+
 int CallQuery(const char * query)
 {
 	if (mysql_query(connection_mysql, query)) {
@@ -59,13 +75,13 @@ int CallQuery(const char * query)
 }
 
 double GetMinValueOfResults(double** results) {
-	double min = 0.0f;
+	double min = 1.00f;
 
 	for (int i = 0; i < 2; i++)
 	{
-		for (int j = 0; j < REQUEST_COUNT; j++)
+		for (int j = 0; j < param_request_number; j++)
 		{
-			if (!i && !j || results[i][j] < min)
+			if (results[i][j] != 0 && results[i][j] < min)
 			{
 				min = results[i][j];
 			}
@@ -80,7 +96,7 @@ double GetMaxValueOfResults(double** results) {
 
 	for (int i = 0; i < 2; i++)
 	{
-		for (int j = 0; j < REQUEST_COUNT; j++)
+		for (int j = 0; j < param_request_number; j++)
 		{
 			if (results[i][j] > max)
 			{
@@ -123,19 +139,28 @@ int DoBenchmarkMySql()
 		return 0;
 	ConsoleOutput("Success !", C_SUCCESS);
 
-	
+
 
 	// WRITE BENCHMARK
 	ConsoleOutput("Starting Write Benchmark", C_DEBUG);
-	for (int i = 0; i < REQUEST_COUNT; i++)
+	for (int i = 0; i < param_request_number; i++)
 	{
 		QueryPerformanceFrequency(&frequency);
-		// GET TIME BEFORE
-		QueryPerformanceCounter(&t1);
-		CallQuery("INSERT INTO testtable(int_test, text_test) VALUES(1,'bonjour')");
-		// GET TIME AFTER
-		QueryPerformanceCounter(&t2);
-		elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
+
+		if (param_custom_script)
+		{
+			QueryPerformanceCounter(&t1); // GET TIME BEFORE
+			CallQuery(param_script_write);
+			QueryPerformanceCounter(&t2); // GET TIME AFTER
+		}
+		else 
+		{
+			QueryPerformanceCounter(&t1); // GET TIME BEFORE
+			CallQuery("INSERT INTO testtable(int_test, text_test) VALUES(1,'bonjour')");
+			QueryPerformanceCounter(&t2); // GET TIME AFTER
+		}
+	
+		elapsedTime = ((t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart);
 		ConsoleOutputValue("Write", elapsedTime);
 	
 		// Save time 
@@ -148,27 +173,49 @@ int DoBenchmarkMySql()
 
 	// READ BENCHMARCK
 	ConsoleOutput("Starting Read Benchmark", C_DEBUG);
-	for (int i = 0; i < REQUEST_COUNT; i++)
+	for (int i = 0; i < param_request_number; i++)
 	{
 		QueryPerformanceFrequency(&frequency);
-		// GET TIME BEFORE
-		QueryPerformanceCounter(&t1);
-		CallQuery("SELECT * FROM testtable where id=1");
-		// GET TIME AFTER
-		QueryPerformanceCounter(&t2);
-
-		elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
-		ConsoleOutputValue("Read", elapsedTime);
+		
+		if (param_custom_script)
+		{
+			QueryPerformanceCounter(&t1); // GET TIME BEFORE
+			CallQuery(param_script_read);
+			QueryPerformanceCounter(&t2); // GET TIME AFTER
+		}
+		else
+		{
+			QueryPerformanceCounter(&t1); // GET TIME BEFORE
+			CallQuery("SELECT * FROM testtable where id=1");
+			QueryPerformanceCounter(&t2); // GET TIME AFTER
+		}
 		
 
-		// Clearing results
-		MYSQL_RES *results;
-		results = mysql_store_result(connection_mysql);
-		mysql_free_result(results);
+		elapsedTime = ((t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart);
+		ConsoleOutputValue("Read", elapsedTime);
+	
+		ClearResults();
 
 		// Save time 
 		benchmark_result[1][i] = elapsedTime;
 	}
+
+	if (param_ping == 1)
+	{
+		QueryPerformanceFrequency(&frequency);
+		// GET TIME BEFORE
+		QueryPerformanceCounter(&t1);
+		CallQuery("SELECT 1");
+		// GET TIME AFTER
+		QueryPerformanceCounter(&t2);
+
+		ClearResults();
+
+		pingLatency = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
+		printf("ping latency : %lf \n", pingLatency);
+	}
+
+
 	ConsoleOutput("Success !", C_SUCCESS);
 
 

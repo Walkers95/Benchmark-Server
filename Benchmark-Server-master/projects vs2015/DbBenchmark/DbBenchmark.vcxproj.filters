@@ -52,6 +52,12 @@
     <Filter Include="Source Files\ThreadManager">
       <UniqueIdentifier>{ac9c6af6-0ebc-4b99-a139-34053d8eeddc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{1b886648-937d-4461-b71c-cb4978246a0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{0a2c61c5-7921-402b-995f-4012df3bd26b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\nuklear.h">
@@ -96,6 +102,9 @@
     <ClInclude Include="ThreadManager\ThreadManager.h">
       <Filter>Header Files\ThreadManager</Filter>
     </ClInclude>
+    <ClInclude Include="Utils\Utils.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Render\Render.c">
@@ -115,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="ThreadManager\ThreadManager.c">
       <Filter>Source Files\ThreadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\Utils.c">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

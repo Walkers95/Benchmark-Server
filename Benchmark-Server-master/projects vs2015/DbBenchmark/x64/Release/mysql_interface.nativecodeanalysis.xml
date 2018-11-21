@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\</FILEPATH>
+      <FILENAME>string.h</FILENAME>
+      <LINE>130</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28252</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'strcpy': _Param_(1) has 'SAL_writableTo(elementCount(_String_length_(__formal(1,parameter1))+1))' on the prior instance. See &lt;no file&gt;(0). </DESCRIPTION>
+    <FUNCTION>strcpy</FUNCTION>
+    <DECORATED>strcpy</DECORATED>
+    <FUNCLINE>130</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\</FILEPATH>
+      <FILENAME>string.h</FILENAME>
+      <LINE>130</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>28253</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'strcpy': _Param_(1) has 'SAL_writableTo(elementCount(_String_length_(_Source)+1))' on this instance. See &lt;no file&gt;(0). </DESCRIPTION>
+    <FUNCTION>strcpy</FUNCTION>
+    <DECORATED>strcpy</DECORATED>
+    <FUNCLINE>130</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+      <FILENAME>mysql_interface.c</FILENAME>
+      <LINE>36</LINE>
+      <COLUMN>22</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'benchmark_result'. </DESCRIPTION>
+    <FUNCTION>InitMySql</FUNCTION>
+    <DECORATED>InitMySql</DECORATED>
+    <FUNCLINE>3</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>5</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>7</LINE>
+        <COLUMN>22</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>13</LINE>
+        <COLUMN>24</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>130</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>33</LINE>
+        <COLUMN>18</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'benchmark_result' may be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>34</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>34</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this loop, (assume 'i&lt;2')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\pn.benabou\source\repos\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\</FILEPATH>
+        <FILENAME>mysql_interface.c</FILENAME>
+        <LINE>36</LINE>
+        <COLUMN>22</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'benchmark_result' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>
