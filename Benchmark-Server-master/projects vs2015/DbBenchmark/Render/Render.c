@@ -2,7 +2,7 @@
 #include "Render.h"
 
 #define WINDOW_WIDTH 1024
-#define WINDOW_HEIGHT 476
+#define WINDOW_HEIGHT 512
 
 // SDL Include
 #include "../Library\SDL2-2.0.8\include\SDL.h"
@@ -61,7 +61,7 @@ void InitialiseRender()
 		WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI);
 	glContext = SDL_GL_CreateContext(win);
 	SDL_GetWindowSize(win, &win_width, &win_height);
-	SDL_ShowCursor(0);
+
 
 	/* GUI */
 	ctx = nk_sdl_init(win);
@@ -98,9 +98,9 @@ void Render()
 		nk_input_end(ctx);
 		
 		/* GUI */
-		if (nk_begin(ctx, "Demo", nk_rect(0, 0, win_width, win_height), NK_WINDOW_TITLE))
+		if (nk_begin(ctx, "Demo", nk_rect(0, 0, win_width, win_height), NK_WINDOW_BACKGROUND))
 		{
-
+			
 			nk_layout_row_dynamic(ctx, 10, 1);
 			nk_spacing(ctx, 1);
 
@@ -125,18 +125,21 @@ void Render()
 			// Configuration Draw
 			if (selected_tab == 0)
 			{
+				if (SDL_ShowCursor(0));
 				DrawConfigurationTab(ctx);
 			}
 
 			// Console Draw
 			if (selected_tab == 1)
 			{
+				if (!SDL_ShowCursor(1));
 				DrawConsoleTab(ctx);
 			}
 
 			// Chart Draw
 			if (selected_tab == 2)
 			{
+				if (SDL_ShowCursor(0));
 				DrawChartTab(ctx);
 			}
 
@@ -247,11 +250,12 @@ void DrawConfigurationTab()
 			memcpy(&input[3][old_len], &buffer[old_len], (nk_size)(text_len[3] - old_len));
 	}
 
-	nk_layout_row_dynamic(ctx, 15, 1);
+	nk_layout_row_dynamic(ctx, 25, 1);
 	nk_spacing(ctx, 1);
 
 
 	nk_labelf(ctx, NK_TEXT_CENTERED, "Number of request : %d ", request_number);
+	nk_layout_row_dynamic(ctx, 25, 1);
 	nk_progress(ctx, &request_number, 1000, 1);
 
 	nk_layout_row_dynamic(ctx, 15, 1);
@@ -333,7 +337,7 @@ void DrawChartTab()
 
 		
 		/* mixed colored chart */
-		nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.6, 1);
+		nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.7, 1);
 		bounds = nk_widget_bounds(ctx);
 		if (nk_chart_begin_colored(ctx, NK_CHART_LINES, nk_rgb(255, 0, 0), nk_rgb(150, 0, 0), db_param_buffer.request_number, chartMinValue, chartMaxValue)) { // Change  0.0f, 10.0f to 0.00f, GetMaxValue
 			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 131, 255), nk_rgb(0, 0, 140), db_param_buffer.request_number, chartMinValue, chartMaxValue);
@@ -397,9 +401,12 @@ void DrawConsoleTab()
 	box_buffer_read = consData.text;
 	box_len_read = consData.length;
 
-	// Add height according to text size 
-	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 15, 1);
-	nk_text_multiline_colored(ctx, box_buffer_read, box_len_read,color);
+
+	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.8, 1);
+	if (nk_group_begin_titled(ctx, "Group_Without_Border","Output console :", NK_WINDOW_TITLE)) {
+		nk_layout_row_static(ctx, WINDOW_HEIGHT * 20, WINDOW_WIDTH * 0.8, 1);
+		nk_label_colored_multiline(ctx, box_buffer_read, color);
+	}
 }
 
 void SetStyle()
