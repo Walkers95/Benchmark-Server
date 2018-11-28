@@ -175,8 +175,8 @@ struct database_params *db_Param;
 void DrawConfigurationTab()
 {
 	// Pour les champs de selections de text : 
-	static char input[4][64];
-	static int text_len[4];
+	static char input[5][64];
+	static int text_len[5];
 	static char box_buffer_read[512];
 	static int box_len_read;
 	static char box_buffer_write[512];
@@ -199,11 +199,11 @@ void DrawConfigurationTab()
 
 	if (checkbox_custom_script)
 	{
-		nk_layout_row_static(ctx, 25, WINDOW_WIDTH/2, 2);
+		nk_layout_row_dynamic(ctx, 25, 2);
 		nk_label(ctx, "Read SQL file : ", NK_TEXT_CENTERED);
 		nk_label(ctx, "Write SQL file : ", NK_TEXT_CENTERED);
 
-		nk_layout_row_static(ctx, 25, WINDOW_WIDTH / 2, 2);
+		nk_layout_row_dynamic(ctx, 25, 2);
 		nk_edit_string(ctx, NK_EDIT_SIMPLE, box_buffer_read, &box_len_read, 512, nk_filter_default);
 		nk_edit_string(ctx, NK_EDIT_SIMPLE, box_buffer_write, &box_len_write, 512, nk_filter_default);
 	}
@@ -229,25 +229,28 @@ void DrawConfigurationTab()
 	nk_layout_row_dynamic(ctx, 8, 1);
 	nk_spacing(ctx, 2);
 
-	nk_layout_row_dynamic(ctx, 30, 8);
+	nk_layout_row_dynamic(ctx, 30, 10);
 	nk_label(ctx, "Hostname :", NK_TEXT_CENTERED);
 	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[0], &text_len[0], 64, nk_filter_default);
 
 	nk_label(ctx, "Port :", NK_TEXT_CENTERED);
 	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[1], &text_len[1], 64, nk_filter_decimal);
 
+	nk_label(ctx, "Database :", NK_TEXT_CENTERED);
+	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[2], &text_len[2], 64, nk_filter_decimal);
+
 	nk_label(ctx, "User :", NK_TEXT_CENTERED);
-	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[2], &text_len[2], 64, nk_filter_default);
+	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[3], &text_len[3], 64, nk_filter_default);
 
 	nk_label(ctx, "Password :", NK_TEXT_CENTERED);
 	{
 		int i = 0;
-		int old_len = text_len[3];
+		int old_len = text_len[4];
 		char buffer[64];
-		for (i = 0; i < text_len[3]; ++i) buffer[i] = '*';
-		nk_edit_string(ctx, NK_EDIT_FIELD, buffer, &text_len[3], 64, nk_filter_default);
-		if (old_len < text_len[3])
-			memcpy(&input[3][old_len], &buffer[old_len], (nk_size)(text_len[3] - old_len));
+		for (i = 0; i < text_len[4]; ++i) buffer[i] = '*';
+		nk_edit_string(ctx, NK_EDIT_FIELD, buffer, &text_len[4], 64, nk_filter_default);
+		if (old_len < text_len[4])
+			memcpy(&input[4][old_len], &buffer[old_len], (nk_size)(text_len[4] - old_len));
 	}
 
 	nk_layout_row_dynamic(ctx, 25, 1);
@@ -269,16 +272,20 @@ void DrawConfigurationTab()
 		selected_tab = 1;
 
 		// Debug
-		strcpy(input[0], "localhost");
-		strcpy(input[2], "root");
+		strcpy(input[0], "www.db4free.net");
+		strcpy(input[1], "3306");
+		strcpy(input[2], "paulbenchmark");				// database
+		strcpy(input[3], "paulbenchmark");
+		strcpy(input[4], "Leaghello1*");
 
 		system("cls");
 		fprintf(stdout, "> benchmark pressed\n");
 		fprintf(stdout, "Benchmark type : %s \n", database_name[selected_database]);
 		fprintf(stdout, "Hostname : %s \n", input[0]);
 		fprintf(stdout, "Port : %s \n", input[1]);
-		fprintf(stdout, "User: %s \n", input[2]);
-		fprintf(stdout, "Password: %s \n", input[3]);
+		fprintf(stdout, "Database : %s \n", input[2]);
+		fprintf(stdout, "User: %s \n", input[3]);
+		fprintf(stdout, "Password: %s \n", input[4]);
 		fprintf(stdout, "ping comp: %d \n", checkbox_ping);
 		fprintf(stdout, "request number : %d \n", request_number);
 		fprintf(stdout, "custom script : %d \n", checkbox_custom_script);
@@ -288,8 +295,9 @@ void DrawConfigurationTab()
 		// Initialisation de la structure avec les parametres
 		db_param_buffer.hostname = input[0];
 		db_param_buffer.port = atoi(input[1]);
-		db_param_buffer.user = input[2];
-		db_param_buffer.password = input[3];
+		db_param_buffer.database = input[2];
+		db_param_buffer.user = input[3];
+		db_param_buffer.password = input[4];
 		db_param_buffer.pingCompensation = checkbox_ping;
 		db_param_buffer.request_number = request_number;
 		db_param_buffer.custom_script = checkbox_custom_script;

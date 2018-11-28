@@ -12,7 +12,7 @@ int InitMySql(struct database_params *db_param)
 
 	if (db_param->hostname == "localhost")
 	{
-		if (mysql_real_connect(connection_mysql, db_param->hostname, db_param->user, db_param->password, NULL, 0, NULL, 0) == NULL)
+		if (mysql_real_connect(connection_mysql, db_param->hostname, db_param->user, db_param->password, db_param->database, 0, NULL, 0) == NULL)
 		{
 			ConsoleOutput(mysql_error(connection_mysql), C_ERROR);
 			mysql_close(connection_mysql);
@@ -21,7 +21,7 @@ int InitMySql(struct database_params *db_param)
 	} 
 	else
 	{
-		if (mysql_real_connect(connection_mysql, db_param->hostname, db_param->user, db_param->password, NULL, db_param->port, NULL, 0) == NULL)
+		if (mysql_real_connect(connection_mysql, db_param->hostname, db_param->user, db_param->password, db_param->database, db_param->port, NULL, 0) == NULL)
 		{
 			ConsoleOutput(mysql_error(connection_mysql), C_ERROR);
 			mysql_close(connection_mysql);
@@ -116,21 +116,10 @@ double ** GetResults()
 
 int DoBenchmarkMySql()
 {
-	// On DROP la database testdb au cas ou elle existe déja
-	ConsoleOutput("Making sure testdb does not exist !", C_DEBUG);
-	CallQuery("DROP DATABASE testdb");
-	ConsoleOutput("Success !", C_SUCCESS);
-	
-	// on crée notre database de test
-	ConsoleOutput("Creating test database", C_DEBUG);
-	if (!CallQuery("CREATE DATABASE testdb"))
-		return 0;
-	ConsoleOutput("Success !", C_SUCCESS);
 
-	// On selectionne la db crée
-	ConsoleOutput("Selection de la base", C_DEBUG);
-	if(!CallQuery("USE testdb"))
-		return 0;
+	// On DROP la table testtable au cas ou elle existe déja
+	ConsoleOutput("Making sure testtable does not exist !", C_DEBUG);
+	CallQuery("DROP TABLE testtable");
 	ConsoleOutput("Success !", C_SUCCESS);
 
 	// Create table 

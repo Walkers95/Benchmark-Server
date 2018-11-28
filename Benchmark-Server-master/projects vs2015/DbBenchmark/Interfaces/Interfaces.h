@@ -8,6 +8,7 @@ struct database_params
 {
 	char* hostname;
 	int port;
+	char* database;
 	char* user;
 	char* password;
 	int pingCompensation;
