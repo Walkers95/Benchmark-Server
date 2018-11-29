@@ -1,18 +1,11 @@
-﻿  Console.c
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(60): warning C4090: 'fonction' : qualificateurs 'const' différents
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(70): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\console\console.c(73): warning C4090: 'fonction' : qualificateurs 'const' différents
-  mysql_interface.c
+﻿  mysql_interface.c
 c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan' : redéfinition de macro
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\corecrt_math.h(276): note: voir la définition précédente de 'isnan'
-  oracle_interface.c
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan' : redéfinition de macro
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\corecrt_math.h(276): note: voir la définition précédente de 'isnan'
-  main.c
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan' : redéfinition de macro
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\corecrt_math.h(276): note: voir la définition précédente de 'isnan'
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\sdl2-2.0.8\include\sdl_config.h(178): warning C4005: 'HAVE_STDDEF_H' : redéfinition de macro
-  c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(313): note: voir la définition précédente de 'HAVE_STDDEF_H'
+c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\mysql_interface.c(110): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\mysql_interface.c(142): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\mysql_interface.c(180): warning C4473: 'printf' : nombre insuffisant d'arguments passés pour la chaîne de format
+  c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\mysql_interface.c(180): note: les espaces réservés et leurs paramètres attendent des arguments 2 variadiques, mais des arguments 1 ont été fournis
+  c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\mysql_interface.c(180): note: l'argument variadique manquant 2 est demandé par la chaîne de format '%n'
   Render.c
 c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan' : redéfinition de macro
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\corecrt_math.h(276): note: voir la définition précédente de 'isnan'
@@ -21,20 +14,14 @@ c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs201
 c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(101): warning C4244: 'fonction' : conversion de 'int' en 'float', perte possible de données
 c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(169): warning C4098: 'Render' : fonction 'void' retournant une valeur
 c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(262): warning C4133: 'fonction' : types incompatibles - de 'int *' à 'nk_size *'
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(315): warning C4090: 'fonction' : qualificateurs 'const' différents
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(348): warning C4305: 'fonction' : troncation de 'double' à 'float'
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(350): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(351): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
+c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(314): warning C4090: 'fonction' : qualificateurs 'const' différents
+c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(350): warning C4305: 'fonction' : troncation de 'double' à 'float'
 c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(352): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(355): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(356): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(413): warning C4305: 'fonction' : troncation de 'double' à 'float'
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(415): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-  ThreadManager.c
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan' : redéfinition de macro
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\corecrt_math.h(276): note: voir la définition précédente de 'isnan'
-c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\sdl2-2.0.8\include\sdl_config.h(178): warning C4005: 'HAVE_STDDEF_H' : redéfinition de macro
-  c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(313): note: voir la définition précédente de 'HAVE_STDDEF_H'
-  Utils.c
+c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(353): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
+c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(354): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
+c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(357): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
+c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(358): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
+c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(415): warning C4305: 'fonction' : troncation de 'double' à 'float'
+c:\users\paul\source\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(417): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
   Génération de code en cours...
   DbBenchmark.vcxproj -> C:\Users\Paul\source\GIT\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Debug\DbBenchmark.exe

@@ -1,5 +1,6 @@
 #pragma once
 #include "../Main/Includes.h"
+#include "../Utils/Utils.h"
 
 const enum output_types
 {

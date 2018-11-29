@@ -29,22 +29,7 @@ int InitMySql(struct database_params *db_param)
 		}
 	}
 
-	// Init benchmark result
-	benchmark_result = malloc(sizeof(double*) * 2);
-	for (int i = 0; i < 2; i++)
-	{
-		benchmark_result[i] = malloc(sizeof(double) * db_param->request_number);
-	}
 
-	param_request_number = db_param->request_number;
-	param_ping = db_param->pingCompensation;
-	param_custom_script = db_param->custom_script;
-
-	if (param_custom_script)
-	{
-		param_script_read = db_param->script_read;
-		param_script_write = db_param->scrit_write;
-	}
 
 	return 1;
 }
@@ -57,7 +42,7 @@ void FinishWithError()
 	fgets(NULL, 0, stdin);
 }
 
-void ClearResults()
+void ClearMySqlResults()
 {
 	// Clearing results
 	MYSQL_RES *results;
@@ -74,48 +59,19 @@ int CallQuery(const char * query)
 	return 1;
 }
 
-double GetMinValueOfResults(double** results) {
-	double min = 1.00f;
 
+
+int DoBenchmarkMySql(struct database_params *db_param)
+{
+	float score = 0;
+	double **benchmark_result = NULL;
+
+	// Init benchmark result
+	benchmark_result = Malloc(sizeof(double*) * 2);
 	for (int i = 0; i < 2; i++)
 	{
-		for (int j = 0; j < param_request_number; j++)
-		{
-			if (results[i][j] != 0 && results[i][j] < min)
-			{
-				min = results[i][j];
-			}
-		}
+		benchmark_result[i] = Malloc(sizeof(double) * db_param->request_number);
 	}
-
-	return min;
-}
-
-double GetMaxValueOfResults(double** results) {
-	double max = 0.0f;
-
-	for (int i = 0; i < 2; i++)
-	{
-		for (int j = 0; j < param_request_number; j++)
-		{
-			if (results[i][j] > max)
-			{
-				max = results[i][j];
-			}
-		}
-	}
-
-	return max;
-}
-
-double ** GetResults()
-{
-	return benchmark_result;
-}
-
-
-int DoBenchmarkMySql()
-{
 
 	// On DROP la table testtable au cas ou elle existe déja
 	ConsoleOutput("Making sure testtable does not exist !", C_DEBUG);
@@ -132,14 +88,14 @@ int DoBenchmarkMySql()
 
 	// WRITE BENCHMARK
 	ConsoleOutput("Starting Write Benchmark", C_DEBUG);
-	for (int i = 0; i < param_request_number; i++)
+	for (int i = 0; i < db_param->request_number; i++)
 	{
 		QueryPerformanceFrequency(&frequency);
 
-		if (param_custom_script)
+		if (db_param->custom_script)
 		{
 			QueryPerformanceCounter(&t1); // GET TIME BEFORE
-			CallQuery(param_script_write);
+			CallQuery(db_param->scrit_write);
 			QueryPerformanceCounter(&t2); // GET TIME AFTER
 		}
 		else 
@@ -151,6 +107,7 @@ int DoBenchmarkMySql()
 	
 		elapsedTime = ((t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart);
 		ConsoleOutputValue("Write", elapsedTime);
+		score += 1 / (elapsedTime / 1000);
 	
 		// Save time 
 		benchmark_result[0][i] = elapsedTime;
@@ -162,14 +119,14 @@ int DoBenchmarkMySql()
 
 	// READ BENCHMARCK
 	ConsoleOutput("Starting Read Benchmark", C_DEBUG);
-	for (int i = 0; i < param_request_number; i++)
+	for (int i = 0; i < db_param->request_number; i++)
 	{
 		QueryPerformanceFrequency(&frequency);
 		
-		if (param_custom_script)
+		if (db_param->custom_script)
 		{
 			QueryPerformanceCounter(&t1); // GET TIME BEFORE
-			CallQuery(param_script_read);
+			CallQuery(db_param->script_read);
 			QueryPerformanceCounter(&t2); // GET TIME AFTER
 		}
 		else
@@ -182,14 +139,15 @@ int DoBenchmarkMySql()
 
 		elapsedTime = ((t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart);
 		ConsoleOutputValue("Read", elapsedTime);
-	
-		ClearResults();
+		score += 1 / (elapsedTime / 1000);
+
+		ClearMySqlResults();
 
 		// Save time 
 		benchmark_result[1][i] = elapsedTime;
 	}
 
-	if (param_ping == 1)
+	if (db_param->pingCompensation == 1)
 	{
 		QueryPerformanceFrequency(&frequency);
 		// GET TIME BEFORE
@@ -198,14 +156,30 @@ int DoBenchmarkMySql()
 		// GET TIME AFTER
 		QueryPerformanceCounter(&t2);
 
-		ClearResults();
+		ClearMySqlResults();
 
 		pingLatency = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
 		printf("ping latency : %lf \n", pingLatency);
+
+		for (int j = 0; j < 2; j++)
+		{
+			for (int i = 0; i < db_param->request_number;i++)
+			{
+				benchmark_result[j][i] -= pingLatency;
+			}
+		}
+
 	}
 
 
+	score /= db_param->request_number;
+	SetRequestNumber(db_param->request_number);
+	SetScore(score);
+	SetResults(benchmark_result);
+
+	printf("Score : %f %n", score);
 	ConsoleOutput("Success !", C_SUCCESS);
+
 
 
 

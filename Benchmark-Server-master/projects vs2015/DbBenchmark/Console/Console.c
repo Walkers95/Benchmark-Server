@@ -5,7 +5,7 @@ int InitConsole()
 {
 	printf("> Console initialisation \n");
 
-	consData.text = malloc(1);
+	consData.text = Malloc(1);
 
 	if (!consData.text)
 		return 0;
@@ -20,10 +20,10 @@ int InitConsole()
 
 void ConsoleOutputValue(const char * text, double value)
 {
-	char *double_buffer = malloc(255);
+	char *double_buffer = Malloc(255);
 	sprintf(double_buffer, " : %lf ms", value);
 
-	char* buffer = malloc(strlen(text) + strlen(double_buffer));;
+	char* buffer = Malloc(strlen(text) + strlen(double_buffer));;
 	strcpy(buffer, text);
 	strcat(buffer, double_buffer);
 	free(double_buffer);
@@ -33,20 +33,21 @@ void ConsoleOutputValue(const char * text, double value)
 
 void ConsoleOutput(const char * text, enum output_type type)
 {
+
 	char *line_intro = NULL;
 
 	switch (type)
 	{
 	case C_ERROR:
-		line_intro = malloc(11);
+		line_intro = Malloc(11);
 		strcpy(line_intro,"[ERROR] > ");
 		break;
 	case C_DEBUG:
-		line_intro = malloc(11);
+		line_intro = Malloc(11);
 		strcpy(line_intro, "[DEBUG] > ");
 		break;
 	case C_SUCCESS:
-		line_intro = malloc(13);
+		line_intro = Malloc(13);
 		strcpy(line_intro, "[SUCCESS] > ");
 		break;
 	}
@@ -56,12 +57,12 @@ void ConsoleOutput(const char * text, enum output_type type)
 
 	size_t newSize = consData.length + textSize + line_intro_size + 1; // Ajout 1 pour \n
 
-	const char* oldText = malloc(consData.length); 
+	const char* oldText = Malloc(consData.length);
 	strcpy(oldText,consData.text);
 
 	free(consData.text);
 
-	consData.text = malloc(newSize);
+	consData.text = Malloc(newSize);
 	strcpy(consData.text, line_intro);
 	strcat(consData.text, text);
 	strcat(consData.text, "\n");
@@ -81,7 +82,7 @@ struct console_data GetConsoleData()
 
 void ClearConsole()
 {
-	realloc(consData.text, 2);
-	consData.length = 2;
+	consData.text = Malloc(1);
+	consData.length = 1;
 	strcpy(consData.text, "");
 }

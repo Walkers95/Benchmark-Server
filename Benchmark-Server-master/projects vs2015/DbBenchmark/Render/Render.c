@@ -58,7 +58,7 @@ void InitialiseRender()
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 	win = SDL_CreateWindow("Demo",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI);
+		WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_OPENGL  | SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI);
 	glContext = SDL_GL_CreateContext(win);
 	SDL_GetWindowSize(win, &win_width, &win_height);
 
@@ -98,7 +98,7 @@ void Render()
 		nk_input_end(ctx);
 		
 		/* GUI */
-		if (nk_begin(ctx, "Demo", nk_rect(0, 0, win_width, win_height), NK_WINDOW_BACKGROUND))
+		if (nk_begin(ctx, "Demo", nk_rect(0, 0, win_width, win_height), NK_WINDOW_BACKGROUND  ))
 		{
 			
 			nk_layout_row_dynamic(ctx, 10, 1);
@@ -136,11 +136,11 @@ void Render()
 				DrawConsoleTab(ctx);
 			}
 
-			// Chart Draw
+			// Results Draw
 			if (selected_tab == 2)
 			{
 				if (SDL_ShowCursor(0));
-				DrawChartTab(ctx);
+				DrawResultsTab(ctx);
 			}
 
 		}
@@ -237,7 +237,7 @@ void DrawConfigurationTab()
 	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[1], &text_len[1], 64, nk_filter_decimal);
 
 	nk_label(ctx, "Database :", NK_TEXT_CENTERED);
-	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[2], &text_len[2], 64, nk_filter_decimal);
+	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[2], &text_len[2], 64, nk_filter_default);
 
 	nk_label(ctx, "User :", NK_TEXT_CENTERED);
 	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[3], &text_len[3], 64, nk_filter_default);
@@ -268,15 +268,14 @@ void DrawConfigurationTab()
 	nk_spacing(ctx, 1);
 	if (nk_button_label(ctx, "Benchmark !"))
 	{
-
 		selected_tab = 1;
 
-		// Debug
-		strcpy(input[0], "www.db4free.net");
-		strcpy(input[1], "3306");
-		strcpy(input[2], "paulbenchmark");				// database
-		strcpy(input[3], "paulbenchmark");
-		strcpy(input[4], "Leaghello1*");
+		//// Debug
+		//strcpy(input[0], "www.db4free.net");
+		//strcpy(input[1], "3306");
+		//strcpy(input[2], "paulbenchmark");				// database
+		//strcpy(input[3], "paulbenchmark");
+		//strcpy(input[4], "Leaghello1*");
 
 		system("cls");
 		fprintf(stdout, "> benchmark pressed\n");
@@ -291,7 +290,6 @@ void DrawConfigurationTab()
 		fprintf(stdout, "custom script : %d \n", checkbox_custom_script);
 		fprintf(stdout, "multi threads : %d \n", checkbox_threads);
 		
-
 
 		// Initialisation de la structure avec les parametres
 		db_param_buffer.hostname = input[0];
@@ -310,7 +308,7 @@ void DrawConfigurationTab()
 			db_param_buffer.scrit_write = "INSERT INTO testtable(int_test, text_test) VALUES(2,'nn')";// LoadTextFromFile(box_buffer_write);
 		}
 		
-		db_Param = malloc(sizeof(db_Param));
+		db_Param = Malloc(sizeof(db_Param));
 		db_Param = &db_param_buffer;
 		
 		StartBenchmarkThread(db_Param, database_name[selected_database]);
@@ -319,19 +317,22 @@ void DrawConfigurationTab()
 	nk_spacing(ctx, 1);
 }
 
-void DrawChartTab()
+void DrawResultsTab()
 {
-	
-	float id = 0;
+
 	int i;
 	struct nk_rect bounds;
 
-	double** results = GetResults();
+	float score = GetScore();
 
-	if (results != NULL)
+	if (score != 0.00f)
 	{
-		nk_layout_row_dynamic(ctx, 25, 2);
+
+		double** results = GetChartResults();
+
+		nk_layout_row_dynamic(ctx, 25, 3);
 		nk_label_colored(ctx, "Read", NK_TEXT_CENTERED, nk_rgb(0, 131, 255));
+		nk_labelf_colored(ctx, NK_TEXT_CENTERED,nk_rgb(255,255,0), "Score : %.0f ", score );
 		nk_label_colored(ctx, "Write", NK_TEXT_CENTERED, nk_rgb(255, 0, 0));
 
 
