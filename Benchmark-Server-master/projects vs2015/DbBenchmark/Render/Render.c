@@ -290,6 +290,7 @@ void DrawConfigurationTab()
 		fprintf(stdout, "request number : %d \n", request_number);
 		fprintf(stdout, "custom script : %d \n", checkbox_custom_script);
 		fprintf(stdout, "multi threads : %d \n", checkbox_threads);
+		
 
 
 		// Initialisation de la structure avec les parametres
