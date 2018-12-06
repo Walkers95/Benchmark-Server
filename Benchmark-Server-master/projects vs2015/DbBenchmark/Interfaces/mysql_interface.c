@@ -1,6 +1,6 @@
 #include "mysql_interface.h"
 
-int InitMySql(struct database_params *db_param)
+int InitMySql(struct database_benchmark_params *db_param)
 {
 	connection_mysql = mysql_init(NULL);
 
@@ -45,7 +45,7 @@ void FinishWithError()
 void ClearMySqlResults()
 {
 	// Clearing results
-	MYSQL_RES *results;
+	MYSQL_RES *results = NULL;
 	results = mysql_store_result(connection_mysql);
 	mysql_free_result(results);
 }
@@ -61,7 +61,7 @@ int CallQuery(const char * query)
 
 
 
-int DoBenchmarkMySql(struct database_params *db_param)
+int DoBenchmarkMySql(struct database_benchmark_params *db_param)
 {
 	float score = 0;
 	double **benchmark_result = NULL;
@@ -181,7 +181,46 @@ int DoBenchmarkMySql(struct database_params *db_param)
 	ConsoleOutput("Success !", C_SUCCESS);
 
 
+	mysql_close(connection_mysql);
+	return 1;
+}
 
+int Login(struct database_login_params *db_login)
+{
+	struct database_benchmark_params* db_param = Malloc(sizeof(struct database_benchmark_params));
+	db_param->hostname = "localhost";
+	db_param->user = "root";
+	db_param->password = "";
+	db_param->database = "DBBenchmark";
+	
+	if (!InitMySql(db_param))
+	{
+		return 0;
+	}
+
+	char request[255];
+	sprintf(request, "SELECT ID FROM users WHERE name = '%s' AND password = '%s'", db_login->user, db_login->password);
+
+	CallQuery(request);
+	MYSQL_RES *results = NULL;
+	results = mysql_store_result(connection_mysql);
+
+	ClearMySqlResults();
+	mysql_close(connection_mysql);
+
+	if (results == NULL)
+		return 0;
+
+	int user_id = 0;
+	MYSQL_ROW* row = NULL;
+	while (row = mysql_fetch_row(results))
+	{
+		user_id = atoi(row[0]);
+		printf("User id : %d", user_id);
+	}
+
+	if (!user_id)
+		return 0;
 
 	return 1;
 }

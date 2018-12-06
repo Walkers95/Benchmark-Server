@@ -15,7 +15,7 @@ LARGE_INTEGER t1, t2;
 double elapsedTime;
 double pingLatency;
 
-int InitMySql(struct database_params *db_param);
+int InitMySql(struct database_benchmark_params *db_param);
 
 void FinishWithError();
 void ClearMySqlResults();
@@ -25,4 +25,5 @@ double GetMinValueOfResults(double** results);
 double GetMaxValueOfResults(double** results);
 double** GetChartResults();
 
-int DoBenchmarkMySql(struct database_params *db_param);
+int DoBenchmarkMySql(struct database_benchmark_params *db_param);
+int Login(struct database_login_params *db_login);

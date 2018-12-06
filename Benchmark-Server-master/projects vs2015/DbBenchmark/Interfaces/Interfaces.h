@@ -4,7 +4,13 @@
 
 #include "../Console/Console.h"
 
-struct database_params
+struct database_login_params
+{
+	char* user;
+	char* password;
+};
+
+struct database_benchmark_params
 {
 	char* hostname;
 	int port;

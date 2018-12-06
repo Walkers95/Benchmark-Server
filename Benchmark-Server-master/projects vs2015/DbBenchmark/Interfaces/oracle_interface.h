@@ -8,6 +8,6 @@ OCI_Connection* connection_oracle;
 OCI_Statement* statement;
 OCI_Resultset* result;
 
-void InitOracle(struct database_params *db_param);
+void InitOracle(struct database_benchmark_params *db_param);
 
 void DoBenchmarkOracle();

@@ -6,7 +6,7 @@
 void InitialiseRender();
 void Render();
 
-
+void DrawLoginTab();
 void DrawConfigurationTab();
 void DrawResultsTab();
 void DrawConsoleTab();

@@ -4,16 +4,16 @@
 int InitConsole()
 {
 	printf("> Console initialisation \n");
+	consData = Malloc(sizeof(struct console_data));
+	consData->text = Malloc(1);
 
-	consData.text = Malloc(1);
-
-	if (!consData.text)
+	if (!consData->text)
 		return 0;
 
-	strcpy(consData.text, "");
-	consData.length = 1;
+	strcpy(consData->text, "");
+	consData->length = 1;
 
-	consData.type = 1;
+	consData->type = 1;
 
 	return 1;
 }
@@ -33,6 +33,11 @@ void ConsoleOutputValue(const char * text, double value)
 
 void ConsoleOutput(const char * text, enum output_type type)
 {
+	if (consData->length > 8096 * 20)
+	{
+		ClearConsole();
+	}
+
 
 	char *line_intro = NULL;
 
@@ -55,34 +60,35 @@ void ConsoleOutput(const char * text, enum output_type type)
 	size_t textSize = strlen(text);
 	size_t line_intro_size = strlen(line_intro);
 
-	size_t newSize = consData.length + textSize + line_intro_size + 1; // Ajout 1 pour \n
+	size_t newSize = consData->length + textSize + line_intro_size + 1; // Ajout 1 pour \n
 
-	const char* oldText = Malloc(consData.length);
-	strcpy(oldText,consData.text);
+	const char* oldText = Malloc(consData->length);
+	strcpy(oldText,consData->text);
 
-	free(consData.text);
+	free(consData->text);
 
-	consData.text = Malloc(newSize);
-	strcpy(consData.text, line_intro);
-	strcat(consData.text, text);
-	strcat(consData.text, "\n");
-	strcat(consData.text, oldText);
+	consData->text = Malloc(newSize);
+	strcpy(consData->text, line_intro);
+	strcat(consData->text, text);
+	strcat(consData->text, "\n");
+	strcat(consData->text, oldText);
 
-	consData.length = newSize;
-	consData.type = type;
+	consData->length = newSize;
+	consData->type = type;
 
 	free(oldText);
 	free(line_intro);
 }
 
-struct console_data GetConsoleData()
+struct console_data* GetConsoleData()
 {
 	return consData;
 }
 
 void ClearConsole()
 {
-	consData.text = Malloc(1);
-	consData.length = 1;
-	strcpy(consData.text, "");
+	printf("Text avant : %s", consData->text);
+	strcpy(consData->text, " ");
+	consData->length = 2;
+	printf("Text apres : %s", consData->text);
 }

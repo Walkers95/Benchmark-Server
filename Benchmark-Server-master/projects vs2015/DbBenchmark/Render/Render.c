@@ -45,6 +45,7 @@ int running = 1;
 struct nk_context *ctx;
 struct nk_colorf bg;
 
+
 void InitialiseRender()
 {
 
@@ -76,12 +77,13 @@ void InitialiseRender()
 	nk_style_set_font(ctx, &roboto->handle); }
 
 	SetStyle(ctx);
-
+	
 	bg.r = 0.10f, bg.g = 0.18f, bg.b = 0.24f, bg.a = 1.0f;
 }
 
 
 static int selected_tab = 0;
+static int is_logged_in = 0;
 
 void Render()
 {
@@ -100,48 +102,70 @@ void Render()
 		/* GUI */
 		if (nk_begin(ctx, "Demo", nk_rect(0, 0, win_width, win_height), NK_WINDOW_BACKGROUND  ))
 		{
-			
+
 			nk_layout_row_dynamic(ctx, 10, 1);
 			nk_spacing(ctx, 1);
 
-			nk_layout_row_dynamic(ctx, 30, 3);
-			if (nk_button_label(ctx, "Configuration"))
-			{
-				selected_tab = 0;
-			}
-			if (nk_button_label(ctx, "Console"))
-			{
-				selected_tab = 1;
-			}
-			if (nk_button_label(ctx, "Results Chart"))
-			{
-				selected_tab = 2;
-			}
 
-			nk_layout_row_dynamic(ctx, 8, 1);
-			nk_spacing(ctx, 2);
-
-
-			// Configuration Draw
-			if (selected_tab == 0)
+			if (!is_logged_in)
 			{
-				if (SDL_ShowCursor(0));
-				DrawConfigurationTab(ctx);
+				DrawLoginTab();
 			}
-
-			// Console Draw
-			if (selected_tab == 1)
+			else
 			{
-				if (!SDL_ShowCursor(1));
-				DrawConsoleTab(ctx);
-			}
 
-			// Results Draw
-			if (selected_tab == 2)
-			{
-				if (SDL_ShowCursor(0));
-				DrawResultsTab(ctx);
+				nk_layout_row_dynamic(ctx, 30, 4);
+				if (nk_button_label(ctx, "Configuration"))
+				{
+					selected_tab = 0;
+				}
+				if (nk_button_label(ctx, "My account"))
+				{
+					selected_tab = 1;
+				}
+				if (nk_button_label(ctx, "Console"))
+				{
+					selected_tab = 2;
+				}
+				if (nk_button_label(ctx, "Results Chart"))
+				{
+					selected_tab = 3;
+				}
+
+				nk_layout_row_dynamic(ctx, 8, 1);
+				nk_spacing(ctx, 2);
+
+
+				// Configuration Draw
+				if (selected_tab == 0)
+				{
+					if (SDL_ShowCursor(0));
+					DrawConfigurationTab(ctx);
+				}
+
+				// account Draw
+				if (selected_tab == 1)
+				{
+					if (SDL_ShowCursor(0));
+
+				}
+
+				// Console Draw
+				if (selected_tab == 2)
+				{
+					if (!SDL_ShowCursor(1));
+					DrawConsoleTab(ctx);
+				}
+
+				// Results Draw
+				if (selected_tab == 3)
+				{
+					if (SDL_ShowCursor(0));
+					DrawResultsTab(ctx);
+				}
+
 			}
+			
 
 		}
 		nk_end(ctx);
@@ -169,8 +193,76 @@ cleanup:
 	return 0;
 }
 
-struct database_params db_param_buffer;
-struct database_params *db_Param;
+
+int show_message_error = 0;
+
+void DrawLoginTab() 
+{
+	if (SDL_ShowCursor(0));
+
+	static char input[2][64];
+	static int text_len[2];
+	
+
+	nk_layout_row_dynamic(ctx, (WINDOW_HEIGHT / 9), 1);
+	nk_spacing(ctx, 1);
+
+	if (show_message_error)
+	{
+		nk_layout_row_dynamic(ctx, 30, 1);
+		nk_labelf_colored(ctx, NK_TEXT_CENTERED, nk_rgb(255, 0, 0), "Wrong user or password !");
+	}
+
+	nk_layout_row_dynamic(ctx, 30, 1);
+	nk_label(ctx, "User :", NK_TEXT_CENTERED);
+
+	nk_layout_row_dynamic(ctx, 25, 3);
+	nk_spacing(ctx, 1);
+	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[0], &text_len[0], 64, nk_filter_default);
+	nk_spacing(ctx, 1);
+
+	nk_layout_row_dynamic(ctx, 30, 1);
+	nk_label(ctx, "Password :", NK_TEXT_CENTERED);
+
+	nk_layout_row_dynamic(ctx, 25, 3);
+	nk_spacing(ctx, 1);
+	int i = 0;
+	int old_len = text_len[1];
+	char buffer[64];
+	for (i = 0; i < text_len[1]; ++i) buffer[i] = '*';
+	nk_edit_string(ctx, NK_EDIT_FIELD, buffer, &text_len[1], 64, nk_filter_default);
+	if (old_len < text_len[1])
+		memcpy(&input[1][old_len], &buffer[old_len], (nk_size)(text_len[1] - old_len));
+	nk_spacing(ctx, 1);
+
+
+	nk_layout_row_dynamic(ctx, 30, 3);
+	nk_spacing(ctx, 1);
+	if (nk_button_label(ctx, "Login"))
+	{
+		struct database_login_params *db_login = Malloc(sizeof(struct database_login_params));
+		db_login->user = Malloc(255);
+		db_login->password = Malloc(255);
+
+		strncpy(db_login->user, input[0], text_len[0]);
+		strncpy(db_login->password, input[1], text_len[1]);
+
+
+		if (Login(db_login))
+		{
+			is_logged_in = 1;
+		}
+		else
+		{
+			show_message_error = 1;
+		}
+		
+	}
+	nk_spacing(ctx, 1);
+}
+
+struct database_benchmark_params db_param_buffer;
+struct database_benchmark_params *db_Param;
 
 void DrawConfigurationTab()
 {
@@ -270,12 +362,12 @@ void DrawConfigurationTab()
 	{
 		selected_tab = 1;
 
-		//// Debug
-		//strcpy(input[0], "www.db4free.net");
-		//strcpy(input[1], "3306");
-		//strcpy(input[2], "paulbenchmark");				// database
-		//strcpy(input[3], "paulbenchmark");
-		//strcpy(input[4], "Leaghello1*");
+		// Debug
+		strcpy(input[0], "www.db4free.net");
+		strcpy(input[1], "3306");
+		strcpy(input[2], "paulbenchmark");				// database
+		strcpy(input[3], "paulbenchmark");
+		strcpy(input[4], "Leaghello1*");
 
 		system("cls");
 		fprintf(stdout, "> benchmark pressed\n");
@@ -392,10 +484,10 @@ void DrawConsoleTab()
 	int box_len_read;
 
 	// Get data from console
-	struct console_data consData = GetConsoleData();
+	struct console_data *consData = GetConsoleData();
 
 	static struct nk_color color;
-	switch (consData.type)
+	switch (consData->type)
 	{
 	case C_ERROR:
 		color = (struct nk_color){ 255,0,0,255 };
@@ -408,8 +500,8 @@ void DrawConsoleTab()
 		break;
 	}
 
-	box_buffer_read = consData.text;
-	box_len_read = consData.length;
+	box_buffer_read = consData->text;
+	box_len_read = consData->length;
 
 
 	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.8, 1);

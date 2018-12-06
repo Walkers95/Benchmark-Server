@@ -1,6 +1,6 @@
 #include "oracle_interface.h"
 
-void InitOracle(struct database_params *db_param)
+void InitOracle(struct database_benchmark_params *db_param)
 {
 
 	OCI_Initialize(NULL, NULL, OCI_ENV_DEFAULT);

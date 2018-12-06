@@ -6,9 +6,9 @@ SDL_Thread *oracle_thread = NULL;
 int MySqlThread(void * data)
 {
 	ConsoleOutput("Init database for : MySql", C_DEBUG);
-	if (InitMySql((struct database_params*)data))
+	if (InitMySql((struct database_benchmark_params*)data))
 	{
-		if (!DoBenchmarkMySql((struct database_params*)data))
+		if (!DoBenchmarkMySql((struct database_benchmark_params*)data))
 		{
 			ConsoleOutput("Failed to run benchmark !", C_ERROR);
 		}
@@ -29,7 +29,7 @@ int OracleThread(void * data)
 	return 0;
 }
 
-void StartBenchmarkThread(struct database_params *db_param, char * dbType)
+void StartBenchmarkThread(struct database_benchmark_params *db_param, char * dbType)
 {
 
 	// Initialise

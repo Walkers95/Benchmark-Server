@@ -12,5 +12,5 @@
 int MySqlThread(void* data);
 int OracleThread(void* data);
 
-void StartBenchmarkThread(struct database_params *db_param, char* dbType);
+void StartBenchmarkThread(struct database_benchmark_params *db_param, char* dbType);
 void StartQueryThread();
