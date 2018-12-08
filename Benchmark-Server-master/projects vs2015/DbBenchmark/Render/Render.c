@@ -146,8 +146,8 @@ void Render()
 				// account Draw
 				if (selected_tab == 1)
 				{
-					if (SDL_ShowCursor(0));
-
+					if (!SDL_ShowCursor(1));
+					DrawAccountTab();
 				}
 
 				// Console Draw
@@ -193,7 +193,7 @@ cleanup:
 	return 0;
 }
 
-
+int *selectedBenchmark = NULL;
 int show_message_error = 0;
 
 void DrawLoginTab() 
@@ -248,9 +248,10 @@ void DrawLoginTab()
 		strncpy(db_login->password, input[1], text_len[1]);
 
 
-		if (Login(db_login))
+		if (LoginUser(db_login))
 		{
 			is_logged_in = 1;
+			selectedBenchmark = Malloc(sizeof(int) * GetUserBenchmarkCount() );
 		}
 		else
 		{
@@ -260,6 +261,9 @@ void DrawLoginTab()
 	}
 	nk_spacing(ctx, 1);
 }
+
+
+
 
 struct database_benchmark_params db_param_buffer;
 struct database_benchmark_params *db_Param;
@@ -360,7 +364,7 @@ void DrawConfigurationTab()
 	nk_spacing(ctx, 1);
 	if (nk_button_label(ctx, "Benchmark !"))
 	{
-		selected_tab = 1;
+		selected_tab = 2;
 
 		// Debug
 		strcpy(input[0], "www.db4free.net");
@@ -409,6 +413,105 @@ void DrawConfigurationTab()
 	nk_spacing(ctx, 1);
 }
 
+int selected_item = -1;
+
+void DrawAccountTab()
+{
+	nk_layout_row_dynamic(ctx, 25, 3);
+	nk_button_label(ctx, "Download");
+	nk_button_label(ctx, "View");
+	nk_button_label(ctx, "Delete");
+
+	nk_layout_row_dynamic(ctx, 5, 1);
+	nk_spacing(ctx, 1);
+
+	nk_layout_row_static(ctx, WINDOW_HEIGHT * 0.67, WINDOW_WIDTH / 2.02, 2);
+	if (nk_group_begin_titled(ctx, "Group_Without_Border", "Your benchmark :", NK_WINDOW_TITLE)) {
+		
+
+		nk_layout_row_dynamic(ctx, 25, 1);
+		for (int i = 0; i < GetUserBenchmarkCount(); i++)
+		{
+			char buffer[255];
+			struct database_user_records* user_records = GetUserBenchmarkData()[i];
+			// ajouter score
+			sprintf(buffer, "%s : %s (%s,%d,%s,%s) with %d requests", 
+				user_records->date,
+				user_records->databaseType,
+				user_records->db_param->hostname,
+				user_records->db_param->port,
+				user_records->db_param->user,
+				user_records->db_param->database,
+				user_records->db_param->request_number
+				);
+
+			if (nk_selectable_label(ctx, buffer, NK_TEXT_ALIGN_LEFT, &selectedBenchmark[i]))
+			{
+				printf("Select item %d \n", i);
+				selected_item = i;
+			}
+			
+		}
+
+		nk_layout_row_static(ctx, WINDOW_HEIGHT * 20, WINDOW_WIDTH * 0.7, 1);
+		nk_group_end(ctx);
+	}
+
+	
+	if (selected_item != -1)
+	{
+
+		if (nk_group_begin_titled(ctx, "Group_Without_Border", "Benchmark request :", NK_WINDOW_TITLE)) {
+
+			nk_label(ctx, "requete", NK_TEXT_ALIGN_LEFT);
+
+			nk_group_end(ctx);
+		}
+	}
+	else
+	{
+		nk_label_colored(ctx, "Select a benchmark", NK_TEXT_CENTERED, nk_rgb(255, 255, 0));
+	}
+	
+}
+
+void DrawConsoleTab()
+{
+
+	char *box_buffer_read;
+	int box_len_read;
+
+	// Get data from console
+	struct console_data *consData = GetConsoleData();
+
+	static struct nk_color color;
+	switch (consData->type)
+	{
+	case C_ERROR:
+		color = (struct nk_color){ 255,0,0,255 };
+		break;
+	case C_DEBUG:
+		color = (struct nk_color) { 255, 255, 0, 255 };
+		break;
+	case C_SUCCESS:
+		color = (struct nk_color) { 0, 255, 0, 255 };
+		break;
+	}
+
+	box_buffer_read = consData->text;
+	box_len_read = consData->length;
+
+
+	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.8, 1);
+	if (nk_group_begin_titled(ctx, "Group_Without_Border","Output console :", NK_WINDOW_TITLE)) {
+		nk_layout_row_static(ctx, WINDOW_HEIGHT * 20, WINDOW_WIDTH * 0.8, 1);
+		nk_label_colored_multiline(ctx, box_buffer_read, color);
+		nk_group_end(ctx);
+	}
+}
+
+
+
 void DrawResultsTab()
 {
 
@@ -424,7 +527,7 @@ void DrawResultsTab()
 
 		nk_layout_row_dynamic(ctx, 25, 3);
 		nk_label_colored(ctx, "Read", NK_TEXT_CENTERED, nk_rgb(0, 131, 255));
-		nk_labelf_colored(ctx, NK_TEXT_CENTERED,nk_rgb(255,255,0), "Score : %.0f ", score );
+		nk_labelf_colored(ctx, NK_TEXT_CENTERED, nk_rgb(255, 255, 0), "Score : %.0f ", score);
 		nk_label_colored(ctx, "Write", NK_TEXT_CENTERED, nk_rgb(255, 0, 0));
 
 
@@ -434,10 +537,10 @@ void DrawResultsTab()
 		double chartMaxValue = GetMaxValueOfResults(results);
 		double chartMinValue = GetMinValueOfResults(results);
 
-		if(GetAsyncKeyState(VK_NUMPAD0)&1)
+		if (GetAsyncKeyState(VK_NUMPAD0) & 1)
 			printf("chartMinValue : %lf \n", chartMinValue);
 
-		
+
 		/* mixed colored chart */
 		nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.7, 1);
 		bounds = nk_widget_bounds(ctx);
@@ -473,43 +576,9 @@ void DrawResultsTab()
 	{
 		nk_label(ctx, "No benchmark has been launched yet !", NK_TEXT_CENTERED);
 	}
-	
+
 }
 
-
-void DrawConsoleTab()
-{
-
-	char *box_buffer_read;
-	int box_len_read;
-
-	// Get data from console
-	struct console_data *consData = GetConsoleData();
-
-	static struct nk_color color;
-	switch (consData->type)
-	{
-	case C_ERROR:
-		color = (struct nk_color){ 255,0,0,255 };
-		break;
-	case C_DEBUG:
-		color = (struct nk_color) { 255, 255, 0, 255 };
-		break;
-	case C_SUCCESS:
-		color = (struct nk_color) { 0, 255, 0, 255 };
-		break;
-	}
-
-	box_buffer_read = consData->text;
-	box_len_read = consData->length;
-
-
-	nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.8, 1);
-	if (nk_group_begin_titled(ctx, "Group_Without_Border","Output console :", NK_WINDOW_TITLE)) {
-		nk_layout_row_static(ctx, WINDOW_HEIGHT * 20, WINDOW_WIDTH * 0.8, 1);
-		nk_label_colored_multiline(ctx, box_buffer_read, color);
-	}
-}
 
 void SetStyle()
 {

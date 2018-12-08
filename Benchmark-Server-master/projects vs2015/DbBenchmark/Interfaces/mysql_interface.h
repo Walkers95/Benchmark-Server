@@ -26,4 +26,6 @@ double GetMaxValueOfResults(double** results);
 double** GetChartResults();
 
 int DoBenchmarkMySql(struct database_benchmark_params *db_param);
-int Login(struct database_login_params *db_login);
+
+
+

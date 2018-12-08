@@ -1,6 +1,7 @@
 #pragma once
 #include "mysql_interface.h"
 #include "oracle_interface.h"
+#include "user_interface.h"
 
 #include "../Console/Console.h"
 
@@ -24,3 +25,12 @@ struct database_benchmark_params
 	char* scrit_write;
 	int multi_threads;
 };
+
+struct database_user_records
+{
+	int id;
+	char* date;
+	char* databaseType;
+	struct database_benchmark_params* db_param;
+};
+

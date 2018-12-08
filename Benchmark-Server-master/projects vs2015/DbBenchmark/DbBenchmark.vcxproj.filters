@@ -105,6 +105,9 @@
     <ClInclude Include="Utils\Utils.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Interfaces\user_interface.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Render\Render.c">
@@ -127,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="Utils\Utils.c">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Interfaces\user_interface.c">
+      <Filter>Source Files\Interfaces</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

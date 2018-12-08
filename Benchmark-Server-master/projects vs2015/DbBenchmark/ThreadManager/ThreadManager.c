@@ -6,7 +6,7 @@ SDL_Thread *oracle_thread = NULL;
 int MySqlThread(void * data)
 {
 	ConsoleOutput("Init database for : MySql", C_DEBUG);
-	if (InitMySql((struct database_benchmark_params*)data))
+	if (InitMySql((struct database_benchmark_params*)data), connection_mysql)
 	{
 		if (!DoBenchmarkMySql((struct database_benchmark_params*)data))
 		{

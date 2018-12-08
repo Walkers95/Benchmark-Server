@@ -8,6 +8,7 @@ void Render();
 
 void DrawLoginTab();
 void DrawConfigurationTab();
+void DrawAccountTab();
 void DrawResultsTab();
 void DrawConsoleTab();
 
