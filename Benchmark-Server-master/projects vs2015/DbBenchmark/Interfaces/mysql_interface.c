@@ -59,12 +59,14 @@ int CallQuery(const char * query)
 	return 1;
 }
 
-
+struct database_current_results *results = NULL;
 
 int DoBenchmarkMySql(struct database_benchmark_params *db_param)
 {
 	float score = 0;
 	double **benchmark_result = NULL;
+
+	results = Malloc(sizeof(struct database_current_results));
 
 	// Init benchmark result
 	benchmark_result = Malloc(sizeof(double*) * 2);
@@ -173,9 +175,12 @@ int DoBenchmarkMySql(struct database_benchmark_params *db_param)
 
 
 	score /= db_param->request_number;
-	SetRequestNumber(db_param->request_number);
-	SetScore(score);
-	SetResults(benchmark_result);
+
+	results->request_number = db_param->request_number;
+	results->score = score;
+	results->results = benchmark_result;
+
+	SetCurrentResults(results);
 
 	printf("Score : %f %n", score);
 	ConsoleOutput("Success !", C_SUCCESS);

@@ -21,7 +21,7 @@ int InitConsole()
 void ConsoleOutputValue(const char * text, double value)
 {
 	char *double_buffer = Malloc(255);
-	sprintf(double_buffer, " : %lf ms", value);
+	sprintf(double_buffer, " : %.4lf ms", value);
 
 	char* buffer = Malloc(strlen(text) + strlen(double_buffer));;
 	strcpy(buffer, text);

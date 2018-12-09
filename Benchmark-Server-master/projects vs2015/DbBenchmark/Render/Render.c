@@ -417,10 +417,27 @@ int selected_item = -1;
 
 void DrawAccountTab()
 {
-	nk_layout_row_dynamic(ctx, 25, 3);
-	nk_button_label(ctx, "Download");
-	nk_button_label(ctx, "View");
-	nk_button_label(ctx, "Delete");
+
+	if (selected_item != -1)
+	{
+		nk_layout_row_dynamic(ctx, 25, 3);
+		if (nk_button_label(ctx, "Download"))
+		{
+			printf("Downloading %d benchmark \n", selected_item);
+		}
+
+		if (nk_button_label(ctx, "View"))
+		{
+			printf("Viewing %d benchmark \n", selected_item);
+		}
+
+		if (nk_button_label(ctx, "Delete"))
+		{
+			printf("Deleting %d benchmark \n", selected_item);
+		}
+
+	}
+
 
 	nk_layout_row_dynamic(ctx, 5, 1);
 	nk_spacing(ctx, 1);
@@ -449,6 +466,9 @@ void DrawAccountTab()
 			{
 				printf("Select item %d \n", i);
 				selected_item = i;
+
+				memset(selectedBenchmark, 0x00, GetUserBenchmarkCount() * sizeof(int));
+				selectedBenchmark[i] = 1;
 			}
 			
 		}
@@ -458,20 +478,25 @@ void DrawAccountTab()
 	}
 
 	
-	if (selected_item != -1)
-	{
+	if (nk_group_begin_titled(ctx, "Group_Without_Border", "Benchmark request :", NK_WINDOW_TITLE)) {
 
-		if (nk_group_begin_titled(ctx, "Group_Without_Border", "Benchmark request :", NK_WINDOW_TITLE)) {
 
-			nk_label(ctx, "requete", NK_TEXT_ALIGN_LEFT);
+		if (selected_item != -1)
+		{
+			struct database_user_records* records = GetUserBenchmarkData()[selected_item];
 
-			nk_group_end(ctx);
+			if (records->db_param->custom_script != 0)
+			{
+				
+			}
+
+			nk_layout_row_dynamic(ctx, 25, 1);
+			nk_label(ctx, "test", NK_TEXT_ALIGN_LEFT);
 		}
+		
+		nk_group_end(ctx);
 	}
-	else
-	{
-		nk_label_colored(ctx, "Select a benchmark", NK_TEXT_CENTERED, nk_rgb(255, 255, 0));
-	}
+	
 	
 }
 
@@ -518,48 +543,44 @@ void DrawResultsTab()
 	int i;
 	struct nk_rect bounds;
 
-	float score = GetScore();
+	struct database_current_results* current_results = GetCurrentResults();
 
-	if (score != 0.00f)
+	if (current_results->score != 0.00f)
 	{
-
-		double** results = GetChartResults();
 
 		nk_layout_row_dynamic(ctx, 25, 3);
 		nk_label_colored(ctx, "Read", NK_TEXT_CENTERED, nk_rgb(0, 131, 255));
-		nk_labelf_colored(ctx, NK_TEXT_CENTERED, nk_rgb(255, 255, 0), "Score : %.0f ", score);
+		nk_labelf_colored(ctx, NK_TEXT_CENTERED, nk_rgb(255, 255, 0), "Score : %.0f ", current_results->score);
 		nk_label_colored(ctx, "Write", NK_TEXT_CENTERED, nk_rgb(255, 0, 0));
 
 
 		double write_selection = 0.00f;
 		double read_selection = 0.00f;
 
-		double chartMaxValue = GetMaxValueOfResults(results);
-		double chartMinValue = GetMinValueOfResults(results);
 
 		if (GetAsyncKeyState(VK_NUMPAD0) & 1)
-			printf("chartMinValue : %lf \n", chartMinValue);
+			printf("chartMinValue : %lf \n", current_results->minValue);
 
 
 		/* mixed colored chart */
 		nk_layout_row_dynamic(ctx, WINDOW_HEIGHT * 0.7, 1);
 		bounds = nk_widget_bounds(ctx);
-		if (nk_chart_begin_colored(ctx, NK_CHART_LINES, nk_rgb(255, 0, 0), nk_rgb(150, 0, 0), db_param_buffer.request_number, chartMinValue, chartMaxValue)) { // Change  0.0f, 10.0f to 0.00f, GetMaxValue
-			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 131, 255), nk_rgb(0, 0, 140), db_param_buffer.request_number, chartMinValue, chartMaxValue);
-			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 255, 0), nk_rgb(0, 150, 0), db_param_buffer.request_number, chartMinValue, chartMaxValue);
-			for (i = 0; i < db_param_buffer.request_number; ++i) {
+		if (nk_chart_begin_colored(ctx, NK_CHART_LINES, nk_rgb(255, 0, 0), nk_rgb(150, 0, 0), current_results->request_number, current_results->minValue, current_results->maxValue)) { // Change  0.0f, 10.0f to 0.00f, GetMaxValue
+			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 131, 255), nk_rgb(0, 0, 140), current_results->request_number, current_results->minValue, current_results->maxValue);
+			nk_chart_add_slot_colored(ctx, NK_CHART_LINES, nk_rgb(0, 255, 0), nk_rgb(0, 150, 0), current_results->request_number, current_results->minValue, current_results->maxValue);
+			for (i = 0; i < current_results->request_number; ++i) {
 
-				nk_flags resWrite = nk_chart_push_slot(ctx, results[0][i], 0);
-				nk_flags resRead = nk_chart_push_slot(ctx, results[1][i], 1);
+				nk_flags resWrite = nk_chart_push_slot(ctx, current_results->results[0][i], 0);
+				nk_flags resRead = nk_chart_push_slot(ctx, current_results->results[1][i], 1);
 
 				if (resWrite && NK_CHART_CLICKED)
 				{
-					write_selection = results[0][i];
+					write_selection = current_results->results[0][i];
 				}
 
 				if (resRead && NK_CHART_CLICKED)
 				{
-					read_selection = results[1][i];
+					read_selection = current_results->results[1][i];
 				}
 			}
 		}

@@ -72,6 +72,16 @@ int LoginUser(struct database_login_params *db_login)
 	return 1;
 }
 
+int DeleteUserBenchmark(int benchmarkID)
+{
+	return 0;
+}
+
+double ** GetUserBenchmarkResults(int benchmarkID)
+{
+	return NULL;
+}
+
 struct database_user_records* userRecords = NULL;
 
 struct database_user_records *GetUserBenchmark(int benchmarkID)

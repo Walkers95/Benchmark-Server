@@ -108,6 +108,9 @@
     <ClInclude Include="Interfaces\user_interface.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="Interfaces\results_interface.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Render\Render.c">
@@ -132,6 +135,9 @@
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Interfaces\user_interface.c">
+      <Filter>Source Files\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Interfaces\results_interface.c">
       <Filter>Source Files\Interfaces</Filter>
     </ClCompile>
   </ItemGroup>

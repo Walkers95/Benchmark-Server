@@ -1,21 +1,4 @@
-﻿  Render.c
+﻿  results_interface.c
 c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan' : redéfinition de macro
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\corecrt_math.h(276): note: voir la définition précédente de 'isnan'
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\sdl2-2.0.8\include\sdl_config.h(178): warning C4005: 'HAVE_STDDEF_H' : redéfinition de macro
-  c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(313): note: voir la définition précédente de 'HAVE_STDDEF_H'
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(103): warning C4244: 'fonction' : conversion de 'int' en 'float', perte possible de données
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(193): warning C4098: 'Render' : fonction 'void' retournant une valeur
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(358): warning C4133: 'fonction' : types incompatibles - de 'int *' à 'nk_size *'
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(410): warning C4090: 'fonction' : qualificateurs 'const' différents
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(428): warning C4305: 'fonction' : troncation de 'double' à 'float'
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(428): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(456): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(505): warning C4305: 'fonction' : troncation de 'double' à 'float'
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(507): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(545): warning C4305: 'fonction' : troncation de 'double' à 'float'
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(547): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(548): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(549): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(552): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
-c:\users\paul\source\visual studio\git\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(553): warning C4244: 'fonction' : conversion de 'double' en 'float', perte possible de données
   DbBenchmark.vcxproj -> C:\Users\Paul\source\Visual studio\GIT\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Debug\DbBenchmark.exe

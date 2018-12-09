@@ -2,6 +2,7 @@
 #include "mysql_interface.h"
 #include "oracle_interface.h"
 #include "user_interface.h"
+#include "results_interface.h"
 
 #include "../Console/Console.h"
 
@@ -34,3 +35,11 @@ struct database_user_records
 	struct database_benchmark_params* db_param;
 };
 
+struct database_current_results
+{
+	int request_number;
+	double score;
+	double **results;
+	double minValue;
+	double maxValue;
+};

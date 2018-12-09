@@ -21,10 +21,6 @@ void FinishWithError();
 void ClearMySqlResults();
 int CallQuery(const char* query);
 
-double GetMinValueOfResults(double** results);
-double GetMaxValueOfResults(double** results);
-double** GetChartResults();
-
 int DoBenchmarkMySql(struct database_benchmark_params *db_param);
 
 
