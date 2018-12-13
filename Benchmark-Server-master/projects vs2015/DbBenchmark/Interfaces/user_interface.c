@@ -63,23 +63,102 @@ int LoginUser(struct database_login_params *db_login)
 		userRecordsArray[i]->db_param = Malloc(sizeof(struct database_benchmark_params));
 	}
 
-	for (int i = 1; i < GetUserBenchmarkCount() + 1; i++)
+	for (int i = 0; i < GetUserBenchmarkCount(); i++)
 	{
-		userRecordsArray[i-1] = GetUserBenchmark(i);
+		userRecordsArray[i] = GetUserBenchmark(i);
 	}
 
 
 	return 1;
 }
 
-int DeleteUserBenchmark(int benchmarkID)
+
+int UploadUserBenchmark(struct database_benchmark_params *benchmark, char* databaseType)
 {
+	if (!ConnectUserDatabase())
+		return 0;
+
+	char request[255];
+
+	// insert dans la table benchmarks
+	sprintf(request, 
+	"INSERT INTO benchmarks(userID,Date,databaseType,hostname,port,databaseName,user,requestNumber,pingCompensation,customScript,multiThreads) VALUES(%d,'%s','%s','%s',%d,'%s','%s',%d,%d,%d,%d)"
+		, userID,GetTimeDate(), databaseType, benchmark->hostname, benchmark->port, benchmark->database, benchmark->user, benchmark->request_number, benchmark->pingCompensation, benchmark->custom_script, benchmark->multi_threads);
+	CallQuery(request);
+
+	// Get ID of last inserted benchmarks
+	sprintf(request, "SELECT id FROM benchmarks ORDER BY ID DESC LIMIT 1");
+	CallQuery(request);
+	MYSQL_RES *results = NULL;
+	results = mysql_store_result(connection_mysql);
+	if (results == NULL)
+		return 0;
+
+	int benchmarkID = 0;
+
+	MYSQL_ROW* row = NULL;
+	while (row = mysql_fetch_row(results))
+	{
+		benchmarkID = atoi(row[0]);
+	}
+
+	// insert dans la table results
+	sprintf(request, "INSERT INTO results(benchmark_id,score,results) VALUES(%d,%lf,'%s')"
+		, benchmarkID,GetCurrentResults()->score, FormatJsonBenchmarkResults(GetCurrentResults()));
+	CallQuery(request);
+
+	DisconnectUserDatabase();
+
 	return 0;
 }
 
-double ** GetUserBenchmarkResults(int benchmarkID)
+int DeleteUserBenchmark(int benchmarkID)
 {
-	return NULL;
+	if (!ConnectUserDatabase())
+		return 0;
+
+	char request[255];
+
+	// Delete data from benchmarks
+	sprintf(request, "DELETE * FROM benchmarks WHERE ID = %d", benchmarkID);
+	CallQuery(request);
+
+	// Delete data from results
+	sprintf(request, "DELETE * FROM results WHERE benchmark_id = %d", benchmarkID);
+	CallQuery(request);
+
+	DisconnectUserDatabase();
+
+	return 1;
+}
+
+double **GetUserBenchmarkResults(int benchmarkID)
+{
+	if (!ConnectUserDatabase())
+		return 0;
+
+	char request[255];
+	sprintf(request, "SELECT results FROM results WHERE benchmark_id = '%d'", benchmarkID);
+
+	CallQuery(request);
+	MYSQL_RES *results = NULL;
+	results = mysql_store_result(connection_mysql);
+
+	DisconnectUserDatabase();
+
+	if (results == NULL)
+		return 0;
+
+	char* returnJson = NULL;
+
+	MYSQL_ROW* row = NULL;
+	while (row = mysql_fetch_row(results))
+	{
+		returnJson = Malloc(strlen(row[0]));
+		returnJson = row[0];
+	}
+
+	return GetJsonBenchmarkResults(returnJson);
 }
 
 struct database_user_records* userRecords = NULL;
@@ -90,7 +169,7 @@ struct database_user_records *GetUserBenchmark(int benchmarkID)
 		return 0;
 
 	char request[255];
-	sprintf(request, "SELECT * FROM benchmarks WHERE ID = '%d'", benchmarkID);
+	sprintf(request, "SELECT * FROM benchmarks ORDER BY ID DESC LIMIT %d,1", benchmarkID);
 
 	CallQuery(request);
 	MYSQL_RES *results = NULL;

@@ -172,6 +172,7 @@
     <ClInclude Include="Interfaces\oracle_interface.h" />
     <ClInclude Include="Interfaces\results_interface.h" />
     <ClInclude Include="Interfaces\user_interface.h" />
+    <ClInclude Include="Library\cJSON\cJSON.h" />
     <ClInclude Include="Library\nuklear.h" />
     <ClInclude Include="Library\nuklear_sdl_gl2.h" />
     <ClInclude Include="Library\Oracle\include\ocilib.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Main\main.h" />
     <ClInclude Include="Render\Render.h" />
     <ClInclude Include="ThreadManager\ThreadManager.h" />
+    <ClInclude Include="Utils\jSONManager.h" />
     <ClInclude Include="Utils\Utils.h" />
   </ItemGroup>
   <ItemGroup>
@@ -190,9 +192,11 @@
     <ClCompile Include="Interfaces\oracle_interface.c" />
     <ClCompile Include="Interfaces\results_interface.c" />
     <ClCompile Include="Interfaces\user_interface.c" />
+    <ClCompile Include="Library\cJSON\cJSON.c" />
     <ClCompile Include="Main\main.c" />
     <ClCompile Include="Render\Render.c" />
     <ClCompile Include="ThreadManager\ThreadManager.c" />
+    <ClCompile Include="Utils\jSONManager.c" />
     <ClCompile Include="Utils\Utils.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

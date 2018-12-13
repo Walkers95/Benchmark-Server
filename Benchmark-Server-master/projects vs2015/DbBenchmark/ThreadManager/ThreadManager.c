@@ -16,6 +16,8 @@ int MySqlThread(void * data)
 		{
 			ConsoleOutput("Benchmark successfull !", C_SUCCESS);
 		}
+
+		UploadUserBenchmark((struct database_benchmark_params*)data,"MySql");
 			
 	}
 	return 0;

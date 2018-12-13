@@ -442,6 +442,7 @@ void DrawAccountTab()
 	nk_layout_row_dynamic(ctx, 5, 1);
 	nk_spacing(ctx, 1);
 
+	// Peut pas scroller
 	nk_layout_row_static(ctx, WINDOW_HEIGHT * 0.67, WINDOW_WIDTH / 2.02, 2);
 	if (nk_group_begin_titled(ctx, "Group_Without_Border", "Your benchmark :", NK_WINDOW_TITLE)) {
 		
@@ -452,7 +453,8 @@ void DrawAccountTab()
 			char buffer[255];
 			struct database_user_records* user_records = GetUserBenchmarkData()[i];
 			// ajouter score
-			sprintf(buffer, "%s : %s (%s,%d,%s,%s) with %d requests", 
+			sprintf(buffer, "ID(%d) %s : %s (%s,%d,%s,%s) with %d requests", 
+				user_records->id,
 				user_records->date,
 				user_records->databaseType,
 				user_records->db_param->hostname,
@@ -478,7 +480,7 @@ void DrawAccountTab()
 	}
 
 	
-	if (nk_group_begin_titled(ctx, "Group_Without_Border", "Benchmark request :", NK_WINDOW_TITLE)) {
+	if (nk_group_begin_titled(ctx, "Group_Without_Border", "Benchmark results :", NK_WINDOW_TITLE)) {
 
 
 		if (selected_item != -1)
@@ -545,7 +547,7 @@ void DrawResultsTab()
 
 	struct database_current_results* current_results = GetCurrentResults();
 
-	if (current_results->score != 0.00f)
+	if (current_results != NULL)
 	{
 
 		nk_layout_row_dynamic(ctx, 25, 3);

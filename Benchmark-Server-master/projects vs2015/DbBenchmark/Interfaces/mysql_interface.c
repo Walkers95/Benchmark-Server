@@ -182,7 +182,7 @@ int DoBenchmarkMySql(struct database_benchmark_params *db_param)
 
 	SetCurrentResults(results);
 
-	printf("Score : %f %n", score);
+	printf("Score : %f \n", score);
 	ConsoleOutput("Success !", C_SUCCESS);
 
 

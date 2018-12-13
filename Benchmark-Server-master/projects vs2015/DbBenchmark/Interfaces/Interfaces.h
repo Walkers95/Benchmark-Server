@@ -5,6 +5,7 @@
 #include "results_interface.h"
 
 #include "../Console/Console.h"
+#include "../Utils/jSONManager.h"
 
 struct database_login_params
 {

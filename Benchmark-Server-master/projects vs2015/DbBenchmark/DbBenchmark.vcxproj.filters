@@ -58,6 +58,9 @@
     <Filter Include="Source Files\Utils">
       <UniqueIdentifier>{0a2c61c5-7921-402b-995f-4012df3bd26b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Library\cJSON">
+      <UniqueIdentifier>{dca154bc-ed26-4445-9d79-3f18d96f475d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\nuklear.h">
@@ -111,6 +114,12 @@
     <ClInclude Include="Interfaces\results_interface.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="Library\cJSON\cJSON.h">
+      <Filter>Resource Files\Library\cJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\jSONManager.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Render\Render.c">
@@ -139,6 +148,12 @@
     </ClCompile>
     <ClCompile Include="Interfaces\results_interface.c">
       <Filter>Source Files\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\cJSON\cJSON.c">
+      <Filter>Resource Files\Library\cJSON</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\jSONManager.c">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
