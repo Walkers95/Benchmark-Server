@@ -120,17 +120,18 @@ int DeleteUserBenchmark(int benchmarkID)
 	char request[255];
 
 	// Delete data from benchmarks
-	sprintf(request, "DELETE * FROM benchmarks WHERE ID = %d", benchmarkID);
+	sprintf(request, "DELETE FROM benchmarks WHERE ID = %d", benchmarkID);
 	CallQuery(request);
 
 	// Delete data from results
-	sprintf(request, "DELETE * FROM results WHERE benchmark_id = %d", benchmarkID);
+	sprintf(request, "DELETE FROM results WHERE benchmark_id = %d", benchmarkID);
 	CallQuery(request);
 
 	DisconnectUserDatabase();
 
 	return 1;
 }
+
 
 double **GetUserBenchmarkResults(int benchmarkID)
 {
@@ -169,7 +170,7 @@ struct database_user_records *GetUserBenchmark(int benchmarkID)
 		return 0;
 
 	char request[255];
-	sprintf(request, "SELECT * FROM benchmarks ORDER BY ID DESC LIMIT %d,1", benchmarkID);
+	sprintf(request, "SELECT * FROM benchmarks WHERE userID = %d ORDER BY ID DESC LIMIT %d,1",userID, benchmarkID);
 
 	CallQuery(request);
 	MYSQL_RES *results = NULL;

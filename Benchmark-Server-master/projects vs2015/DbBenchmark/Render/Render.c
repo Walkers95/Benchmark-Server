@@ -423,17 +423,26 @@ void DrawAccountTab()
 		nk_layout_row_dynamic(ctx, 25, 3);
 		if (nk_button_label(ctx, "Download"))
 		{
+			struct database_current_results* current_results = Malloc(sizeof(struct database_current_results));
+			current_results->request_number = GetUserBenchmarkData()[selected_item]->db_param->request_number;
+			current_results->results = GetUserBenchmarkResults(GetUserBenchmarkData()[selected_item]->id);
+			SaveJsonBenchmarkResults(FormatJsonBenchmarkResults(current_results));
 			printf("Downloading %d benchmark \n", selected_item);
 		}
 
 		if (nk_button_label(ctx, "View"))
 		{
+			struct database_current_results* current_results = Malloc(sizeof(struct database_current_results));
+			current_results->request_number = GetUserBenchmarkData()[selected_item]->db_param->request_number;
+			current_results->results = GetUserBenchmarkResults(GetUserBenchmarkData()[selected_item]->id);
+			SetCurrentResults(current_results);
 			printf("Viewing %d benchmark \n", selected_item);
 		}
 
 		if (nk_button_label(ctx, "Delete"))
 		{
-			printf("Deleting %d benchmark \n", selected_item);
+			DeleteUserBenchmark(GetUserBenchmarkData()[selected_item]->id);
+			printf("Deleting %d benchmark \n", GetUserBenchmarkData()[selected_item]->id);
 		}
 
 	}
@@ -487,13 +496,8 @@ void DrawAccountTab()
 		{
 			struct database_user_records* records = GetUserBenchmarkData()[selected_item];
 
-			if (records->db_param->custom_script != 0)
-			{
-				
-			}
-
 			nk_layout_row_dynamic(ctx, 25, 1);
-			nk_label(ctx, "test", NK_TEXT_ALIGN_LEFT);
+			nk_label(ctx, records->date, NK_TEXT_ALIGN_LEFT);
 		}
 		
 		nk_group_end(ctx);

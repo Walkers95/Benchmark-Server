@@ -65,6 +65,7 @@ double * GetJsonBenchmarkResultsFromFile(char * file)
 
 void SaveJsonBenchmarkResults(char * file)
 {
+	printf("Saving file : %s \n", file);
 }
 
 double **GetJsonBenchmarkResults(char *json)
@@ -99,7 +100,7 @@ double **GetJsonBenchmarkResults(char *json)
 		cJSON* write = cJSON_GetObjectItemCaseSensitive(data, "write");
 
 		returnArray[0][counter] = write->valuedouble;
-		returnArray[1][counter]= read->valuedouble;
+		returnArray[1][counter] = read->valuedouble;
 
 		counter++;
 	}
