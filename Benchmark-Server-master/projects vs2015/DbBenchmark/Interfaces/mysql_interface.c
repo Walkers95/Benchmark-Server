@@ -46,8 +46,14 @@ void ClearMySqlResults()
 {
 	// Clearing results
 	MYSQL_RES *results = NULL;
-	results = mysql_store_result(connection_mysql);
-	mysql_free_result(results);
+	if (connection_mysql)
+	{
+		results = mysql_store_result(connection_mysql);
+		if (results)
+		{
+			mysql_free_result(results);
+		}
+	}	
 }
 
 int CallQuery(const char * query)
@@ -66,6 +72,9 @@ int DoBenchmarkMySql(struct database_benchmark_params *db_param)
 	float score = 0;
 	double **benchmark_result = NULL;
 
+	//free(results);
+	free(benchmark_result);
+
 	results = Malloc(sizeof(struct database_current_results));
 
 	// Init benchmark result
@@ -77,7 +86,7 @@ int DoBenchmarkMySql(struct database_benchmark_params *db_param)
 
 	// On DROP la table testtable au cas ou elle existe déja
 	ConsoleOutput("Making sure testtable does not exist !", C_DEBUG);
-	CallQuery("DROP TABLE testtable");
+	CallQuery("DROP TABLE IF EXISTS testtable");
 	ConsoleOutput("Success !", C_SUCCESS);
 
 	// Create table 
@@ -85,7 +94,6 @@ int DoBenchmarkMySql(struct database_benchmark_params *db_param)
 	if(!CallQuery("CREATE TABLE testtable(id INTEGER AUTO_INCREMENT PRIMARY KEY,int_test INTEGER,text_test TEXT)"))
 		return 0;
 	ConsoleOutput("Success !", C_SUCCESS);
-
 
 
 	// WRITE BENCHMARK
@@ -185,7 +193,7 @@ int DoBenchmarkMySql(struct database_benchmark_params *db_param)
 	printf("Score : %f \n", score);
 	ConsoleOutput("Success !", C_SUCCESS);
 
-
+	
 	mysql_close(connection_mysql);
 	return 1;
 }

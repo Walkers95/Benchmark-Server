@@ -20,7 +20,8 @@ int MySqlThread(void * data)
 		UploadUserBenchmark((struct database_benchmark_params*)data,"MySql");
 			
 	}
-	return 0;
+
+	return 1;
 }
 
 int OracleThread(void * data)
@@ -28,7 +29,7 @@ int OracleThread(void * data)
 	ConsoleOutput("Init database for : Oracle", C_DEBUG);
 	InitOracle(data);
 	DoBenchmarkOracle();
-	return 0;
+	return 1;
 }
 
 void StartBenchmarkThread(struct database_benchmark_params *db_param, char * dbType)

@@ -1,23 +1,29 @@
 #include "Utils.h"
 
-// Memory manegement 
+// Memory management 
 void * Malloc(size_t size)
 {
+	if (size <= 0)
+		return NULL;
+
 	void* adress = malloc(size);
 	if (adress == NULL)
-		exit(0);
+		MessageBoxA(0, "Memory allocation Error: Application could crash", "Error", 0);
 
 	return adress;
 }
 
 void * Realloc(void * pointer, size_t size)
 {
+	if (size <= 0)
+		return NULL;
+
 	void *address = NULL;
 	realloc(address, size);
 
 	if (address == NULL)
-		exit(0);
-
+		MessageBoxA(0, "Memory allocation Error: Application could crash", "Error", 0);
+	
 	return address;
 }
 

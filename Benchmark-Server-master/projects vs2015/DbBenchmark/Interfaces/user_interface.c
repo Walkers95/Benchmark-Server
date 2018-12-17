@@ -13,18 +13,16 @@ int ConnectUserDatabase()
 	db_param->password = "";
 	db_param->database = "DBBenchmark";
 
-	if (!InitMySql(db_param))
-	{
-		return 0;
-	}
+	int verif = InitMySql(db_param);
+	free(db_param);
 
-	return 1;
+	return verif ? 1 : 0;
 }
 
 void DisconnectUserDatabase()
 {
-	ClearMySqlResults();
 	mysql_close(connection_mysql);
+	connection_mysql = NULL;
 }
 
 int LoginUser(struct database_login_params *db_login)
@@ -38,7 +36,7 @@ int LoginUser(struct database_login_params *db_login)
 	CallQuery(request);
 	MYSQL_RES *results = mysql_store_result(connection_mysql);
 
-	DisconnectUserDatabase();
+	
 
 	if (results == NULL)
 		return 0;
@@ -49,6 +47,8 @@ int LoginUser(struct database_login_params *db_login)
 		userID = atoi(row[0]);
 		printf("User id : %d \n", userID);
 	}
+	ClearMySqlResults();
+	DisconnectUserDatabase();
 
 	if (!userID)
 		return 0;
@@ -78,7 +78,7 @@ int UploadUserBenchmark(struct database_benchmark_params *benchmark, char* datab
 	if (!ConnectUserDatabase())
 		return 0;
 
-	char request[255];
+	char request[99999];
 
 	// insert dans la table benchmarks
 	sprintf(request, 
@@ -101,6 +101,7 @@ int UploadUserBenchmark(struct database_benchmark_params *benchmark, char* datab
 	{
 		benchmarkID = atoi(row[0]);
 	}
+	ClearMySqlResults();
 
 	// insert dans la table results
 	sprintf(request, "INSERT INTO results(benchmark_id,score,results) VALUES(%d,%lf,'%s')"
@@ -109,7 +110,7 @@ int UploadUserBenchmark(struct database_benchmark_params *benchmark, char* datab
 
 	DisconnectUserDatabase();
 
-	return 0;
+	return 1;
 }
 
 int DeleteUserBenchmark(int benchmarkID)
@@ -133,34 +134,7 @@ int DeleteUserBenchmark(int benchmarkID)
 }
 
 
-double **GetUserBenchmarkResults(int benchmarkID)
-{
-	if (!ConnectUserDatabase())
-		return 0;
 
-	char request[255];
-	sprintf(request, "SELECT results FROM results WHERE benchmark_id = '%d'", benchmarkID);
-
-	CallQuery(request);
-	MYSQL_RES *results = NULL;
-	results = mysql_store_result(connection_mysql);
-
-	DisconnectUserDatabase();
-
-	if (results == NULL)
-		return 0;
-
-	char* returnJson = NULL;
-
-	MYSQL_ROW* row = NULL;
-	while (row = mysql_fetch_row(results))
-	{
-		returnJson = Malloc(strlen(row[0]));
-		returnJson = row[0];
-	}
-
-	return GetJsonBenchmarkResults(returnJson);
-}
 
 struct database_user_records* userRecords = NULL;
 
@@ -175,8 +149,6 @@ struct database_user_records *GetUserBenchmark(int benchmarkID)
 	CallQuery(request);
 	MYSQL_RES *results = NULL;
 	results = mysql_store_result(connection_mysql);
-
-	DisconnectUserDatabase();
 
 	if (results == NULL)
 		return 0;
@@ -199,6 +171,8 @@ struct database_user_records *GetUserBenchmark(int benchmarkID)
 		userRecords->db_param->custom_script = atoi(row[10]);
 		userRecords->db_param->multi_threads = atoi(row[11]);	
 	}
+	ClearMySqlResults();
+	DisconnectUserDatabase();
 
 	return userRecords;
 }
@@ -215,8 +189,6 @@ int GetUserBenchmarkCountSql()
 	MYSQL_RES *results = NULL;
 	results = mysql_store_result(connection_mysql);
 
-	DisconnectUserDatabase();
-
 	if (results == NULL)
 		return 0;
 
@@ -226,6 +198,9 @@ int GetUserBenchmarkCountSql()
 		benchmarkCount = atoi(row[0]);
 		printf("User benchmark number : %d \n", benchmarkCount);
 	}
+
+	ClearMySqlResults();
+	DisconnectUserDatabase();
 
 	return benchmarkCount;
 }

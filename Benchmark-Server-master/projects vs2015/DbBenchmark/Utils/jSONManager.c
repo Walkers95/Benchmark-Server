@@ -70,14 +70,14 @@ void SaveJsonBenchmarkResults(char * file)
 
 double **GetJsonBenchmarkResults(char *json)
 {
-	cJSON *results_json = cJSON_Parse(json);
-	cJSON *datas = NULL;
-	cJSON *data = NULL;
+	const cJSON *results_json = cJSON_Parse(json);
+	const cJSON *datas = NULL;
+	const cJSON *data = NULL;
 
 	double** returnArray = Malloc(2 * sizeof(double*));
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 2; i++)
 	{
-		returnArray[i] = Malloc(sizeof(double));
+		returnArray[i] = Malloc(sizeof(double) * 1000);
 	}
 
 	if (results_json == NULL)
@@ -90,25 +90,28 @@ double **GetJsonBenchmarkResults(char *json)
 		goto end;
 	}
 
-
-	datas = cJSON_GetObjectItemCaseSensitive(results_json, "data");
-
 	int counter = 0;
+	datas = cJSON_GetObjectItemCaseSensitive(results_json, "datas");
 	cJSON_ArrayForEach(data, datas)
 	{
 		cJSON* read = cJSON_GetObjectItemCaseSensitive(data, "read");
 		cJSON* write = cJSON_GetObjectItemCaseSensitive(data, "write");
 
-		returnArray[0][counter] = write->valuedouble;
-		returnArray[1][counter] = read->valuedouble;
+		if (write && read)
+		{
+			returnArray[0][counter] = write->valuedouble;
+			returnArray[1][counter] = read->valuedouble;
 
-		counter++;
+			counter++;
+		}
+		
 	}
 
 	cJSON_Delete(results_json);
 	return returnArray;
 
 end:
+	free(returnArray);
 	cJSON_Delete(datas);
 	return NULL;
 }

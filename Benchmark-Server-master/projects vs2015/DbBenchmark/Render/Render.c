@@ -257,6 +257,8 @@ void DrawLoginTab()
 		{
 			show_message_error = 1;
 		}
+
+		free(db_login);
 		
 	}
 	nk_spacing(ctx, 1);
@@ -367,11 +369,11 @@ void DrawConfigurationTab()
 		selected_tab = 2;
 
 		// Debug
-		strcpy(input[0], "www.db4free.net");
-		strcpy(input[1], "3306");
-		strcpy(input[2], "paulbenchmark");				// database
-		strcpy(input[3], "paulbenchmark");
-		strcpy(input[4], "Leaghello1*");
+		strcpy(input[0], "localhost"); //www.db4free.net
+		strcpy(input[1], "0");
+		strcpy(input[2], "testdb");			// database
+		strcpy(input[3], "root");
+		strcpy(input[4], "");
 
 		system("cls");
 		fprintf(stdout, "> benchmark pressed\n");
@@ -425,7 +427,7 @@ void DrawAccountTab()
 		{
 			struct database_current_results* current_results = Malloc(sizeof(struct database_current_results));
 			current_results->request_number = GetUserBenchmarkData()[selected_item]->db_param->request_number;
-			current_results->results = GetUserBenchmarkResults(GetUserBenchmarkData()[selected_item]->id);
+			current_results->results = GetResultsUser(GetUserBenchmarkData()[selected_item]->id);
 			SaveJsonBenchmarkResults(FormatJsonBenchmarkResults(current_results));
 			printf("Downloading %d benchmark \n", selected_item);
 		}
@@ -434,9 +436,11 @@ void DrawAccountTab()
 		{
 			struct database_current_results* current_results = Malloc(sizeof(struct database_current_results));
 			current_results->request_number = GetUserBenchmarkData()[selected_item]->db_param->request_number;
-			current_results->results = GetUserBenchmarkResults(GetUserBenchmarkData()[selected_item]->id);
+			current_results->results = GetResultsUser(GetUserBenchmarkData()[selected_item]->id);
+			current_results->score = GetResultsUserScore(GetUserBenchmarkData()[selected_item]->id);
 			SetCurrentResults(current_results);
 			printf("Viewing %d benchmark \n", selected_item);
+			selected_tab = 3;
 		}
 
 		if (nk_button_label(ctx, "Delete"))
@@ -495,11 +499,27 @@ void DrawAccountTab()
 		if (selected_item != -1)
 		{
 			struct database_user_records* records = GetUserBenchmarkData()[selected_item];
+			
+			int request_number = GetUserBenchmarkData()[selected_item]->db_param->request_number;
+			double** results = GetResultsUser(GetUserBenchmarkData()[selected_item]->id);
 
-			nk_layout_row_dynamic(ctx, 25, 1);
-			nk_label(ctx, records->date, NK_TEXT_ALIGN_LEFT);
+		
+			for (int i=0;i<request_number;i++)
+			{
+				nk_layout_row_dynamic(ctx, 25, 1);
+				char label[255];
+				sprintf(label, "Read : %lf  | Write : %lf ", results[1][i], results[0][i]);
+
+				nk_label(ctx, label, NK_TEXT_ALIGN_LEFT);
+				
+			}
+			free(results[1]);
+			free(results[0]);
+			free(results);
+			
 		}
 		
+		nk_layout_row_static(ctx, WINDOW_HEIGHT * 20, WINDOW_WIDTH * 0.7, 1);
 		nk_group_end(ctx);
 	}
 	

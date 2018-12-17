@@ -7,10 +7,8 @@ int LoginUser(struct database_login_params *db_login);
 
 int UploadUserBenchmark(struct database_benchmark_params* benchmark, char* databaseType);
 int DeleteUserBenchmark(int benchmarkID);
-double** GetUserBenchmarkResults(int benchmarkID);
 struct database_user_records* GetUserBenchmark(int benchmarkID);
 struct database_user_records** GetUserBenchmarkData();
 int GetUserBenchmarkCountSql();
-
 int GetUserBenchmarkCount();
 int GetUserID();
