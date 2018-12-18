@@ -9,6 +9,7 @@ int UploadUserBenchmark(struct database_benchmark_params* benchmark, char* datab
 int DeleteUserBenchmark(int benchmarkID);
 struct database_user_records* GetUserBenchmark(int benchmarkID);
 struct database_user_records** GetUserBenchmarkData();
+int UpdateUserBenchmarkData();
 int GetUserBenchmarkCountSql();
 int GetUserBenchmarkCount();
 int GetUserID();

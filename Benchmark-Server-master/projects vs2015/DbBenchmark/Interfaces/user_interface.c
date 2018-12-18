@@ -210,6 +210,28 @@ struct database_user_records ** GetUserBenchmarkData()
 	return userRecordsArray;
 }
 
+int UpdateUserBenchmarkData()
+{
+	free(userRecordsArray);
+
+	GetUserBenchmarkCountSql();
+	userRecordsArray = Malloc(sizeof(struct database_user_records*) * GetUserBenchmarkCount());
+
+	for (int i = 0; i < GetUserBenchmarkCount(); i++)
+	{
+		userRecordsArray[i] = Malloc(sizeof(struct database_user_records));
+		userRecordsArray[i]->db_param = Malloc(sizeof(struct database_benchmark_params));
+	}
+
+	for (int i = 0; i < GetUserBenchmarkCount(); i++)
+	{
+		userRecordsArray[i] = GetUserBenchmark(i);
+	}
+
+
+	return 1;
+}
+
 int GetUserBenchmarkCount()
 {
 	return benchmarkCount;

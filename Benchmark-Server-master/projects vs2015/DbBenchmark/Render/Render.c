@@ -251,7 +251,7 @@ void DrawLoginTab()
 		if (LoginUser(db_login))
 		{
 			is_logged_in = 1;
-			selectedBenchmark = Malloc(sizeof(int) * GetUserBenchmarkCount() );
+			selectedBenchmark = Malloc(sizeof(int) * 999 );
 		}
 		else
 		{
@@ -427,7 +427,7 @@ void DrawAccountTab()
 		{
 			struct database_current_results* current_results = Malloc(sizeof(struct database_current_results));
 			current_results->request_number = GetUserBenchmarkData()[selected_item]->db_param->request_number;
-			current_results->results = GetResultsUser(GetUserBenchmarkData()[selected_item]->id);
+			current_results->results = GetResultsUserData(GetUserBenchmarkData()[selected_item]->id);
 			SaveJsonBenchmarkResults(FormatJsonBenchmarkResults(current_results));
 			printf("Downloading %d benchmark \n", selected_item);
 		}
@@ -436,7 +436,7 @@ void DrawAccountTab()
 		{
 			struct database_current_results* current_results = Malloc(sizeof(struct database_current_results));
 			current_results->request_number = GetUserBenchmarkData()[selected_item]->db_param->request_number;
-			current_results->results = GetResultsUser(GetUserBenchmarkData()[selected_item]->id);
+			current_results->results = GetResultsUserData(GetUserBenchmarkData()[selected_item]->id);
 			current_results->score = GetResultsUserScore(GetUserBenchmarkData()[selected_item]->id);
 			SetCurrentResults(current_results);
 			printf("Viewing %d benchmark \n", selected_item);
@@ -446,6 +446,7 @@ void DrawAccountTab()
 		if (nk_button_label(ctx, "Delete"))
 		{
 			DeleteUserBenchmark(GetUserBenchmarkData()[selected_item]->id);
+			UpdateUserBenchmarkData();
 			printf("Deleting %d benchmark \n", GetUserBenchmarkData()[selected_item]->id);
 		}
 
@@ -501,7 +502,7 @@ void DrawAccountTab()
 			struct database_user_records* records = GetUserBenchmarkData()[selected_item];
 			
 			int request_number = GetUserBenchmarkData()[selected_item]->db_param->request_number;
-			double** results = GetResultsUser(GetUserBenchmarkData()[selected_item]->id);
+			double** results = GetResultsUserData(GetUserBenchmarkData()[selected_item]->id);
 
 		
 			for (int i=0;i<request_number;i++)
@@ -513,9 +514,6 @@ void DrawAccountTab()
 				nk_label(ctx, label, NK_TEXT_ALIGN_LEFT);
 				
 			}
-			free(results[1]);
-			free(results[0]);
-			free(results);
 			
 		}
 		

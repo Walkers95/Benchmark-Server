@@ -1,16 +1,4 @@
-﻿  results_interface.c
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\corecrt_math.h(276): note: see previous definition of 'isnan'
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\cjson\cjson.h(23): warning C4005: 'boolean': macro redefinition
-  c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\oracle\include\ocilib.h(1069): note: see previous definition of 'boolean'
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\results_interface.c(37): warning C4047: '=': 'MYSQL_ROW *' differs in levels of indirection from 'MYSQL_ROW'
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\results_interface.c(39): warning C4047: 'function': 'const char *' differs in levels of indirection from 'MYSQL_ROW'
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\results_interface.c(39): warning C4024: 'atof': different types for formal and actual parameter 1
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\results_interface.c(66): warning C4047: '=': 'MYSQL_ROW *' differs in levels of indirection from 'MYSQL_ROW'
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\results_interface.c(68): warning C4047: 'function': 'const char *' differs in levels of indirection from 'MYSQL_ROW'
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\results_interface.c(68): warning C4024: 'strlen': different types for formal and actual parameter 1
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\interfaces\results_interface.c(69): warning C4047: '=': 'char *' differs in levels of indirection from 'MYSQL_ROW'
-  Render.c
+﻿  Render.c
 c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\mysql\include\config-win.h(153): warning C4005: 'isnan': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\corecrt_math.h(276): note: see previous definition of 'isnan'
 c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\library\cjson\cjson.h(23): warning C4005: 'boolean': macro redefinition
@@ -21,17 +9,16 @@ c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects
 c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(193): warning C4098: 'Render': 'void' function returning a value
 c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(360): warning C4133: 'function': incompatible types - from 'int *' to 'nk_size *'
 c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(412): warning C4090: 'function': different 'const' qualifiers
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(459): warning C4305: 'function': truncation from 'double' to 'float'
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(459): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(491): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(522): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(556): warning C4305: 'function': truncation from 'double' to 'float'
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(558): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(592): warning C4305: 'function': truncation from 'double' to 'float'
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(460): warning C4305: 'function': truncation from 'double' to 'float'
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(460): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(492): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(520): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(554): warning C4305: 'function': truncation from 'double' to 'float'
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(556): warning C4244: 'function': conversion from 'double' to 'int', possible loss of data
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(590): warning C4305: 'function': truncation from 'double' to 'float'
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(592): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(593): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
 c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(594): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(595): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(596): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(599): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
-c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(600): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(597): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+c:\users\paul\documents\github\benchmark-server\benchmark-server-master\projects vs2015\dbbenchmark\render\render.c(598): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
   DbBenchmark.vcxproj -> C:\Users\paul\Documents\GitHub\Benchmark-Server\Benchmark-Server-master\projects vs2015\x64\Debug\DbBenchmark.exe

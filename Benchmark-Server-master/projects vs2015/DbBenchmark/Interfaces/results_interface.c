@@ -45,7 +45,9 @@ double GetResultsUserScore(int benchmarkID)
 	return scoreReturn;
 }
 
-double **GetResultsUser(int benchmarkID)
+
+
+double** GetResultsUser(int benchmarkID)
 {
 	if (!ConnectUserDatabase())
 		return 0;
@@ -75,6 +77,39 @@ double **GetResultsUser(int benchmarkID)
 	double** jsonResult = GetJsonBenchmarkResults(returnJson);
 
 	return jsonResult;
+}
+
+int init = 0;
+double ***user_results_array = NULL;
+
+double **GetResultsUserData(int benchmarkID)
+{
+	if (!init)
+	{
+		user_results_array = Malloc(sizeof(double**) * GetUserBenchmarkCount());
+
+		for (int i = 0; i < GetUserBenchmarkCount(); i++)
+		{
+			user_results_array[i] = Malloc(sizeof(double*) * 2);
+			for (int j = 0; j < 2; j++)
+			{
+				user_results_array[i][j] = Malloc(sizeof(double) * GetUserBenchmarkData()[i]->db_param->request_number);
+			}
+			user_results_array[i] = GetResultsUser(GetUserBenchmarkData()[i]->id);
+		}
+		
+		init = 1;
+	}
+
+	for (int i = 0; i < GetUserBenchmarkCount(); i++)
+	{
+		if (GetUserBenchmarkData()[i]->id == benchmarkID)
+		{
+			return user_results_array[i];
+		}
+	}
+
+	return NULL;
 }
 
 
@@ -111,6 +146,8 @@ double GetMaxValueOfCurrentResults() {
 
 	return max;
 }
+
+
 
 struct database_current_results * GetResults(int benchmarkID)
 {

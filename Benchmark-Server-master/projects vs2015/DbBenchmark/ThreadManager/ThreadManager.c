@@ -18,7 +18,7 @@ int MySqlThread(void * data)
 		}
 
 		UploadUserBenchmark((struct database_benchmark_params*)data,"MySql");
-			
+		UpdateUserBenchmarkData();
 	}
 
 	return 1;
