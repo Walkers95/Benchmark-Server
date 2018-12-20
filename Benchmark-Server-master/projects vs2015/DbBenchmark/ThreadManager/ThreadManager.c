@@ -20,6 +20,11 @@ int MySqlThread(void * data)
 		UploadUserBenchmark((struct database_benchmark_params*)data,"MySql");
 		UpdateUserBenchmarkData();
 	}
+	else
+	{
+		ConsoleOutput("Failed to init MySql connection", C_ERROR);
+		return 0;
+	}
 
 	return 1;
 }

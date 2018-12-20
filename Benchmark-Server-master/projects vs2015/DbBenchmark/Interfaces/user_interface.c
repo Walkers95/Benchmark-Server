@@ -213,7 +213,7 @@ struct database_user_records ** GetUserBenchmarkData()
 int UpdateUserBenchmarkData()
 {
 	free(userRecordsArray);
-
+	
 	GetUserBenchmarkCountSql();
 	userRecordsArray = Malloc(sizeof(struct database_user_records*) * GetUserBenchmarkCount());
 
@@ -228,7 +228,7 @@ int UpdateUserBenchmarkData()
 		userRecordsArray[i] = GetUserBenchmark(i);
 	}
 
-
+	SetUpdateResultsData(0);
 	return 1;
 }
 

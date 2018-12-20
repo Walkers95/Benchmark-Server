@@ -10,7 +10,7 @@ int InitMySql(struct database_benchmark_params *db_param)
 		return 0;
 	}
 
-	if (db_param->hostname == "localhost")
+	if ( strstr(db_param->hostname,"localhost"))
 	{
 		if (mysql_real_connect(connection_mysql, db_param->hostname, db_param->user, db_param->password, db_param->database, 0, NULL, 0) == NULL)
 		{
@@ -18,8 +18,9 @@ int InitMySql(struct database_benchmark_params *db_param)
 			mysql_close(connection_mysql);
 			return 0;
 		}
-	} 
-	else
+
+		return 1;
+	} else
 	{
 		if (mysql_real_connect(connection_mysql, db_param->hostname, db_param->user, db_param->password, db_param->database, db_param->port, NULL, 0) == NULL)
 		{
@@ -27,11 +28,11 @@ int InitMySql(struct database_benchmark_params *db_param)
 			mysql_close(connection_mysql);
 			return 0;
 		}
+
+		return 1;
 	}
 
-
-
-	return 1;
+	return 0;
 }
 
 void FinishWithError()
@@ -73,7 +74,7 @@ int DoBenchmarkMySql(struct database_benchmark_params *db_param)
 	double **benchmark_result = NULL;
 
 	//free(results);
-	free(benchmark_result);
+	
 
 	results = Malloc(sizeof(struct database_current_results));
 
@@ -193,7 +194,6 @@ int DoBenchmarkMySql(struct database_benchmark_params *db_param)
 	printf("Score : %f \n", score);
 	ConsoleOutput("Success !", C_SUCCESS);
 
-	
 	mysql_close(connection_mysql);
 	return 1;
 }

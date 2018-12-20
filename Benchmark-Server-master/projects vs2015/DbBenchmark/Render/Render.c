@@ -369,7 +369,7 @@ void DrawConfigurationTab()
 		selected_tab = 2;
 
 		// Debug
-		strcpy(input[0], "localhost"); //www.db4free.net
+		strcpy(input[0], "localhost"); 
 		strcpy(input[1], "0");
 		strcpy(input[2], "testdb");			// database
 		strcpy(input[3], "root");
@@ -445,9 +445,10 @@ void DrawAccountTab()
 
 		if (nk_button_label(ctx, "Delete"))
 		{
+			printf("Deleting %d benchmark \n", GetUserBenchmarkData()[selected_item]->id);
 			DeleteUserBenchmark(GetUserBenchmarkData()[selected_item]->id);
 			UpdateUserBenchmarkData();
-			printf("Deleting %d benchmark \n", GetUserBenchmarkData()[selected_item]->id);
+			selected_item = -1;
 		}
 
 	}

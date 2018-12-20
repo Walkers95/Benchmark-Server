@@ -11,3 +11,4 @@ double** GetResultsUser(int benchmarkID);
 double** GetResultsUserData(int benchmarkID);
 struct database_current_results* GetResults(int benchmarkID);
 double GetResultsUserScore(int benchmarkID);
+void SetUpdateResultsData(int value);

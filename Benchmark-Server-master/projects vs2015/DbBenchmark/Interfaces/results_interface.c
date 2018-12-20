@@ -82,10 +82,16 @@ double** GetResultsUser(int benchmarkID)
 int init = 0;
 double ***user_results_array = NULL;
 
+void SetUpdateResultsData(int value)
+{
+	init = value;
+}
+
 double **GetResultsUserData(int benchmarkID)
 {
 	if (!init)
 	{
+		free(user_results_array);
 		user_results_array = Malloc(sizeof(double**) * GetUserBenchmarkCount());
 
 		for (int i = 0; i < GetUserBenchmarkCount(); i++)
