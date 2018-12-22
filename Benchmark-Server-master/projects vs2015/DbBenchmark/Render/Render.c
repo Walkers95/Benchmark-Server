@@ -77,6 +77,7 @@ void InitialiseRender()
 	nk_style_set_font(ctx, &roboto->handle); }
 
 	SetStyle(ctx);
+	InitConfigParameters();
 	
 	bg.r = 0.10f, bg.g = 0.18f, bg.b = 0.24f, bg.a = 1.0f;
 }
@@ -270,40 +271,29 @@ void DrawLoginTab()
 struct database_benchmark_params db_param_buffer;
 struct database_benchmark_params *db_Param;
 
+
 void DrawConfigurationTab()
 {
-	// Pour les champs de selections de text : 
-	static char input[5][64];
-	static int text_len[5];
-	static char box_buffer_read[512];
-	static int box_len_read;
-	static char box_buffer_write[512];
-	static int box_len_write;
-	static int checkbox_threads = 0;
-	static int checkbox_ping = 0;
-	static int checkbox_custom_script = 0;
-	static int selected_database = 0;
-	static int request_number = 0;
-
+	struct config_parameters* param = GetConfigParameters();
 
 	nk_layout_row_dynamic(ctx, 15, 7);
 	nk_spacing(ctx, 1);
-	nk_checkbox_label(ctx, "Custom script", &checkbox_custom_script);
+	nk_checkbox_label(ctx, "Custom script", &param->checkbox_custom_script);
 	nk_spacing(ctx, 1);
-	nk_checkbox_label(ctx, "Multi-Threads", &checkbox_threads);
+	nk_checkbox_label(ctx, "Multi-Threads", &param->checkbox_threads);
 	nk_spacing(ctx, 1);
-	nk_checkbox_label(ctx, "Ping Compensation", &checkbox_ping);
+	nk_checkbox_label(ctx, "Ping Compensation", &param->checkbox_ping);
 	nk_spacing(ctx, 1);
 
-	if (checkbox_custom_script)
+	if (param->checkbox_custom_script)
 	{
 		nk_layout_row_dynamic(ctx, 25, 2);
 		nk_label(ctx, "Read SQL file : ", NK_TEXT_CENTERED);
 		nk_label(ctx, "Write SQL file : ", NK_TEXT_CENTERED);
 
 		nk_layout_row_dynamic(ctx, 25, 2);
-		nk_edit_string(ctx, NK_EDIT_SIMPLE, box_buffer_read, &box_len_read, 512, nk_filter_default);
-		nk_edit_string(ctx, NK_EDIT_SIMPLE, box_buffer_write, &box_len_write, 512, nk_filter_default);
+		nk_edit_string(ctx, NK_EDIT_SIMPLE, param->box_buffer_read, &param->box_len_read, 512, nk_filter_default);
+		nk_edit_string(ctx, NK_EDIT_SIMPLE, param->box_buffer_write, &param->box_len_write, 512, nk_filter_default);
 	}
 
 
@@ -313,12 +303,12 @@ void DrawConfigurationTab()
 
 	nk_layout_row_dynamic(ctx, 30, 1);
 	nk_label(ctx, "Database Type :", NK_TEXT_ALIGN_LEFT);
-	if (nk_combo_begin_label(ctx, database_name[selected_database], nk_vec2(nk_widget_width(ctx), 200))) {
+	if (nk_combo_begin_label(ctx, database_name[param->selected_database], nk_vec2(nk_widget_width(ctx), 200))) {
 		int i;
 		nk_layout_row_dynamic(ctx, 25, 1);
 		for (i = 0; i < sizeof(database_id) / sizeof(database_id[0]); ++i)
 			if (nk_combo_item_label(ctx, database_name[i], NK_TEXT_LEFT)) {
-				selected_database = i;
+				param->selected_database = i;
 			}
 		nk_combo_end(ctx);
 	}
@@ -329,35 +319,35 @@ void DrawConfigurationTab()
 
 	nk_layout_row_dynamic(ctx, 30, 10);
 	nk_label(ctx, "Hostname :", NK_TEXT_CENTERED);
-	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[0], &text_len[0], 64, nk_filter_default);
+	nk_edit_string(ctx, NK_EDIT_SIMPLE, param->input[0], &param->text_len[0], 64, nk_filter_default);
 
 	nk_label(ctx, "Port :", NK_TEXT_CENTERED);
-	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[1], &text_len[1], 64, nk_filter_decimal);
+	nk_edit_string(ctx, NK_EDIT_SIMPLE, param->input[1], &param->text_len[1], 64, nk_filter_decimal);
 
 	nk_label(ctx, "Database :", NK_TEXT_CENTERED);
-	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[2], &text_len[2], 64, nk_filter_default);
+	nk_edit_string(ctx, NK_EDIT_SIMPLE, param->input[2], &param->text_len[2], 64, nk_filter_default);
 
 	nk_label(ctx, "User :", NK_TEXT_CENTERED);
-	nk_edit_string(ctx, NK_EDIT_SIMPLE, input[3], &text_len[3], 64, nk_filter_default);
+	nk_edit_string(ctx, NK_EDIT_SIMPLE, param->input[3], &param->text_len[3], 64, nk_filter_default);
 
 	nk_label(ctx, "Password :", NK_TEXT_CENTERED);
 	{
 		int i = 0;
-		int old_len = text_len[4];
+		int old_len = param->text_len[4];
 		char buffer[64];
-		for (i = 0; i < text_len[4]; ++i) buffer[i] = '*';
-		nk_edit_string(ctx, NK_EDIT_FIELD, buffer, &text_len[4], 64, nk_filter_default);
-		if (old_len < text_len[4])
-			memcpy(&input[4][old_len], &buffer[old_len], (nk_size)(text_len[4] - old_len));
+		for (i = 0; i < param->text_len[4]; ++i) buffer[i] = '*';
+		nk_edit_string(ctx, NK_EDIT_FIELD, buffer, &param->text_len[4], 64, nk_filter_default);
+		if (old_len < param->text_len[4])
+			memcpy(&param->input[4][old_len], &buffer[old_len], (nk_size)(param->text_len[4] - old_len));
 	}
 
 	nk_layout_row_dynamic(ctx, 25, 1);
 	nk_spacing(ctx, 1);
 
 
-	nk_labelf(ctx, NK_TEXT_CENTERED, "Number of request : %d ", request_number);
+	nk_labelf(ctx, NK_TEXT_CENTERED, "Number of request : %d ", param->request_number);
 	nk_layout_row_dynamic(ctx, 25, 1);
-	nk_progress(ctx, &request_number, 1000, 1);
+	nk_progress(ctx, &param->request_number, 1000, 1);
 
 	nk_layout_row_dynamic(ctx, 15, 1);
 	nk_spacing(ctx, 1);
@@ -368,39 +358,32 @@ void DrawConfigurationTab()
 	{
 		selected_tab = 2;
 
-		// Debug
-		strcpy(input[0], "localhost"); 
-		strcpy(input[1], "0");
-		strcpy(input[2], "testdb");			// database
-		strcpy(input[3], "root");
-		strcpy(input[4], "");
-
 		system("cls");
 		fprintf(stdout, "> benchmark pressed\n");
-		fprintf(stdout, "Benchmark type : %s \n", database_name[selected_database]);
-		fprintf(stdout, "Hostname : %s \n", input[0]);
-		fprintf(stdout, "Port : %s \n", input[1]);
-		fprintf(stdout, "Database : %s \n", input[2]);
-		fprintf(stdout, "User: %s \n", input[3]);
-		fprintf(stdout, "Password: %s \n", input[4]);
-		fprintf(stdout, "ping comp: %d \n", checkbox_ping);
-		fprintf(stdout, "request number : %d \n", request_number);
-		fprintf(stdout, "custom script : %d \n", checkbox_custom_script);
-		fprintf(stdout, "multi threads : %d \n", checkbox_threads);
+		fprintf(stdout, "Benchmark type : %s \n", database_name[param->selected_database]);
+		fprintf(stdout, "Hostname : %s \n", param->input[0]);
+		fprintf(stdout, "Port : %s \n", param->input[1]);
+		fprintf(stdout, "Database : %s \n", param->input[2]);
+		fprintf(stdout, "User: %s \n", param->input[3]);
+		fprintf(stdout, "Password: %s \n", param->input[4]);
+		fprintf(stdout, "ping comp: %d \n", param->checkbox_ping);
+		fprintf(stdout, "request number : %d \n", param->request_number);
+		fprintf(stdout, "custom script : %d \n", param->checkbox_custom_script);
+		fprintf(stdout, "multi threads : %d \n", param->checkbox_threads);
 		
 
 		// Initialisation de la structure avec les parametres
-		db_param_buffer.hostname = input[0];
-		db_param_buffer.port = atoi(input[1]);
-		db_param_buffer.database = input[2];
-		db_param_buffer.user = input[3];
-		db_param_buffer.password = input[4];
-		db_param_buffer.pingCompensation = checkbox_ping;
-		db_param_buffer.request_number = request_number;
-		db_param_buffer.custom_script = checkbox_custom_script;
-		db_param_buffer.multi_threads = checkbox_threads;
+		db_param_buffer.hostname = param->input[0];
+		db_param_buffer.port = atoi(param->input[1]);
+		db_param_buffer.database = param->input[2];
+		db_param_buffer.user = param->input[3];
+		db_param_buffer.password = param->input[4];
+		db_param_buffer.pingCompensation = param->checkbox_ping;
+		db_param_buffer.request_number = param->request_number;
+		db_param_buffer.custom_script = param->checkbox_custom_script;
+		db_param_buffer.multi_threads = param->checkbox_threads;
 
-		if (checkbox_custom_script)
+		if (param->checkbox_custom_script)
 		{
 			db_param_buffer.script_read = "SELECT 1";// LoadTextFromFile(box_buffer_read);
 			db_param_buffer.scrit_write = "INSERT INTO testtable(int_test, text_test) VALUES(2,'nn')";// LoadTextFromFile(box_buffer_write);
@@ -409,7 +392,7 @@ void DrawConfigurationTab()
 		db_Param = Malloc(sizeof(db_Param));
 		db_Param = &db_param_buffer;
 		
-		StartBenchmarkThread(db_Param, database_name[selected_database]);
+		StartBenchmarkThread(db_Param, database_name[param->selected_database]);
 
 	}
 	nk_spacing(ctx, 1);
@@ -422,7 +405,58 @@ void DrawAccountTab()
 
 	if (selected_item != -1)
 	{
-		nk_layout_row_dynamic(ctx, 25, 3);
+		nk_layout_row_dynamic(ctx, 25, 4);
+		if (nk_button_label(ctx, "Select"))
+		{
+			printf("Selecting %d benchmark parameters", selected_item);
+			struct database_user_records* selected_records = GetUserBenchmarkData()[selected_item];
+			struct config_parameters *config_param = Malloc(sizeof(struct config_parameters));
+
+			config_param->selected_database = 2;
+			if (strstr(selected_records->databaseType, "Oracle"))
+			{
+				config_param->selected_database = 0;
+			}
+			else if (strstr(selected_records->databaseType, "MySql"))
+			{
+				config_param->selected_database = 1;
+			}			
+
+			strcpy(config_param->input[0], selected_records->db_param->hostname);
+			config_param->text_len[0] = strlen(selected_records->db_param->hostname);
+
+			sprintf(config_param->input[1], "%d", selected_records->db_param->port);
+			
+			strcpy(config_param->input[2], selected_records->db_param->database);
+			config_param->text_len[2] = strlen(selected_records->db_param->database);
+
+			strcpy(config_param->input[3], selected_records->db_param->user);
+			config_param->text_len[3] = strlen(selected_records->db_param->user);
+
+			strcpy(config_param->input[4], "");
+			config_param->text_len[4] = 0;
+
+
+			config_param->checkbox_custom_script = selected_records->db_param->custom_script;
+			config_param->checkbox_ping = selected_records->db_param->pingCompensation;
+			config_param->checkbox_threads = selected_records->db_param->multi_threads;
+
+			config_param->request_number = selected_records->db_param->request_number;
+
+			if (config_param->checkbox_custom_script)
+			{
+				strcpy(config_param->box_buffer_read, selected_records->db_param->script_read);
+				config_param->box_len_read = strlen(selected_records->db_param->script_read);
+
+				strcpy(config_param->box_buffer_read, selected_records->db_param->script_read);
+				config_param->box_len_write = strlen(selected_records->db_param->scrit_write);
+
+			}
+
+			SetConfigParameters(config_param);
+			selected_tab = 0;
+		}
+
 		if (nk_button_label(ctx, "Download"))
 		{
 			struct database_current_results* current_results = Malloc(sizeof(struct database_current_results));
