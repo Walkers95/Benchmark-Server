@@ -8,10 +8,10 @@ struct database_user_records** userRecordsArray = NULL;
 int ConnectUserDatabase()
 {
 	struct database_benchmark_params* db_param = Malloc(sizeof(struct database_benchmark_params));
-	db_param->hostname = "localhost";
-	db_param->user = "root";
-	db_param->password = "";
-	db_param->database = "DBBenchmark";
+	strcpy(db_param->hostname, "localhost");
+	strcpy(db_param->user, "root");
+	strcpy(db_param->password, "");
+	strcpy(db_param->database, "DBBenchmark");
 
 	int verif = InitMySql(db_param);
 	free(db_param);
@@ -162,10 +162,10 @@ struct database_user_records *GetUserBenchmark(int benchmarkID)
 		userRecords->id = atoi(row[0]);
 		userRecords->date = row[2];
 		userRecords->databaseType = row[3];
-		userRecords->db_param->hostname = row[4];
+		strcpy(userRecords->db_param->hostname, row[4]);
 		userRecords->db_param->port = atoi(row[5]);
-		userRecords->db_param->database = row[6];
-		userRecords->db_param->user = row[7];
+		strcpy(userRecords->db_param->database, row[6]);
+		strcpy(userRecords->db_param->user, row[7]);
 		userRecords->db_param->request_number = atoi(row[8]);
 		userRecords->db_param->pingCompensation = atoi(row[9]);
 		userRecords->db_param->custom_script = atoi(row[10]);

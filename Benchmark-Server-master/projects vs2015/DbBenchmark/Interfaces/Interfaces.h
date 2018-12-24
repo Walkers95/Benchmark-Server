@@ -15,16 +15,16 @@ struct database_login_params
 
 struct database_benchmark_params
 {
-	char* hostname;
+	char hostname[64];
 	int port;
-	char* database;
-	char* user;
-	char* password;
+	char database[64];
+	char user[64];
+	char password[64];
 	int pingCompensation;
 	int request_number;
 	int custom_script;
-	char* script_read;
-	char* scrit_write;
+	char script_read[512];
+	char scrit_write[512];
 	int multi_threads;
 };
 

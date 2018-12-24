@@ -46,6 +46,9 @@ struct nk_context *ctx;
 struct nk_colorf bg;
 
 
+struct database_benchmark_params *db_param_buffer = NULL;
+
+
 void InitialiseRender()
 {
 
@@ -78,6 +81,8 @@ void InitialiseRender()
 
 	SetStyle(ctx);
 	InitConfigParameters();
+
+	db_param_buffer = Malloc(sizeof(struct database_benchmark_params));
 	
 	bg.r = 0.10f, bg.g = 0.18f, bg.b = 0.24f, bg.a = 1.0f;
 }
@@ -268,8 +273,7 @@ void DrawLoginTab()
 
 
 
-struct database_benchmark_params db_param_buffer;
-struct database_benchmark_params *db_Param;
+
 
 
 void DrawConfigurationTab()
@@ -371,28 +375,34 @@ void DrawConfigurationTab()
 		fprintf(stdout, "custom script : %d \n", param->checkbox_custom_script);
 		fprintf(stdout, "multi threads : %d \n", param->checkbox_threads);
 		
+		for (int i = 0; i < 5; i++)
+		{
+			param->input[i][param->text_len[i]] = '\0';
+		}
 
 		// Initialisation de la structure avec les parametres
-		db_param_buffer.hostname = param->input[0];
-		db_param_buffer.port = atoi(param->input[1]);
-		db_param_buffer.database = param->input[2];
-		db_param_buffer.user = param->input[3];
-		db_param_buffer.password = param->input[4];
-		db_param_buffer.pingCompensation = param->checkbox_ping;
-		db_param_buffer.request_number = param->request_number;
-		db_param_buffer.custom_script = param->checkbox_custom_script;
-		db_param_buffer.multi_threads = param->checkbox_threads;
+		strcpy(db_param_buffer->hostname, param->input[0], param->text_len[0]);
+		db_param_buffer->port = param->input[1] == "" ? 0 : atoi(param->input[1]);
+		strcpy(db_param_buffer->database, param->input[2], param->text_len[2]);
+		strcpy(db_param_buffer->user, param->input[3], param->text_len[3]);
+		strcpy(db_param_buffer->password, param->input[4], param->text_len[4]);
+
+		db_param_buffer->pingCompensation = param->checkbox_ping;
+		db_param_buffer->request_number = param->request_number;
+		db_param_buffer->custom_script = param->checkbox_custom_script;
+		db_param_buffer->multi_threads = param->checkbox_threads;
 
 		if (param->checkbox_custom_script)
 		{
-			db_param_buffer.script_read = "SELECT 1";// LoadTextFromFile(box_buffer_read);
-			db_param_buffer.scrit_write = "INSERT INTO testtable(int_test, text_test) VALUES(2,'nn')";// LoadTextFromFile(box_buffer_write);
+			param->box_buffer_read[param->box_len_read] = '\0';
+			param->box_buffer_write[param->box_len_write] = '\0';
+
+			strcpy(db_param_buffer->script_read, param->box_buffer_read);
+			strcpy(db_param_buffer->scrit_write, param->box_buffer_write);
 		}
+	
 		
-		db_Param = Malloc(sizeof(db_Param));
-		db_Param = &db_param_buffer;
-		
-		StartBenchmarkThread(db_Param, database_name[param->selected_database]);
+		StartBenchmarkThread(db_param_buffer, database_name[param->selected_database]);
 
 	}
 	nk_spacing(ctx, 1);

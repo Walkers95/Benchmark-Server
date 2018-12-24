@@ -10,7 +10,7 @@ int InitMySql(struct database_benchmark_params *db_param)
 		return 0;
 	}
 
-	if ( strstr(db_param->hostname,"localhost"))
+ 	if ( strstr(db_param->hostname,"localhost"))
 	{
 		if (mysql_real_connect(connection_mysql, db_param->hostname, db_param->user, db_param->password, db_param->database, 0, NULL, 0) == NULL)
 		{
