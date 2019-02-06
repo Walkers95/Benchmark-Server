@@ -28,7 +28,9 @@ A graphical tool you can use for benchmarking database according to their respon
  <li> Number of threads for benchmark TODO</li>
  <li> Draw the results inside a chart </li>
  <li> Console for all outputs </li>
+ <li> Create account </li>
  <li> Saving benchmark on your account </li>
+ <li> Import benchmark result from database </li>
  <li> Ability to : View, delete, download a benchmark </li>
 </ul>
 
